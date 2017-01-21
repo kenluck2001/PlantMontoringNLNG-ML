@@ -9,7 +9,9 @@ Install the scikit-fuzzy package by following the instructions here: https://git
 This is accompanied with install the ANFIS package
 
 pip install git+https://github.com/scikit-fuzzy/scikit-fuzzy
+
 pip install git+https://github.com/timesofbadri/anfis
+
 pip install -U scikit-learn
 
 
@@ -18,27 +20,42 @@ Model comparison was done using Regression Error Characteristics Curves.
 The file structure is 
 
 /src
-    /data           
+    /data  
+    
     /pictures
+    
     /result
+    
         experiment.txt
+        
         output.txt
+        
     process.py  
+    
     runexp.sh
+    
     experiment.py  
-    predict.py        
+    
+    predict.py 
+    
     run.sh
 
 README.md
 
-To perform all the required hyperparameter search
+The data set is stored in the data folder.
+
+To perform all the required hyperparameter search for the best parameters of the models in use.
+
 $ chmod u+x runexp.sh
+
 $ ./runexp.sh
 
 The output is available in result folder in the file named experiment.txt.
 
 To run the actual code
+
 $ chmod u+x run.sh
+
 $ ./run.sh
 
 
