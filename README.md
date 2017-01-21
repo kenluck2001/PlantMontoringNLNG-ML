@@ -1,3 +1,5 @@
+#INTRODUCTION
+
 This is the source code for predicting the amount of CO2 emission from a power plant in a research project that is sponsored by Nigerian Liquefied Natural Gas Treatment plant (Train 4). All codes are in Python programming language and the result of the research will be published in a upcoming journal article which will be co-authored by me. The models consist of MARS (Multivariate adaptive regression splines), Extra Random Trees, Neural Network, and ANFIS (Adaptive neuro fuzzy inference system).
 
 All codes are in Python programming
@@ -43,7 +45,7 @@ The file structure is
 
         run.sh
 
-README.md
+    README.md
 
 The data set is stored in the data folder.
 
