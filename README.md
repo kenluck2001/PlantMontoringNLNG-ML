@@ -19,27 +19,27 @@ Model comparison was done using Regression Error Characteristics Curves.
 
 The file structure is 
 
-/src
+    /src
 
-    /data  
-    
-    /pictures
-    
-    /result
-    
-        experiment.txt
-        
-        output.txt
-        
-    process.py  
-    
-    runexp.sh
-    
-    experiment.py  
-    
-    predict.py 
-    
-    run.sh
+        /data  
+
+        /pictures
+
+        /result
+
+            experiment.txt
+
+            output.txt
+
+        process.py  
+
+        runexp.sh
+
+        experiment.py  
+
+        predict.py 
+
+        run.sh
 
 README.md
 
