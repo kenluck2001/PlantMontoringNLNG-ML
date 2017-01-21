@@ -20,6 +20,7 @@ Model comparison was done using Regression Error Characteristics Curves.
 The file structure is 
 
 /src
+
     /data  
     
     /pictures
