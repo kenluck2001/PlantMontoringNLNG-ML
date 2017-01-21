@@ -14,6 +14,8 @@ pip install git+https://github.com/timesofbadri/anfis
 
 pip install -U scikit-learn
 
+pip install git+https://github.com/scikit-learn-contrib/py-earth
+
 
 Model comparison was done using Regression Error Characteristics Curves.
 
