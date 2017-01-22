@@ -10,13 +10,15 @@ Install the scikit-fuzzy package by following the instructions here: https://git
 
 This is accompanied with install the ANFIS package
 
-pip install git+https://github.com/scikit-fuzzy/scikit-fuzzy
+$ pip install git+https://github.com/scikit-fuzzy/scikit-fuzzy
 
-pip install git+https://github.com/timesofbadri/anfis
+$ pip install git+https://github.com/timesofbadri/anfis
 
-pip install -U scikit-learn
+$ pip install -U scikit-learn
 
-pip install git+https://github.com/scikit-learn-contrib/py-earth
+$ pip install git+https://github.com/scikit-learn-contrib/py-earth
+
+$ pip install -U ggplot
 
 
 Model comparison was done using Regression Error Characteristics Curves.
