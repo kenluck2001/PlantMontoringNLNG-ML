@@ -5,7 +5,6 @@ import numpy as np
 from sklearn.model_selection import cross_val_score
 
 from pyearth import Earth
-from matplotlib import pyplot
 
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import ExtraTreesRegressor
