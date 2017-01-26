@@ -232,6 +232,10 @@ def getHeightOfExtraTreesRegressor(X, y_sweetgasco2, y_sweetgasc1, y_richaminehy
     return     rsquaredList, heighList, estimatList 
 
 
+def unison_shuffled_copies(a, b, c, d, e, f, g):
+    p = np.random.permutation(len(a))
+    return a[p], b[p], c[p], d[p], e[p], f[p], g[p]
+
 if __name__ == "__main__":
 
     X = getPredictorData (df)
@@ -260,6 +264,9 @@ if __name__ == "__main__":
 
 
     X = np.hstack((  X, mdea_pzratio ))
+
+    #shuffling the data
+    X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow  = unison_shuffled_copies(X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow )
 
     print "Decision Tree"
     print getHeightOfDecisionTreeRegressor(X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow)

@@ -526,7 +526,7 @@ def drawRECCURVE ( recObjectList, rsquaredList, label  ):
         accepts list of REC Objects, list of rsquared
     '''
     df = pd.DataFrame()
-    clsLabel = ["MARS", "Tree", "ANFIS", "Mean"]
+    clsLabel = ["MARS", "Decision Tree", "ANFIS", "Mean"]
 
     for ind, rec in enumerate(recObjectList):
         dfA = pd.DataFrame()
@@ -541,7 +541,7 @@ def drawRECCURVE ( recObjectList, rsquaredList, label  ):
         df = df.append(dfA, ignore_index=True)
 
 
-    p = ggplot(df, aes(x='x', y='y', color='Classifier', group='group'))
+    p = ggplot(df, aes(x='x', y='y', color='Classifier', group='group'))  + theme_bw()
 
 
 
@@ -550,7 +550,7 @@ def drawRECCURVE ( recObjectList, rsquaredList, label  ):
 
     #pVal =  p + geom_point() + geom_line() +  scale_y_continuous(limits=(0,1)) +  scale_x_continuous(limits=(0,xMax)) + ggtitle('REC curve comparing the models for label: (' +label +')') + xlab('Absolute deviation') + ylab('Accuracy')  
 
-    pVal =  p + geom_line() +  scale_y_continuous(limits=(0,1)) +  scale_x_continuous(limits=(0,xMax)) + ggtitle('REC curve comparing the models for label: (' +label +')') + xlab('Absolute deviation') + ylab('Accuracy')
+    pVal =  p + geom_line() +  scale_y_continuous(limits=(0,1)) +  scale_x_continuous(limits=(0,xMax)) + ggtitle('REC curve comparing the models for label: (' +label +')') + xlab('Absolute deviation') + ylab('Accuracy')  + theme_bw()
 
     file_name = label.replace(" ", "_")
     ggplot.save(pVal, "pictures/rec/"+file_name+".png")
@@ -562,9 +562,9 @@ def drawFeatureImportance ( featureImpList, label="variableImportance" ):
         accepts list of REC Objects, list of rsquared
     '''
     df = pd.DataFrame()
-    clsLabel = ["Tree", "ANFIS"]
+    clsLabel = ["MARS", "Decision Tree", "ANFIS"]
 
-    yLabel = ['Sweet Gas CO2 (ppm)', 'Sweet Gas C1 (ppm)', 'Rich Amine Hydrocarbons (t/d)', 'R Amine HCO3 (mol/L)', 'Sweet Gas MDEA Flow (t/d)', 'Sweet Gas PZ Flow (t/d)']
+    yLabel = ['Sweet Gas CO2 (ppm)', 'Sweet Gas C1 (ppm)', 'Rich Amine Hydrocarbons (t/d)', 'R Amine HCO3 (mol/L)', 'Sweet Gas PZ Flow (t/d)']
 
 
     predLabel = ['LP', 'LF', 'LT', 'HD', 'MD', 'PZ']
@@ -584,7 +584,7 @@ def drawFeatureImportance ( featureImpList, label="variableImportance" ):
 
     #pVal = ggplot(df, aes(x='Attributes', weight='R2')) + geom_bar(color='teal') + scale_fill_identity() +  facet_wrap('Classifier', 'ylabel') + ggtitle('Estimation of the importance of variable using R2') + xlab('Attributes') + ylab('R2') + theme(axis_text_x  = element_text(angle = 90)) +  scale_x_continuous(breaks=[0.8, 1.8, 2.8, 3.8, 4.8, 5.8, 6.8],  labels=predictorLabel)
 
-    pVal = ggplot(df, aes(x='Attributes', weight='R2')) + geom_bar(color='teal') + scale_fill_identity() +  facet_wrap('Classifier', 'ylabel') + ggtitle('Estimation of the importance of variable using R2') + xlab('Attributes') + ylab('R2')
+    pVal = ggplot(df, aes(x='Attributes', weight='R2')) + geom_bar(color='teal') + scale_fill_identity() +  facet_wrap('Classifier', 'ylabel') + ggtitle('Estimation of the importance of variable using R2') + xlab('Attributes') + ylab('R2')  + theme_bw()
 
     file_name = label.replace(" ", "_")
     ggplot.save(pVal, "pictures/"+file_name+".png")
@@ -593,7 +593,7 @@ def drawFeatureImportance ( featureImpList, label="variableImportance" ):
 def drawTree (clf, X, y, filename):
     clf = clf.fit(X, y)
     tree.export_graphviz(clf, out_file="temp/"+filename+'.dot')  
-    cmd = "dot -Tpng temp/"+ filename + ".dot -o pictures/" + filename + ".png"
+    cmd = "dot -Tpng temp/"+ filename + ".dot -o pictures/tree/" + filename + ".png"
     os.system(cmd)
 
 
@@ -610,7 +610,7 @@ def drawParityChart ( xdata, ydata, label ):
 
     r2Val = r2_score(  xdata, ydata )
 
-    pVal = ggplot(df, aes(x='x', y='y')) + geom_point(color='lightblue') + ggtitle('Parity Chart: '+label+' | ' +"R^2: %0.4f" % r2Val ) + xlab('Experimental Value') + ylab('Predicted Value')  + stat_smooth( se=False )
+    pVal = ggplot(df, aes(x='x', y='y')) + geom_point(color='blue') + ggtitle('Parity Chart: '+label+' | ' +"R^2: %0.4f" % r2Val ) + xlab('Experimental Value') + ylab('Predicted Value')  + stat_smooth( se=False )  + theme_bw()
 
     print("R^2: %0.4f" % r2Val )
 
@@ -618,6 +618,17 @@ def drawParityChart ( xdata, ydata, label ):
     file_name = label.replace(" ", "_")
     ggplot.save(pVal, "pictures/parity/"+file_name+".png")
 
+
+
+def unison_shuffled_copies(a, b, c, d, e, f, g):
+    p = np.random.permutation(len(a))
+    return a[p], b[p], c[p], d[p], e[p], f[p], g[p]
+
+
+
+def unison_shuffled(a, b):
+    p = np.random.permutation(len(a))
+    return a[p], b[p]
 
 
 class AnfisClassifier:
@@ -708,7 +719,6 @@ if __name__ == "__main__":
 
     cX = np.hstack((  X, mdea_pzratio ))
 
-    cXLog = np.log ( cX )
 
     ntrainingSize = len ( cX ) - 300
 
@@ -730,12 +740,14 @@ if __name__ == "__main__":
 
     featureImpList = []
 
-    X = np.hstack(( np.log ( np.power( X[:,[4,5]], 1.0 / X [:,[1]] ) ),  X[:,[2,3,4,5]]*X[:,[2,3,4,5]], mdea_pzratio ,  np.power( X [:,[4]], 3.0 / X [:,[5]] )   )) #log of label with R^2: 0.9108
+    #shuffling the data
+    cX, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow  = unison_shuffled_copies(cX, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow )
 
 
     #Regression Based Model
     #MARS
     model = Earth()
+    currentlist = []
     print "----------------------------------------------------------"
     print "----------------------------------------------------------"
     print "MARS Model"
@@ -743,89 +755,128 @@ if __name__ == "__main__":
     print "----------------------------------------------------------"
 
     print "Evaluate performance of 'Sweet Gas CO2 (ppm)'"
-    print "X: specialformat, Y: Log"
-    r2 = evaluate (model, X, y_sweetgasco2Log)
+    r2 = evaluate (model, cX, y_sweetgasco2)
     rsquaredSweetGasCO2.append (r2)
-    model.fit( X[range (ntrainingSize), :], y_sweetgasco2Log[:ntrainingSize])
+
+    model = Earth()
+
+    X,y = unison_shuffled(cX, y_sweetgasco2)
+    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
     print(model.summary())
 
     #plot parity chart here
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist() 
-    ydata = y_sweetgasco2Log[ntrainingSize:]
+    ydata = y[ntrainingSize:]
     label="Sweet Gas CO2 (MARS)"
 
     drawParityChart ( xdata, ydata, label )
 
+    #Relative importance of Variable
+    print "Relative importance of Variable"
+    #feature importance
+    print "feature importance of 'Sweet Gas CO2 (ppm)'"
+    imp1 = featureImportance(model, df, y_sweetgasco2)
+    currentlist.append (imp1)
 
-    #ln(y) = 5698.81*ln(MDEA^(1.0/LAF)) - 15575.6*ln(PZ^(1/LAF)) - 0.000180221*LAT^2 - 0.000271076*HD^2 - 0.000810953*MDEA^2 + 0.0128298*PZ^2 - 0.378694*MDEA/PZ + 0.035448*MDEA^(3.0/PZ) + 6.85234
+    print imp1 
+
 
 
     print "Evaluate performance of 'Sweet Gas C1 (ppm)'"
-    print "X: normal, Y: normal"
     model = Earth()
     r2 = evaluate (model, cX, y_sweetgasc1)
     rsquaredSweetGasC1.append (r2)
 
-    model.fit( cX[range (ntrainingSize), :], y_sweetgasc1[:ntrainingSize])
+    model = Earth()
+    X,y = unison_shuffled(cX, y_sweetgasc1)
+    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
     print(model.summary())
 
     #plot parity chart here
-    nxdata = cX[range (ntrainingSize, len(X)), :]
+    nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()
-    ydata = y_sweetgasc1[ntrainingSize:]
+    ydata = y[ntrainingSize:]
     label="Sweet Gas C1 (MARS)"
 
     drawParityChart ( xdata, ydata, label )
 
+    #Relative importance of Variable
+    print "Relative importance of Variable"
+    #feature importance
+    print "feature importance of 'Sweet Gas C1 (ppm)'"
+    imp1 = featureImportance(model, df, y_sweetgasc1)
+    currentlist.append (imp1)
+
+    print imp1 
+
 
     print "Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'"
-    print "X: log, Y: log"
     model = Earth()
-    r2 = evaluate (model, cXLog, y_richaminehydroLog)
+    r2 = evaluate (model, cX, y_richaminehydro)
     rsquaredRichAmineHydro.append (r2)
 
-    model.fit( cXLog[range (ntrainingSize), :], y_richaminehydroLog[:ntrainingSize])
+    model = Earth()
+    X,y = unison_shuffled(cX, y_richaminehydro)
+    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
     print(model.summary())
 
     #plot parity chart here
-    nxdata = cXLog[range (ntrainingSize, len(X)), :]
+    nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()
-    ydata = y_richaminehydroLog[ntrainingSize:]
+    ydata = y[ntrainingSize:]
     label="Rich Amine Hydrocarbons (MARS)"
 
     drawParityChart ( xdata, ydata, label )
 
+    #Relative importance of Variable
+    print "Relative importance of Variable"
+    #feature importance
+    print "feature importance of 'Rich Amine Hydrocarbons (t/d)'"
+    imp1 = featureImportance(model, df, y_richaminehydro)
+    currentlist.append (imp1)
+
+    print imp1 
+
 
     print "Evaluate performance of 'R Amine HCO3 (mol/L)'"
-    print "X: normal, Y: normal"
     model = Earth()
     r2 = evaluate (model, cX, y_richaminehco3)
     rsquaredRichAmineHco3.append (r2)
 
-    model.fit( cX[range (ntrainingSize), :], y_richaminehco3[:ntrainingSize] )
+    model = Earth()
+    X,y = unison_shuffled(cX, y_richaminehco3)
+    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize] )
     print(model.summary())
 
     #plot parity chart here
-    nxdata = cX[range (ntrainingSize, len(X)), :]
+    nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()
-    ydata = y_richaminehco3[ntrainingSize:]
+    ydata = y[ntrainingSize:]
     label="R Amine HCO3 (MARS)"
 
     drawParityChart ( xdata, ydata, label )
 
+    #Relative importance of Variable
+    print "Relative importance of Variable"
+    #feature importance
+    print "feature importance of 'R Amine HCO3 (mol/L)'"
+    imp1 = featureImportance(model, df, y_richaminehco3)
+    currentlist.append (imp1)
+
+    print imp1 
+
     '''
     print "Evaluate performance of 'Sweet Gas MDEA Flow (t/d)'"
-    print "X: normal, Y: log"
     model = Earth()
-    r2 = evaluate (model, cX, y_sweetgasmdeaflowLog)
+    r2 = evaluate (model, cX, y_sweetgasmdeaflow)
     rsquaredSweetGasMdeaFlow.append (r2)
 
-    model.fit( cX[range (ntrainingSize), :], y_sweetgasmdeaflowLog[:ntrainingSize] )
+    model.fit( cX[range (ntrainingSize), :], y_sweetgasmdeaflow[:ntrainingSize] )
     print(model.summary())
 
     #plot parity chart here
@@ -838,29 +889,42 @@ if __name__ == "__main__":
     drawParityChart ( xdata, ydata, label )
     '''
 
+
     print "Evaluate performance of 'Sweet Gas PZ Flow (t/d)'"
-    print "X: log, Y: log"
     model = Earth()
-    r2 = evaluate (model, cXLog, y_sweetgaspzflowLog)
+    r2 = evaluate (model, cX, y_sweetgaspzflow)
     rsquaredSweetGaspzFlow.append (r2)
 
-    model.fit( cXLog[range (ntrainingSize), :], y_sweetgaspzflowLog[:ntrainingSize])
+    model = Earth()
+    X,y = unison_shuffled(cX, y_sweetgaspzflow)
+    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
     print(model.summary())
 
     #plot parity chart here
-    nxdata = cXLog[range (ntrainingSize, len(X)), :]
+    nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist() 
-    ydata = y_sweetgaspzflowLog[ntrainingSize:]
+    ydata = y[ntrainingSize:]
     label="Sweet Gas PZ Flow (MARS)"
 
     drawParityChart ( xdata, ydata, label )
+
+    #Relative importance of Variable
+    print "Relative importance of Variable"
+    #feature importance
+    print "feature importance of 'Sweet Gas PZ Flow (t/d)'"
+    imp1 = featureImportance(model, df, y_sweetgaspzflow)
+    currentlist.append (imp1)
+
+    print imp1 
+
+    featureImpList.append ( currentlist )
 
 
     #REC and sensitivity analysis
     model = Earth()
     #print "REC of 'Sweet Gas CO2 (ppm)'"
-    cur = modelValidation (model,  X, y_sweetgasco2Log)
+    cur = modelValidation (model,  cX, y_sweetgasco2)
     print "AOC of 'Sweet Gas CO2 (ppm)': " +str (cur["avgArea"])
     #print cur
     recListSweetGasCO2.append ( cur )
@@ -876,7 +940,7 @@ if __name__ == "__main__":
 
     model = Earth()
     #print "REC of 'Rich Amine Hydrocarbons (t/d)'"
-    cur = modelValidation (model, cXLog, y_richaminehydroLog )
+    cur = modelValidation (model, cX, y_richaminehydro )
     print "AOC of 'Rich Amine Hydrocarbons (t/d)': " +str (cur["avgArea"])
     #print cur
     recListRichAmineHydro.append ( cur )
@@ -891,15 +955,16 @@ if __name__ == "__main__":
     '''
     model = Earth()
     #print "REC of Sweet Gas MDEA Flow (t/d)"
-    cur = modelValidation (model, cX, y_sweetgasmdeaflowLog )
+    cur = modelValidation (model, cX, y_sweetgasmdeaflow )
     print "AOC of 'Sweet Gas MDEA Flow (t/d)': " +str (cur["avgArea"])
     #print cur
     recListSweetGasMdeaFlow.append ( cur )
     '''
 
+
     model = Earth()
     #print "REC of 'Sweet Gas PZ Flow (t/d)'"
-    cur = modelValidation (model, cXLog, y_sweetgaspzflowLog )
+    cur = modelValidation (model, X, y_sweetgaspzflow )
     print "AOC of 'Sweet Gas PZ Flow (t/d)': " +str (cur["avgArea"])
     #print cur
     recListSweetGaspzFlow.append ( cur )
@@ -919,12 +984,12 @@ if __name__ == "__main__":
 
 
     #Tree Based Model
-    clf1 = ExtraTreesRegressor(max_depth=20, n_estimators=450, random_state=10) #
-    clf2 = ExtraTreesRegressor(max_depth=20, n_estimators=450, random_state=10)
-    clf3 = ExtraTreesRegressor(max_depth=10, n_estimators=120, random_state=10) #
-    clf4 = ExtraTreesRegressor(max_depth=15, n_estimators=150, random_state=10) #
-    #clf5 = ExtraTreesRegressor(max_depth=15, n_estimators=150, random_state=10)
-    clf6 = ExtraTreesRegressor(max_depth=15, n_estimators=60, random_state=10) #
+    clf1 = DecisionTreeRegressor(max_depth=15, random_state=10) #
+    clf2 = DecisionTreeRegressor(max_depth=15, random_state=10)
+    clf3 = DecisionTreeRegressor(max_depth=15, random_state=10) #
+    clf4 = DecisionTreeRegressor(max_depth=10, random_state=10) #
+    #clf5 = DecisionTreeRegressor(max_depth=0, random_state=10)
+    clf6 = DecisionTreeRegressor(max_depth=10, random_state=10) #
 
 
     print "Evaluate performance of 'Sweet Gas CO2 (ppm)'"
@@ -944,13 +1009,21 @@ if __name__ == "__main__":
     print imp1 
 
 
-    clf1.fit( cX[range (ntrainingSize), :], y_sweetgasco2[:ntrainingSize])
+    clf1 = DecisionTreeRegressor(max_depth=15, random_state=10)
+    X,y = unison_shuffled(cX, y_sweetgasco2)
+    clf1.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
+
+    #draw a tree
+    filename = "DecisionTreeRegressor_Sweet_Gas_CO2"
+
+    drawTree (clf1, X[range (ntrainingSize), :], y[:ntrainingSize], filename)
+
 
     #plot parity chart here
-    nxdata = cX[range (ntrainingSize, len(X)), :]
+    nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = clf1.predict(nxdata)
     xdata = xdata.T.tolist() 
-    ydata = y_sweetgasco2[ntrainingSize:]
+    ydata = y[ntrainingSize:]
     label="Sweet Gas CO2 (Tree)"
 
     drawParityChart ( xdata, ydata, label )
@@ -973,13 +1046,21 @@ if __name__ == "__main__":
 
     print imp1 
 
-    clf2.fit( cX[range (ntrainingSize), :], y_sweetgasc1[:ntrainingSize])
+    clf2 = DecisionTreeRegressor(max_depth=15, random_state=10)
+    X,y = unison_shuffled(cX, y_sweetgasc1)
+    clf2.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
+
+    #draw a tree
+    filename = "DecisionTreeRegressor_Sweet_Gas_C1"
+
+    drawTree (clf2, X[range (ntrainingSize), :], y[:ntrainingSize], filename)
+
 
     #plot parity chart here
-    nxdata = cX[range (ntrainingSize, len(X)), :]
+    nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = clf2.predict(nxdata)
     xdata = xdata.T.tolist() 
-    ydata = y_sweetgasc1[ntrainingSize:]
+    ydata = y[ntrainingSize:]
     label="Sweet Gas C1 (Tree)"
 
     drawParityChart ( xdata, ydata, label )
@@ -1000,13 +1081,21 @@ if __name__ == "__main__":
 
     print imp1 
 
-    clf3.fit( cX[range (ntrainingSize), :], y_richaminehydro[:ntrainingSize])
+    clf3 = DecisionTreeRegressor(max_depth=15, random_state=10) #
+    X,y = unison_shuffled(cX, y_richaminehydro)
+    clf3.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
+
+    #draw a tree
+    filename = "DecisionTreeRegressor_Rich_Amine_Hydrocarbons"
+
+    drawTree (clf3, X[range (ntrainingSize), :], y[:ntrainingSize], filename)
+
 
     #plot parity chart here
-    nxdata = cX[range (ntrainingSize, len(X)), :]
+    nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = clf3.predict(nxdata)
     xdata = xdata.T.tolist()
-    ydata = y_richaminehydro[ntrainingSize:]
+    ydata = y[ntrainingSize:]
     label="Rich Amine Hydrocarbons (Tree)"
 
     drawParityChart ( xdata, ydata, label )
@@ -1027,13 +1116,21 @@ if __name__ == "__main__":
 
     print imp1 
 
-    clf4.fit( cX[range (ntrainingSize), :], y_richaminehco3[:ntrainingSize])
+    clf4 = DecisionTreeRegressor(max_depth=10, random_state=10)
+    X,y = unison_shuffled(cX, y_richaminehco3)
+    clf4.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
+
+    #draw a tree
+    filename = "DecisionTreeRegressor_R_Amine_HCO3"
+
+    drawTree (clf4, X[range (ntrainingSize), :], y[:ntrainingSize], filename)
+
 
     #plot parity chart here
-    nxdata = cX[range (ntrainingSize, len(X)), :]
+    nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = clf4.predict(nxdata)
     xdata = xdata.T.tolist() 
-    ydata = y_richaminehco3[ntrainingSize:]
+    ydata = y[ntrainingSize:]
     label="R Amine HCO3 (Tree)"
 
     drawParityChart ( xdata, ydata, label )
@@ -1067,6 +1164,7 @@ if __name__ == "__main__":
     drawParityChart ( xdata, ydata, label )
     '''
 
+
     print "----------------------------------------------------------"
     print "Evaluate performance of 'Sweet Gas PZ Flow (t/d)'"
     print "----------------------------------------------------------"
@@ -1083,14 +1181,20 @@ if __name__ == "__main__":
 
     print imp1 
 
+    clf6 = DecisionTreeRegressor(max_depth=10, random_state=10)
+    X,y = unison_shuffled(cX, y_sweetgaspzflow)
+    clf6.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
-    clf6.fit( cX[range (ntrainingSize), :], y_sweetgaspzflow[:ntrainingSize])
+    #draw a tree
+    filename = "DecisionTreeRegressor_Sweet_Gas_PZ_Flow"
+
+    drawTree (clf6, X[range (ntrainingSize), :], y[:ntrainingSize], filename)
 
     #plot parity chart here
-    nxdata = cX[range (ntrainingSize, len(X)), :]
+    nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = clf6.predict(nxdata)
     xdata = xdata.T.tolist() 
-    ydata = y_sweetgaspzflow[ntrainingSize:]
+    ydata = y[ntrainingSize:]
     label="Sweet Gas MDEA Flow (Tree)"
 
     drawParityChart ( xdata, ydata, label )
@@ -1135,6 +1239,7 @@ if __name__ == "__main__":
     recListSweetGasMdeaFlow.append ( cur )
     '''
 
+
     #print "REC of Sweet Gas PZ Flow (t/d)'"
     cur = modelValidation (clf6, cX, y_sweetgaspzflow )
     print "AOC of 'Sweet Gas PZ Flow (t/d)': " +str (cur["avgArea"])
@@ -1174,13 +1279,15 @@ if __name__ == "__main__":
 
     print imp1 
 
-    model.fit( cX[range (ntrainingSize), :], y_sweetgasco2[:ntrainingSize])
+    model = AnfisClassifier()
+    X,y = unison_shuffled(cX, y_sweetgasco2)
+    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
     #plot parity chart here
-    nxdata = cX[range (ntrainingSize, len(X)), :]
+    nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()[0]
-    ydata = y_sweetgasco2[ntrainingSize:]
+    ydata = y[ntrainingSize:]
     label="Sweet Gas CO2 (ANFIS)"
 
     drawParityChart ( xdata, ydata, label )
@@ -1204,14 +1311,15 @@ if __name__ == "__main__":
 
     print imp1 
 
-
-    model.fit( cX[range (ntrainingSize), :], y_sweetgasc1[:ntrainingSize])
+    model = AnfisClassifier()
+    X,y = unison_shuffled(cX, y_sweetgasc1)
+    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
     #plot parity chart here
-    nxdata = cX[range (ntrainingSize, len(X)), :]
+    nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()[0]
-    ydata = y_sweetgasc1[ntrainingSize:]
+    ydata = y[ntrainingSize:]
     label="Sweet Gas C1 (ANFIS)"
 
     drawParityChart ( xdata, ydata, label )
@@ -1233,13 +1341,16 @@ if __name__ == "__main__":
 
     print imp1 
 
-    model.fit( cX[range (ntrainingSize), :], y_richaminehydro[:ntrainingSize])
+
+    model = AnfisClassifier()
+    X,y = unison_shuffled(cX, y_richaminehydro)
+    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
     #plot parity chart here
-    nxdata = cX[range (ntrainingSize, len(X)), :]
+    nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()[0]
-    ydata = y_richaminehydro[ntrainingSize:]
+    ydata = y[ntrainingSize:]
     label="Rich Amine Hydrocarbons (ANFIS)"
 
     drawParityChart ( xdata, ydata, label )
@@ -1261,13 +1372,16 @@ if __name__ == "__main__":
 
     print imp1 
 
-    model.fit( cX[range (ntrainingSize), :], y_richaminehco3[:ntrainingSize])
+
+    model = AnfisClassifier()
+    X,y = unison_shuffled(cX, y_richaminehco3)
+    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
     #plot parity chart here
-    nxdata = cX[range (ntrainingSize, len(X)), :]
+    nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()[0]
-    ydata = y_richaminehco3[ntrainingSize:]
+    ydata = y[ntrainingSize:]
     label="R Amine HCO3 (ANFIS)"
 
     drawParityChart ( xdata, ydata, label )
@@ -1321,13 +1435,16 @@ if __name__ == "__main__":
 
     print imp1 
 
-    model.fit( cX[range (ntrainingSize), :], y_sweetgaspzflow[:ntrainingSize])
+
+    model = AnfisClassifier()
+    X,y = unison_shuffled(cX, y_sweetgaspzflow)
+    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
     #plot parity chart here
-    nxdata = cX[range (ntrainingSize, len(X)), :]
+    nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()[0]
-    ydata = y_sweetgaspzflow[ntrainingSize:]
+    ydata = y[ntrainingSize:]
     label="Sweet Gas PZ Flow (ANFIS)"
 
     drawParityChart ( xdata, ydata, label )
@@ -1427,10 +1544,12 @@ if __name__ == "__main__":
     print "----------------------------------------------------------"
     print "Evaluate performance of 'Sweet Gas MDEA Flow (t/d)'"
     print "----------------------------------------------------------"
+
     '''
     r2 = crossValNULLScore ( cX, y_sweetgasmdeaflow)
     rsquaredSweetGasMdeaFlow.append (r2)
     '''
+
 
     print "----------------------------------------------------------"
     print "Evaluate performance of 'Sweet Gas PZ Flow (t/d)'"
@@ -1442,7 +1561,7 @@ if __name__ == "__main__":
     #REC and sensitivity analysis
 
     #print "REC of 'Sweet Gas CO2 (ppm)'"
-    cur = modelNULLValidation (  cX, y_sweetgasco2)
+    cur = modelNULLValidation ( cX, y_sweetgasco2)
     print "AOC of 'Sweet Gas CO2 (ppm)': " +str (cur["avgArea"])
     #print cur
     recListSweetGasCO2.append ( cur )
@@ -1471,6 +1590,7 @@ if __name__ == "__main__":
     #print cur
     recListSweetGasMdeaFlow.append ( cur )
     '''
+
 
     #print "REC of Sweet Gas PZ Flow (t/d)'"
     cur = modelNULLValidation ( cX, y_sweetgaspzflow )

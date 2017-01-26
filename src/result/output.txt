@@ -14,51 +14,7 @@ MARS Model
 
 Evaluate performance of 'Sweet Gas CO2 (ppm)'
 
-X: specialformat, Y: Log
-
-R^2: 0.9108
-
-Earth Model
-
---------------------------------------
-
-Basis Function  Pruned  Coefficient   
-
---------------------------------------
-
-(Intercept)     No      6.85234       
-
-x7              No      0.035448      
-
-x4              No      -0.000810953  
-
-x1              No      -15575.6      
-
-x2              No      -0.000180221  
-
-x3              No      -0.000271076  
-
-x6              No      -0.378694     
-
-x0              No      5698.81       
-
-x5              No      0.0128298     
-
-h(x4-0)         Yes     None          
-
-h(0-x4)         Yes     None          
-
---------------------------------------
-
-MSE: 0.0030, GCV: 0.0031, RSQ: 0.9883, GRSQ: 0.9882
-
-R^2: 0.8522
-
-Evaluate performance of 'Sweet Gas C1 (ppm)'
-
-X: normal, Y: normal
-
-R^2: 0.8738
+R^2: 0.8683
 
 Earth Model
 
@@ -68,619 +24,45 @@ Basis Function  Pruned  Coefficient
 
 -------------------------------------
 
-(Intercept)     No      926062       
+(Intercept)     No      12.453       
 
-x5              No      1.95275      
+x6              No      0.404158     
 
-x4              No      1.02651      
+x4              No      -0.282903    
 
-x1              No      0.00322488   
+x5              No      0.335604     
 
-x2              No      -0.14779     
+x2              Yes     None         
 
-x3              No      0.0499214    
+x3              No      -0.043417    
 
--------------------------------------
+h(x2-0)         No      -0.0238996   
 
-MSE: 0.4187, GCV: 0.4217, RSQ: 0.9760, GRSQ: 0.9759
-
-R^2: 0.6884
-
-Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'
-
-X: log, Y: log
-
-R^2: 0.9910
-
-Earth Model
+h(0-x2)         Yes     None         
 
 -------------------------------------
 
-Basis Function  Pruned  Coefficient  
+MSE: 0.1389, GCV: 0.1399, RSQ: 0.8670, GRSQ: 0.8661
 
--------------------------------------
-
-(Intercept)     No      -11.628      
-
-x1              No      1.37524      
-
-x6              No      0.0338309    
-
-x4              No      0.342329     
-
-x2              No      -0.00708175  
-
--------------------------------------
-
-MSE: 0.0000, GCV: 0.0000, RSQ: 0.9938, GRSQ: 0.9937
-
-R^2: 0.9931
-
-Evaluate performance of 'R Amine HCO3 (mol/L)'
-
-X: normal, Y: normal
-
-R^2: 0.9768
-
-Earth Model
-
---------------------------------------
-
-Basis Function  Pruned  Coefficient   
-
---------------------------------------
-
-(Intercept)     No      3.097         
-
-x5              No      -0.0958617    
-
-x1              No      -0.000351367  
-
-x4              No      -0.0116325    
-
-x6              No      0.0117623     
-
-x3              No      -0.000416619  
-
---------------------------------------
-
-MSE: 0.0001, GCV: 0.0001, RSQ: 0.9983, GRSQ: 0.9983
-
-R^2: 0.9877
-
-Evaluate performance of 'Sweet Gas PZ Flow (t/d)'
-
-X: log, Y: log
-
-R^2: 0.9444
-
-Earth Model
-
--------------------------------------
-
-Basis Function  Pruned  Coefficient  
-
--------------------------------------
-
-(Intercept)     No      -17.6486     
-
-x5              No      1.70817      
-
-x2              No      -1.13091     
-
-x4              No      3.26828      
-
-x3              No      0.374221     
-
--------------------------------------
-
-MSE: 0.0016, GCV: 0.0016, RSQ: 0.9960, GRSQ: 0.9960
-
-R^2: 0.9225
-
-AOC of 'Sweet Gas CO2 (ppm)': 0.162781357988
-
-AOC of 'Sweet Gas C1 (ppm)': 1.55796655328
-
-AOC of 'Rich Amine Hydrocarbons (t/d)': 0.0142875914533
-
-AOC of 'R Amine HCO3 (mol/L)': 0.015950604115
-
-AOC of 'Sweet Gas PZ Flow (t/d)': 0.0946363063936
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-Tree Model
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-Evaluate performance of 'Sweet Gas CO2 (ppm)'
-
-----------------------------------------------------------
-
-R^2: 0.3424
+R^2: 0.8935
 
 Relative importance of Variable
 
 feature importance of 'Sweet Gas CO2 (ppm)'
 
 Attributes in order of importance
-
-['PZ (%)', 'MDEA (%)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'L Amine Pressure (bar)']
-
-Least important feature is L Amine Pressure (bar)
-
-Most important feature is PZ (%)
-
-[0.79576485493298321, 0.57688915642298311, 0.63861212394388778, 0.70817242013600079, -0.85774741860872561, -7.224678986899411]
-
-R^2: -1.2023
-
-----------------------------------------------------------
-
-Evaluate performance of 'Sweet Gas C1 (ppm)'
-
-----------------------------------------------------------
-
-R^2: -0.2702
-
-Relative importance of Variable
-
-feature importance of 'Sweet Gas C1 (ppm)'
-
-Attributes in order of importance
-
-['PZ (%)', 'MDEA (%)', 'L Amine Flow (t/d)', 'Heat Duty (GJ/h)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)']
-
-Least important feature is L Amine Pressure (bar)
-
-Most important feature is PZ (%)
-
-[-0.32085374274274059, -0.5009274145094591, -0.33658693375423504, -0.35976825306754751, -0.64682926930461859, -5.4643873003043923]
-
-R^2: -0.6290
-
-----------------------------------------------------------
-
-Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'
-
-----------------------------------------------------------
-
-R^2: 0.9931
-
-Relative importance of Variable
-
-feature importance of 'Rich Amine Hydrocarbons (t/d)'
-
-Attributes in order of importance
-
-['L Amine Flow (t/d)', 'MDEA (%)', 'PZ (%)', 'Heat Duty (GJ/h)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)']
-
-Least important feature is L Amine Pressure (bar)
-
-Most important feature is L Amine Flow (t/d)
-
-[0.99324338572295079, -0.1385882072800339, 0.99319406845670566, 0.99318676115866789, 0.91296411783076858, 0.95587836917589541]
-
-R^2: 0.9842
-
-----------------------------------------------------------
-
-Evaluate performance of 'R Amine HCO3 (mol/L)'
-
-----------------------------------------------------------
-
-R^2: 0.9312
-
-Relative importance of Variable
-
-feature importance of 'R Amine HCO3 (mol/L)'
-
-Attributes in order of importance
-
-['PZ (%)', 'L Amine Flow (t/d)', 'MDEA (%)', 'Heat Duty (GJ/h)', 'L Amine Pressure (bar)', 'L Amine Temp (\xc2\xb0C)']
-
-Least important feature is L Amine Temp (°C)
-
-Most important feature is PZ (%)
-
-[0.93416168682438716, 0.1791057515985012, 0.93463712447459224, 0.93245738621888508, 0.91732811729404562, -10.827377123249615]
-
-R^2: 0.9771
-
-----------------------------------------------------------
-
-Evaluate performance of 'Sweet Gas PZ Flow (t/d)'
-
-----------------------------------------------------------
-
-R^2: 0.3012
-
-Relative importance of Variable
-
-feature importance of 'Sweet Gas PZ Flow (t/d)'
-
-Attributes in order of importance
-
-['PZ (%)', 'L Amine Temp (\xc2\xb0C)', 'MDEA (%)', 'Heat Duty (GJ/h)', 'L Amine Pressure (bar)', 'L Amine Flow (t/d)']
-
-Least important feature is L Amine Flow (t/d)
-
-Most important feature is PZ (%)
-
-[-0.0078341090686402833, -0.0012468212898868458, -0.11884815681188261, -0.011411307310519536, -0.094144528474715286, -89.209707112547505]
-
-R^2: -1389571031139813991553228079104.0000
-
-AOC of 'Sweet Gas CO2 (ppm)': 0.476787346402
-
-AOC of 'Sweet Gas C1 (ppm)': 2.07732775524
-
-AOC of 'Rich Amine Hydrocarbons (t/d)': 0.0177271731036
-
-AOC of 'R Amine HCO3 (mol/L)': 0.0240685293772
-
-AOC of 'Sweet Gas PZ Flow (t/d)': 0.00141789542248
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-Anfis Model
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-Evaluate performance of 'Sweet Gas CO2 (ppm)'
-
-----------------------------------------------------------
-
-R^2: -1.0510
-
-AVG R^2: -1.050978163
-
-Relative importance of Variable
-
-feature importance of 'Sweet Gas CO2 (ppm)'
-
-R^2: -2.5894
-
-R^2: -2.5054
-
-R^2: -2.6822
-
-R^2: -2.6331
-
-R^2: -3.0004
-
-R^2: -6.5854
-
-Attributes in order of importance
-
-['PZ (%)', 'MDEA (%)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'L Amine Pressure (bar)', 'L Amine Flow (t/d)']
-
-Least important feature is L Amine Flow (t/d)
-
-Most important feature is PZ (%)
-
-[-2.5893546815772521, -2.5054172798851182, -2.6822373665283403, -2.6330576475008498, -3.0004485542604407, -6.5854036766888155]
-
-R^2: -33.3933
-
-----------------------------------------------------------
-
-Evaluate performance of 'Sweet Gas C1 (ppm)'
-
-----------------------------------------------------------
-
-R^2: -123.7332
-
-AVG R^2: -123.733178538
-
-Relative importance of Variable
-
-feature importance of 'Sweet Gas C1 (ppm)'
-
-R^2: -28.6404
-
-R^2: -26.6580
-
-R^2: -29.5457
-
-R^2: -21.9212
-
-R^2: -16.7880
-
-R^2: -39.6121
-
-Attributes in order of importance
-
-['PZ (%)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'Heat Duty (GJ/h)', 'MDEA (%)']
-
-Least important feature is MDEA (%)
-
-Most important feature is PZ (%)
-
-[-28.640412530055603, -26.657985493047345, -29.545710995169014, -21.921241138433441, -16.788030862333112, -39.612071833680758]
-
-R^2: -6.3247
-
-----------------------------------------------------------
-
-Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'
-
-----------------------------------------------------------
-
-R^2: 0.9808
-
-AVG R^2: 0.980822142649
-
-Relative importance of Variable
-
-feature importance of 'Rich Amine Hydrocarbons (t/d)'
-
-R^2: 0.9865
-
-R^2: 0.0053
-
-R^2: 0.9864
-
-R^2: 0.9867
-
-R^2: 0.9642
-
-R^2: 0.9591
-
-Attributes in order of importance
-
-['L Amine Flow (t/d)', 'PZ (%)', 'MDEA (%)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)', 'Heat Duty (GJ/h)']
-
-Least important feature is Heat Duty (GJ/h)
-
-Most important feature is L Amine Flow (t/d)
-
-[0.98652590972638698, 0.0052606238646560888, 0.98644861369809311, 0.98671579151977018, 0.96419438867483487, 0.95908336494925561]
-
-R^2: 0.9723
-
-----------------------------------------------------------
-
-Evaluate performance of 'R Amine HCO3 (mol/L)'
-
-----------------------------------------------------------
-
-R^2: 0.9766
-
-AVG R^2: 0.976550865493
-
-Relative importance of Variable
-
-feature importance of 'R Amine HCO3 (mol/L)'
-
-R^2: 0.9213
-
-R^2: 0.3115
-
-R^2: 0.9214
-
-R^2: 0.9218
-
-R^2: 0.8939
-
-R^2: -10.0235
-
-Attributes in order of importance
-
-['PZ (%)', 'L Amine Flow (t/d)', 'MDEA (%)', 'L Amine Pressure (bar)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)']
-
-Least important feature is Heat Duty (GJ/h)
-
-Most important feature is PZ (%)
-
-[0.92133015835860255, 0.31154684592830401, 0.92138991850428265, 0.92176215593924904, 0.89394288034617075, -10.023529947176366]
-
-R^2: 0.9875
-
-----------------------------------------------------------
-
-Evaluate performance of 'Sweet Gas PZ Flow (t/d)'
-
-----------------------------------------------------------
-
-R^2: -4.9095
-
-AVG R^2: -4.90946734362
-
-Relative importance of Variable
-
-feature importance of 'Sweet Gas PZ Flow (t/d)'
-
-R^2: -1.7132
-
-R^2: -1.6381
-
-R^2: -0.2030
-
-R^2: -1.7864
-
-R^2: -3.2009
-
-R^2: -85.2607
-
-Attributes in order of importance
-
-['PZ (%)', 'MDEA (%)', 'Heat Duty (GJ/h)', 'L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)']
-
-Least important feature is L Amine Temp (°C)
-
-Most important feature is PZ (%)
-
-[-1.7132050798108587, -1.6380673486722674, -0.20295635403294909, -1.7864167806735853, -3.2008722492864505, -85.260686084070954]
-
-R^2: -0.5745
-
-AOC of 'Sweet Gas CO2 (ppm)': 0.869392437676
-
-AOC of 'Sweet Gas C1 (ppm)': 28.0060620039
-
-AOC of 'Rich Amine Hydrocarbons (t/d)': 0.0407004336453
-
-AOC of 'R Amine HCO3 (mol/L)': 0.0157442430768
-
-AOC of 'Sweet Gas PZ Flow (t/d)': 0.00225819123698
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-Base Model
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-Evaluate performance of 'Sweet Gas CO2 (ppm)'
-
-----------------------------------------------------------
-
-R^2: -5.2042
-
-----------------------------------------------------------
-
-Evaluate performance of 'Sweet Gas C1 (ppm)'
-
-----------------------------------------------------------
-
-R^2: -4.3314
-
-----------------------------------------------------------
-
-Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'
-
-----------------------------------------------------------
-
-R^2: -0.0433
-
-----------------------------------------------------------
-
-Evaluate performance of 'R Amine HCO3 (mol/L)'
-
-----------------------------------------------------------
-
-R^2: -9.6069
-
-----------------------------------------------------------
-
-Evaluate performance of 'Sweet Gas MDEA Flow (t/d)'
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-Evaluate performance of 'Sweet Gas PZ Flow (t/d)'
-
-----------------------------------------------------------
-
-R^2: -69.1291
-
-AOC of 'Sweet Gas CO2 (ppm)': 1.54078550716
-
-AOC of 'Sweet Gas C1 (ppm)': 5.7633218645
-
-AOC of 'Rich Amine Hydrocarbons (t/d)': 0.185350920683
-
-AOC of 'R Amine HCO3 (mol/L)': 0.185476939461
-
-List of Attributes
 
 ['L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'MDEA (%)', 'PZ (%)']
 
-----------------------------------------------------------
+Least important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
 
-----------------------------------------------------------
+Most important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
 
-MARS Model
-
-----------------------------------------------------------
-
-----------------------------------------------------------
-
-Evaluate performance of 'Sweet Gas CO2 (ppm)'
-
-X: specialformat, Y: Log
-
-R^2: 0.9108
-
-Earth Model
-
---------------------------------------
-
-Basis Function  Pruned  Coefficient   
-
---------------------------------------
-
-(Intercept)     No      6.85234       
-
-x7              No      0.035448      
-
-x4              No      -0.000810953  
-
-x1              No      -15575.6      
-
-x2              No      -0.000180221  
-
-x3              No      -0.000271076  
-
-x6              No      -0.378694     
-
-x0              No      5698.81       
-
-x5              No      0.0128298     
-
-h(x4-0)         Yes     None          
-
-h(0-x4)         Yes     None          
-
---------------------------------------
-
-MSE: 0.0030, GCV: 0.0031, RSQ: 0.9883, GRSQ: 0.9882
-
-R^2: 0.8522
+[-0.0027610176940203067, -0.0027610176940203067, -0.0027610176940203067, -0.0027610176940203067, -0.0027610176940203067, -0.0027610176940203067]
 
 Evaluate performance of 'Sweet Gas C1 (ppm)'
 
-X: normal, Y: normal
-
-R^2: 0.8738
+R^2: 0.9756
 
 Earth Model
 
@@ -692,27 +74,39 @@ Basis Function  Pruned  Coefficient
 
 (Intercept)     No      926062       
 
-x5              No      1.95275      
+x5              No      1.96446      
 
-x4              No      1.02651      
+x4              No      1.00856      
 
-x1              No      0.00322488   
+x1              No      0.00328733   
 
-x2              No      -0.14779     
+x2              No      -0.13797     
 
-x3              No      0.0499214    
+x3              No      0.051104     
 
 -------------------------------------
 
-MSE: 0.4187, GCV: 0.4217, RSQ: 0.9760, GRSQ: 0.9759
+MSE: 0.4134, GCV: 0.4164, RSQ: 0.9757, GRSQ: 0.9755
 
-R^2: 0.6884
+R^2: 0.9752
+
+Relative importance of Variable
+
+feature importance of 'Sweet Gas C1 (ppm)'
+
+Attributes in order of importance
+
+['L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'MDEA (%)', 'PZ (%)']
+
+Least important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+
+Most important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+
+[-0.0024581155944731758, -0.0024581155944731758, -0.0024581155944731758, -0.0024581155944731758, -0.0024581155944731758, -0.0024581155944731758]
 
 Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'
 
-X: log, Y: log
-
-R^2: 0.9910
+R^2: 0.9942
 
 Earth Model
 
@@ -722,27 +116,39 @@ Basis Function  Pruned  Coefficient
 
 -------------------------------------
 
-(Intercept)     No      -11.628      
+(Intercept)     No      -2.17267     
 
-x1              No      1.37524      
+x1              No      0.00104944   
 
-x6              No      0.0338309    
+x6              No      0.0123493    
 
-x4              No      0.342329     
+x4              No      0.0203493    
 
-x2              No      -0.00708175  
+x5              No      0.00613117   
 
 -------------------------------------
 
-MSE: 0.0000, GCV: 0.0000, RSQ: 0.9938, GRSQ: 0.9937
+MSE: 0.0003, GCV: 0.0003, RSQ: 0.9942, GRSQ: 0.9942
 
-R^2: 0.9931
+R^2: 0.9950
+
+Relative importance of Variable
+
+feature importance of 'Rich Amine Hydrocarbons (t/d)'
+
+Attributes in order of importance
+
+['L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'MDEA (%)', 'PZ (%)']
+
+Least important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+
+Most important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+
+[-0.0023411640368388833, -0.0023411640368388833, -0.0023411640368388833, -0.0023411640368388833, -0.0023411640368388833, -0.0023411640368388833]
 
 Evaluate performance of 'R Amine HCO3 (mol/L)'
 
-X: normal, Y: normal
-
-R^2: 0.9768
+R^2: 0.9984
 
 Earth Model
 
@@ -752,63 +158,93 @@ Basis Function  Pruned  Coefficient
 
 --------------------------------------
 
-(Intercept)     No      3.097         
+(Intercept)     No      3.12318       
 
-x5              No      -0.0958617    
+x5              No      -0.0967375    
 
-x1              No      -0.000351367  
+x1              No      -0.000351509  
 
-x4              No      -0.0116325    
+x4              No      -0.0119293    
 
-x6              No      0.0117623     
+x6              No      0.011075      
 
-x3              No      -0.000416619  
+x3              No      -0.000436109  
 
 --------------------------------------
 
-MSE: 0.0001, GCV: 0.0001, RSQ: 0.9983, GRSQ: 0.9983
+MSE: 0.0001, GCV: 0.0001, RSQ: 0.9985, GRSQ: 0.9984
 
-R^2: 0.9877
+R^2: 0.9984
+
+Relative importance of Variable
+
+feature importance of 'R Amine HCO3 (mol/L)'
+
+Attributes in order of importance
+
+['L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'MDEA (%)', 'PZ (%)']
+
+Least important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+
+Most important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+
+[-0.0047808594833368186, -0.0047808594833368186, -0.0047808594833368186, -0.0047808594833368186, -0.0047808594833368186, -0.0047808594833368186]
 
 Evaluate performance of 'Sweet Gas PZ Flow (t/d)'
 
-X: log, Y: log
-
-R^2: 0.9444
+R^2: 0.9537
 
 Earth Model
 
--------------------------------------
+--------------------------------------
 
-Basis Function  Pruned  Coefficient  
+Basis Function  Pruned  Coefficient   
 
--------------------------------------
+--------------------------------------
 
-(Intercept)     No      -17.6486     
+(Intercept)     No      -0.0215787    
 
-x5              No      1.70817      
+x5              No      0.00253498    
 
-x2              No      -1.13091     
+x2              No      -0.00018335   
 
-x4              No      3.26828      
+x4              No      0.000427799   
 
-x3              No      0.374221     
+x6              No      0.000305269   
 
--------------------------------------
+x1              No      -6.12712e-07  
 
-MSE: 0.0016, GCV: 0.0016, RSQ: 0.9960, GRSQ: 0.9960
+x3              No      5.05281e-05   
 
-R^2: 0.9225
+--------------------------------------
 
-AOC of 'Sweet Gas CO2 (ppm)': 0.162781357988
+MSE: 0.0000, GCV: 0.0000, RSQ: 0.9544, GRSQ: 0.9540
 
-AOC of 'Sweet Gas C1 (ppm)': 1.55796655328
+R^2: 0.9500
 
-AOC of 'Rich Amine Hydrocarbons (t/d)': 0.0142875914533
+Relative importance of Variable
 
-AOC of 'R Amine HCO3 (mol/L)': 0.015950604115
+feature importance of 'Sweet Gas PZ Flow (t/d)'
 
-AOC of 'Sweet Gas PZ Flow (t/d)': 0.0946363063936
+Attributes in order of importance
+
+['L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'MDEA (%)', 'PZ (%)']
+
+Least important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+
+Most important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+
+[-0.0024314471471831743, -0.0024314471471831743, -0.0024314471471831743, -0.0024314471471831743, -0.0024314471471831743, -0.0024314471471831743]
+
+AOC of 'Sweet Gas CO2 (ppm)': 2.01726639759
+
+AOC of 'Sweet Gas C1 (ppm)': 2.22207080173
+
+AOC of 'Rich Amine Hydrocarbons (t/d)': 0.0512300806208
+
+AOC of 'R Amine HCO3 (mol/L)': 0.0185908997602
+
+AOC of 'Sweet Gas PZ Flow (t/d)': 0.00807704552068
 
 ----------------------------------------------------------
 
@@ -832,7 +268,7 @@ Evaluate performance of 'Sweet Gas CO2 (ppm)'
 
 ----------------------------------------------------------
 
-R^2: 0.3424
+R^2: 0.9998
 
 Relative importance of Variable
 
@@ -840,15 +276,15 @@ feature importance of 'Sweet Gas CO2 (ppm)'
 
 Attributes in order of importance
 
-['PZ (%)', 'MDEA (%)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'L Amine Pressure (bar)']
+['MDEA (%)', 'Heat Duty (GJ/h)', 'L Amine Temp (\xc2\xb0C)', 'PZ (%)', 'L Amine Flow (t/d)', 'L Amine Pressure (bar)']
 
 Least important feature is L Amine Pressure (bar)
 
-Most important feature is PZ (%)
+Most important feature is MDEA (%)
 
-[0.79576485493298321, 0.57688915642298311, 0.63861212394388778, 0.70817242013600079, -0.85774741860872561, -7.224678986899411]
+[-0.28443501322544512, -0.29041642431728898, -0.38267120119932418, -0.47692128153494567, -0.64684743600835115, -0.34722089220531477]
 
-R^2: -1.2023
+R^2: 0.9998
 
 ----------------------------------------------------------
 
@@ -856,7 +292,7 @@ Evaluate performance of 'Sweet Gas C1 (ppm)'
 
 ----------------------------------------------------------
 
-R^2: -0.2702
+R^2: 0.9998
 
 Relative importance of Variable
 
@@ -864,15 +300,15 @@ feature importance of 'Sweet Gas C1 (ppm)'
 
 Attributes in order of importance
 
-['PZ (%)', 'MDEA (%)', 'L Amine Flow (t/d)', 'Heat Duty (GJ/h)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)']
+['MDEA (%)', 'Heat Duty (GJ/h)', 'L Amine Temp (\xc2\xb0C)', 'PZ (%)', 'L Amine Flow (t/d)', 'L Amine Pressure (bar)']
 
 Least important feature is L Amine Pressure (bar)
 
-Most important feature is PZ (%)
+Most important feature is MDEA (%)
 
-[-0.32085374274274059, -0.5009274145094591, -0.33658693375423504, -0.35976825306754751, -0.64682926930461859, -5.4643873003043923]
+[-0.27446203381667267, -0.28438052925525353, -0.3806244127665987, -0.3974518567210093, -0.70343006080542714, -0.3390447607753323]
 
-R^2: -0.6290
+R^2: 0.9999
 
 ----------------------------------------------------------
 
@@ -880,7 +316,7 @@ Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'
 
 ----------------------------------------------------------
 
-R^2: 0.9931
+R^2: 1.0000
 
 Relative importance of Variable
 
@@ -888,15 +324,15 @@ feature importance of 'Rich Amine Hydrocarbons (t/d)'
 
 Attributes in order of importance
 
-['L Amine Flow (t/d)', 'MDEA (%)', 'PZ (%)', 'Heat Duty (GJ/h)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)']
+['MDEA (%)', 'Heat Duty (GJ/h)', 'PZ (%)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)']
 
 Least important feature is L Amine Pressure (bar)
 
-Most important feature is L Amine Flow (t/d)
+Most important feature is MDEA (%)
 
-[0.99324338572295079, -0.1385882072800339, 0.99319406845670566, 0.99318676115866789, 0.91296411783076858, 0.95587836917589541]
+[-0.28729554623646131, -0.31587755762666431, -0.29776629179876191, -0.37442814923640427, -0.68144339090095851, -0.34131776892034099]
 
-R^2: 0.9842
+R^2: 1.0000
 
 ----------------------------------------------------------
 
@@ -904,7 +340,7 @@ Evaluate performance of 'R Amine HCO3 (mol/L)'
 
 ----------------------------------------------------------
 
-R^2: 0.9312
+R^2: 1.0000
 
 Relative importance of Variable
 
@@ -912,15 +348,15 @@ feature importance of 'R Amine HCO3 (mol/L)'
 
 Attributes in order of importance
 
-['PZ (%)', 'L Amine Flow (t/d)', 'MDEA (%)', 'Heat Duty (GJ/h)', 'L Amine Pressure (bar)', 'L Amine Temp (\xc2\xb0C)']
+['MDEA (%)', 'Heat Duty (GJ/h)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'PZ (%)']
 
-Least important feature is L Amine Temp (°C)
+Least important feature is PZ (%)
 
-Most important feature is PZ (%)
+Most important feature is MDEA (%)
 
-[0.93416168682438716, 0.1791057515985012, 0.93463712447459224, 0.93245738621888508, 0.91732811729404562, -10.827377123249615]
+[-0.24905269495160867, -0.2457009808520913, -0.25143097584951313, -0.29491971021962016, -0.51379798652617281, -0.22287062319015613]
 
-R^2: 0.9771
+R^2: 1.0000
 
 ----------------------------------------------------------
 
@@ -928,7 +364,7 @@ Evaluate performance of 'Sweet Gas PZ Flow (t/d)'
 
 ----------------------------------------------------------
 
-R^2: 0.3012
+R^2: 0.9957
 
 Relative importance of Variable
 
@@ -936,25 +372,25 @@ feature importance of 'Sweet Gas PZ Flow (t/d)'
 
 Attributes in order of importance
 
-['PZ (%)', 'L Amine Temp (\xc2\xb0C)', 'MDEA (%)', 'Heat Duty (GJ/h)', 'L Amine Pressure (bar)', 'L Amine Flow (t/d)']
+['MDEA (%)', 'Heat Duty (GJ/h)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)', 'PZ (%)']
 
-Least important feature is L Amine Flow (t/d)
+Least important feature is PZ (%)
 
-Most important feature is PZ (%)
+Most important feature is MDEA (%)
 
-[-0.0078341090686402833, -0.0012468212898868458, -0.11884815681188261, -0.011411307310519536, -0.094144528474715286, -89.209707112547505]
+[-0.23145939816307282, -0.26940788032641627, -0.24685838923300385, -0.29048953057274901, -0.53662701470503915, -0.22214257021123304]
 
-R^2: -1389571031139813991553228079104.0000
+R^2: 0.9959
 
-AOC of 'Sweet Gas CO2 (ppm)': 0.476787346402
+AOC of 'Sweet Gas CO2 (ppm)': 0.132087781934
 
-AOC of 'Sweet Gas C1 (ppm)': 2.07732775524
+AOC of 'Sweet Gas C1 (ppm)': 0.121448571253
 
-AOC of 'Rich Amine Hydrocarbons (t/d)': 0.0177271731036
+AOC of 'Rich Amine Hydrocarbons (t/d)': 0.000818880720086
 
-AOC of 'R Amine HCO3 (mol/L)': 0.0240685293772
+AOC of 'R Amine HCO3 (mol/L)': 0.000477732968718
 
-AOC of 'Sweet Gas PZ Flow (t/d)': 0.00141789542248
+AOC of 'Sweet Gas PZ Flow (t/d)': 0.000559276400678
 
 ----------------------------------------------------------
 
@@ -978,37 +414,37 @@ Evaluate performance of 'Sweet Gas CO2 (ppm)'
 
 ----------------------------------------------------------
 
-R^2: -1.0510
+R^2: 0.8683
 
-AVG R^2: -1.050978163
+AVG R^2: 0.868291373593
 
 Relative importance of Variable
 
 feature importance of 'Sweet Gas CO2 (ppm)'
 
-R^2: -2.5894
+R^2: -0.0050
 
-R^2: -2.5054
+R^2: -0.0059
 
-R^2: -2.6822
+R^2: -0.0058
 
-R^2: -2.6331
+R^2: -0.0050
 
-R^2: -3.0004
+R^2: -0.0050
 
-R^2: -6.5854
+R^2: -0.0054
 
 Attributes in order of importance
 
-['PZ (%)', 'MDEA (%)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'L Amine Pressure (bar)', 'L Amine Flow (t/d)']
+['L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'PZ (%)', 'MDEA (%)', 'L Amine Pressure (bar)', 'Heat Duty (GJ/h)']
 
-Least important feature is L Amine Flow (t/d)
+Least important feature is Heat Duty (GJ/h)
 
-Most important feature is PZ (%)
+Most important feature is L Amine Flow (t/d)
 
-[-2.5893546815772521, -2.5054172798851182, -2.6822373665283403, -2.6330576475008498, -3.0004485542604407, -6.5854036766888155]
+[-0.0049955570846686118, -0.0059375744624476923, -0.0058415176658124235, -0.0049751950756343087, -0.0050311956413849222, -0.0053854876484484395]
 
-R^2: -33.3933
+R^2: 0.8703
 
 ----------------------------------------------------------
 
@@ -1016,37 +452,37 @@ Evaluate performance of 'Sweet Gas C1 (ppm)'
 
 ----------------------------------------------------------
 
-R^2: -123.7332
+R^2: -9.0756
 
-AVG R^2: -123.733178538
+AVG R^2: -9.07559623277
 
 Relative importance of Variable
 
 feature importance of 'Sweet Gas C1 (ppm)'
 
-R^2: -28.6404
+R^2: -10.1126
 
-R^2: -26.6580
+R^2: -9.4241
 
-R^2: -29.5457
+R^2: -10.3192
 
-R^2: -21.9212
+R^2: -7.7752
 
-R^2: -16.7880
+R^2: -5.1088
 
-R^2: -39.6121
+R^2: -9.9428
 
 Attributes in order of importance
 
-['PZ (%)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'Heat Duty (GJ/h)', 'MDEA (%)']
+['L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)', 'PZ (%)', 'L Amine Flow (t/d)', 'Heat Duty (GJ/h)', 'MDEA (%)']
 
 Least important feature is MDEA (%)
 
-Most important feature is PZ (%)
+Most important feature is L Amine Temp (°C)
 
-[-28.640412530055603, -26.657985493047345, -29.545710995169014, -21.921241138433441, -16.788030862333112, -39.612071833680758]
+[-10.112566091925446, -9.4240815312762418, -10.319177350730419, -7.7751504439437884, -5.1088350562357316, -9.9428118498451035]
 
-R^2: -6.3247
+R^2: 0.1986
 
 ----------------------------------------------------------
 
@@ -1054,37 +490,37 @@ Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'
 
 ----------------------------------------------------------
 
-R^2: 0.9808
+R^2: 0.9943
 
-AVG R^2: 0.980822142649
+AVG R^2: 0.99432254677
 
 Relative importance of Variable
 
 feature importance of 'Rich Amine Hydrocarbons (t/d)'
 
-R^2: 0.9865
+R^2: -0.0045
 
-R^2: 0.0053
+R^2: -0.0046
 
-R^2: 0.9864
+R^2: -0.0052
 
-R^2: 0.9867
+R^2: -0.0047
 
-R^2: 0.9642
+R^2: -0.0045
 
-R^2: 0.9591
+R^2: -0.0030
 
 Attributes in order of importance
 
-['L Amine Flow (t/d)', 'PZ (%)', 'MDEA (%)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)', 'Heat Duty (GJ/h)']
+['L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'L Amine Flow (t/d)', 'MDEA (%)', 'L Amine Pressure (bar)', 'PZ (%)']
 
-Least important feature is Heat Duty (GJ/h)
+Least important feature is PZ (%)
 
-Most important feature is L Amine Flow (t/d)
+Most important feature is L Amine Temp (°C)
 
-[0.98652590972638698, 0.0052606238646560888, 0.98644861369809311, 0.98671579151977018, 0.96419438867483487, 0.95908336494925561]
+[-0.0044632088663198125, -0.004626883461739251, -0.0052072917050168584, -0.0047198429836038166, -0.0045432812068654906, -0.0029698480995881127]
 
-R^2: 0.9723
+R^2: 0.9939
 
 ----------------------------------------------------------
 
@@ -1092,37 +528,37 @@ Evaluate performance of 'R Amine HCO3 (mol/L)'
 
 ----------------------------------------------------------
 
-R^2: 0.9766
+R^2: 0.9984
 
-AVG R^2: 0.976550865493
+AVG R^2: 0.998443390693
 
 Relative importance of Variable
 
 feature importance of 'R Amine HCO3 (mol/L)'
 
-R^2: 0.9213
+R^2: -0.0064
 
-R^2: 0.3115
+R^2: -0.0076
 
-R^2: 0.9214
+R^2: -0.0082
 
-R^2: 0.9218
+R^2: -0.0070
 
-R^2: 0.8939
+R^2: -0.0081
 
-R^2: -10.0235
+R^2: -0.0068
 
 Attributes in order of importance
 
-['PZ (%)', 'L Amine Flow (t/d)', 'MDEA (%)', 'L Amine Pressure (bar)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)']
+['L Amine Temp (\xc2\xb0C)', 'MDEA (%)', 'L Amine Flow (t/d)', 'Heat Duty (GJ/h)', 'PZ (%)', 'L Amine Pressure (bar)']
 
-Least important feature is Heat Duty (GJ/h)
+Least important feature is L Amine Pressure (bar)
 
-Most important feature is PZ (%)
+Most important feature is L Amine Temp (°C)
 
-[0.92133015835860255, 0.31154684592830401, 0.92138991850428265, 0.92176215593924904, 0.89394288034617075, -10.023529947176366]
+[-0.006439581622841928, -0.0076103600401565604, -0.0081582895343934141, -0.0069697202067417145, -0.0080976556852618391, -0.0068406357705789846]
 
-R^2: 0.9875
+R^2: 0.9985
 
 ----------------------------------------------------------
 
@@ -1130,47 +566,47 @@ Evaluate performance of 'Sweet Gas PZ Flow (t/d)'
 
 ----------------------------------------------------------
 
-R^2: -4.9095
+R^2: 0.9541
 
-AVG R^2: -4.90946734362
+AVG R^2: 0.954095046012
 
 Relative importance of Variable
 
 feature importance of 'Sweet Gas PZ Flow (t/d)'
 
-R^2: -1.7132
+R^2: -0.0027
 
-R^2: -1.6381
+R^2: -0.0040
 
-R^2: -0.2030
+R^2: -0.0045
 
-R^2: -1.7864
+R^2: -0.0033
 
-R^2: -3.2009
+R^2: -0.0044
 
-R^2: -85.2607
+R^2: -0.0041
 
 Attributes in order of importance
 
-['PZ (%)', 'MDEA (%)', 'Heat Duty (GJ/h)', 'L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)']
+['L Amine Temp (\xc2\xb0C)', 'MDEA (%)', 'PZ (%)', 'L Amine Flow (t/d)', 'Heat Duty (GJ/h)', 'L Amine Pressure (bar)']
 
-Least important feature is L Amine Temp (°C)
+Least important feature is L Amine Pressure (bar)
 
-Most important feature is PZ (%)
+Most important feature is L Amine Temp (°C)
 
-[-1.7132050798108587, -1.6380673486722674, -0.20295635403294909, -1.7864167806735853, -3.2008722492864505, -85.260686084070954]
+[-0.0026593718758255668, -0.0040061262516043247, -0.0045416010455424424, -0.0032899424531571907, -0.0043806546278204904, -0.0041182561259377696]
 
-R^2: -0.5745
+R^2: 0.9502
 
-AOC of 'Sweet Gas CO2 (ppm)': 0.869392437676
+AOC of 'Sweet Gas CO2 (ppm)': 2.02631916079
 
-AOC of 'Sweet Gas C1 (ppm)': 28.0060620039
+AOC of 'Sweet Gas C1 (ppm)': 27.0224680273
 
-AOC of 'Rich Amine Hydrocarbons (t/d)': 0.0407004336453
+AOC of 'Rich Amine Hydrocarbons (t/d)': 0.0496544115721
 
-AOC of 'R Amine HCO3 (mol/L)': 0.0157442430768
+AOC of 'R Amine HCO3 (mol/L)': 0.0183046317517
 
-AOC of 'Sweet Gas PZ Flow (t/d)': 0.00225819123698
+AOC of 'Sweet Gas PZ Flow (t/d)': 0.00322308181242
 
 ----------------------------------------------------------
 
@@ -1194,7 +630,7 @@ Evaluate performance of 'Sweet Gas CO2 (ppm)'
 
 ----------------------------------------------------------
 
-R^2: -5.2042
+R^2: -0.0028
 
 ----------------------------------------------------------
 
@@ -1202,7 +638,7 @@ Evaluate performance of 'Sweet Gas C1 (ppm)'
 
 ----------------------------------------------------------
 
-R^2: -4.3314
+R^2: -0.0025
 
 ----------------------------------------------------------
 
@@ -1210,7 +646,7 @@ Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'
 
 ----------------------------------------------------------
 
-R^2: -0.0433
+R^2: -0.0025
 
 ----------------------------------------------------------
 
@@ -1218,7 +654,7 @@ Evaluate performance of 'R Amine HCO3 (mol/L)'
 
 ----------------------------------------------------------
 
-R^2: -9.6069
+R^2: -0.0048
 
 ----------------------------------------------------------
 
@@ -1232,15 +668,15 @@ Evaluate performance of 'Sweet Gas PZ Flow (t/d)'
 
 ----------------------------------------------------------
 
-R^2: -69.1291
+R^2: -0.0024
 
-AOC of 'Sweet Gas CO2 (ppm)': 1.54078550716
+AOC of 'Sweet Gas CO2 (ppm)': 3.48834033578
 
-AOC of 'Sweet Gas C1 (ppm)': 5.7633218645
+AOC of 'Sweet Gas C1 (ppm)': 7.23616166174
 
-AOC of 'Rich Amine Hydrocarbons (t/d)': 0.185350920683
+AOC of 'Rich Amine Hydrocarbons (t/d)': 0.205554506111
 
-AOC of 'R Amine HCO3 (mol/L)': 0.185476939461
+AOC of 'R Amine HCO3 (mol/L)': 0.253079476207
 
-AOC of 'Sweet Gas PZ Flow (t/d)': 0.00423144893776
+AOC of 'Sweet Gas PZ Flow (t/d)': 0.00807704552068
 

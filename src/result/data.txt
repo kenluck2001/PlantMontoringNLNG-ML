@@ -6,93 +6,122 @@ MARS Model
 ----------------------------------------------------------
 ----------------------------------------------------------
 Evaluate performance of 'Sweet Gas CO2 (ppm)'
-X: specialformat, Y: Log
-R^2: 0.9108
+R^2: 0.8683
 Earth Model
---------------------------------------
-Basis Function  Pruned  Coefficient   
---------------------------------------
-(Intercept)     No      6.85234       
-x7              No      0.035448      
-x4              No      -0.000810953  
-x1              No      -15575.6      
-x2              No      -0.000180221  
-x3              No      -0.000271076  
-x6              No      -0.378694     
-x0              No      5698.81       
-x5              No      0.0128298     
-h(x4-0)         Yes     None          
-h(0-x4)         Yes     None          
---------------------------------------
-MSE: 0.0030, GCV: 0.0031, RSQ: 0.9883, GRSQ: 0.9882
-R^2: 0.8522
+-------------------------------------
+Basis Function  Pruned  Coefficient  
+-------------------------------------
+(Intercept)     No      12.453       
+x6              No      0.404158     
+x4              No      -0.282903    
+x5              No      0.335604     
+x2              Yes     None         
+x3              No      -0.043417    
+h(x2-0)         No      -0.0238996   
+h(0-x2)         Yes     None         
+-------------------------------------
+MSE: 0.1389, GCV: 0.1399, RSQ: 0.8670, GRSQ: 0.8661
+R^2: 0.8935
+Relative importance of Variable
+feature importance of 'Sweet Gas CO2 (ppm)'
+Attributes in order of importance
+['L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'MDEA (%)', 'PZ (%)']
+Least important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+Most important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+[-0.0027610176940203067, -0.0027610176940203067, -0.0027610176940203067, -0.0027610176940203067, -0.0027610176940203067, -0.0027610176940203067]
 Evaluate performance of 'Sweet Gas C1 (ppm)'
-X: normal, Y: normal
-R^2: 0.8738
+R^2: 0.9756
 Earth Model
 -------------------------------------
 Basis Function  Pruned  Coefficient  
 -------------------------------------
 (Intercept)     No      926062       
-x5              No      1.95275      
-x4              No      1.02651      
-x1              No      0.00322488   
-x2              No      -0.14779     
-x3              No      0.0499214    
+x5              No      1.96446      
+x4              No      1.00856      
+x1              No      0.00328733   
+x2              No      -0.13797     
+x3              No      0.051104     
 -------------------------------------
-MSE: 0.4187, GCV: 0.4217, RSQ: 0.9760, GRSQ: 0.9759
-R^2: 0.6884
+MSE: 0.4134, GCV: 0.4164, RSQ: 0.9757, GRSQ: 0.9755
+R^2: 0.9752
+Relative importance of Variable
+feature importance of 'Sweet Gas C1 (ppm)'
+Attributes in order of importance
+['L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'MDEA (%)', 'PZ (%)']
+Least important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+Most important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+[-0.0024581155944731758, -0.0024581155944731758, -0.0024581155944731758, -0.0024581155944731758, -0.0024581155944731758, -0.0024581155944731758]
 Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'
-X: log, Y: log
-R^2: 0.9910
+R^2: 0.9942
 Earth Model
 -------------------------------------
 Basis Function  Pruned  Coefficient  
 -------------------------------------
-(Intercept)     No      -11.628      
-x1              No      1.37524      
-x6              No      0.0338309    
-x4              No      0.342329     
-x2              No      -0.00708175  
+(Intercept)     No      -2.17267     
+x1              No      0.00104944   
+x6              No      0.0123493    
+x4              No      0.0203493    
+x5              No      0.00613117   
 -------------------------------------
-MSE: 0.0000, GCV: 0.0000, RSQ: 0.9938, GRSQ: 0.9937
-R^2: 0.9931
+MSE: 0.0003, GCV: 0.0003, RSQ: 0.9942, GRSQ: 0.9942
+R^2: 0.9950
+Relative importance of Variable
+feature importance of 'Rich Amine Hydrocarbons (t/d)'
+Attributes in order of importance
+['L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'MDEA (%)', 'PZ (%)']
+Least important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+Most important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+[-0.0023411640368388833, -0.0023411640368388833, -0.0023411640368388833, -0.0023411640368388833, -0.0023411640368388833, -0.0023411640368388833]
 Evaluate performance of 'R Amine HCO3 (mol/L)'
-X: normal, Y: normal
-R^2: 0.9768
+R^2: 0.9984
 Earth Model
 --------------------------------------
 Basis Function  Pruned  Coefficient   
 --------------------------------------
-(Intercept)     No      3.097         
-x5              No      -0.0958617    
-x1              No      -0.000351367  
-x4              No      -0.0116325    
-x6              No      0.0117623     
-x3              No      -0.000416619  
+(Intercept)     No      3.12318       
+x5              No      -0.0967375    
+x1              No      -0.000351509  
+x4              No      -0.0119293    
+x6              No      0.011075      
+x3              No      -0.000436109  
 --------------------------------------
-MSE: 0.0001, GCV: 0.0001, RSQ: 0.9983, GRSQ: 0.9983
-R^2: 0.9877
+MSE: 0.0001, GCV: 0.0001, RSQ: 0.9985, GRSQ: 0.9984
+R^2: 0.9984
+Relative importance of Variable
+feature importance of 'R Amine HCO3 (mol/L)'
+Attributes in order of importance
+['L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'MDEA (%)', 'PZ (%)']
+Least important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+Most important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+[-0.0047808594833368186, -0.0047808594833368186, -0.0047808594833368186, -0.0047808594833368186, -0.0047808594833368186, -0.0047808594833368186]
 Evaluate performance of 'Sweet Gas PZ Flow (t/d)'
-X: log, Y: log
-R^2: 0.9444
+R^2: 0.9537
 Earth Model
--------------------------------------
-Basis Function  Pruned  Coefficient  
--------------------------------------
-(Intercept)     No      -17.6486     
-x5              No      1.70817      
-x2              No      -1.13091     
-x4              No      3.26828      
-x3              No      0.374221     
--------------------------------------
-MSE: 0.0016, GCV: 0.0016, RSQ: 0.9960, GRSQ: 0.9960
-R^2: 0.9225
-AOC of 'Sweet Gas CO2 (ppm)': 0.162781357988
-AOC of 'Sweet Gas C1 (ppm)': 1.55796655328
-AOC of 'Rich Amine Hydrocarbons (t/d)': 0.0142875914533
-AOC of 'R Amine HCO3 (mol/L)': 0.015950604115
-AOC of 'Sweet Gas PZ Flow (t/d)': 0.0946363063936
+--------------------------------------
+Basis Function  Pruned  Coefficient   
+--------------------------------------
+(Intercept)     No      -0.0215787    
+x5              No      0.00253498    
+x2              No      -0.00018335   
+x4              No      0.000427799   
+x6              No      0.000305269   
+x1              No      -6.12712e-07  
+x3              No      5.05281e-05   
+--------------------------------------
+MSE: 0.0000, GCV: 0.0000, RSQ: 0.9544, GRSQ: 0.9540
+R^2: 0.9500
+Relative importance of Variable
+feature importance of 'Sweet Gas PZ Flow (t/d)'
+Attributes in order of importance
+['L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'MDEA (%)', 'PZ (%)']
+Least important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+Most important feature is L Amine Pressure (bar), L Amine Flow (t/d), L Amine Temp (°C), Heat Duty (GJ/h), MDEA (%), PZ (%)
+[-0.0024314471471831743, -0.0024314471471831743, -0.0024314471471831743, -0.0024314471471831743, -0.0024314471471831743, -0.0024314471471831743]
+AOC of 'Sweet Gas CO2 (ppm)': 2.01726639759
+AOC of 'Sweet Gas C1 (ppm)': 2.22207080173
+AOC of 'Rich Amine Hydrocarbons (t/d)': 0.0512300806208
+AOC of 'R Amine HCO3 (mol/L)': 0.0185908997602
+AOC of 'Sweet Gas PZ Flow (t/d)': 0.00807704552068
 ----------------------------------------------------------
 ----------------------------------------------------------
 ----------------------------------------------------------
@@ -104,68 +133,68 @@ Tree Model
 ----------------------------------------------------------
 Evaluate performance of 'Sweet Gas CO2 (ppm)'
 ----------------------------------------------------------
-R^2: 0.3424
+R^2: 0.9998
 Relative importance of Variable
 feature importance of 'Sweet Gas CO2 (ppm)'
 Attributes in order of importance
-['PZ (%)', 'MDEA (%)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'L Amine Pressure (bar)']
+['MDEA (%)', 'Heat Duty (GJ/h)', 'L Amine Temp (\xc2\xb0C)', 'PZ (%)', 'L Amine Flow (t/d)', 'L Amine Pressure (bar)']
 Least important feature is L Amine Pressure (bar)
-Most important feature is PZ (%)
-[0.79576485493298321, 0.57688915642298311, 0.63861212394388778, 0.70817242013600079, -0.85774741860872561, -7.224678986899411]
-R^2: -1.2023
+Most important feature is MDEA (%)
+[-0.28443501322544512, -0.29041642431728898, -0.38267120119932418, -0.47692128153494567, -0.64684743600835115, -0.34722089220531477]
+R^2: 0.9998
 ----------------------------------------------------------
 Evaluate performance of 'Sweet Gas C1 (ppm)'
 ----------------------------------------------------------
-R^2: -0.2702
+R^2: 0.9998
 Relative importance of Variable
 feature importance of 'Sweet Gas C1 (ppm)'
 Attributes in order of importance
-['PZ (%)', 'MDEA (%)', 'L Amine Flow (t/d)', 'Heat Duty (GJ/h)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)']
+['MDEA (%)', 'Heat Duty (GJ/h)', 'L Amine Temp (\xc2\xb0C)', 'PZ (%)', 'L Amine Flow (t/d)', 'L Amine Pressure (bar)']
 Least important feature is L Amine Pressure (bar)
-Most important feature is PZ (%)
-[-0.32085374274274059, -0.5009274145094591, -0.33658693375423504, -0.35976825306754751, -0.64682926930461859, -5.4643873003043923]
-R^2: -0.6290
+Most important feature is MDEA (%)
+[-0.27446203381667267, -0.28438052925525353, -0.3806244127665987, -0.3974518567210093, -0.70343006080542714, -0.3390447607753323]
+R^2: 0.9999
 ----------------------------------------------------------
 Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'
 ----------------------------------------------------------
-R^2: 0.9931
+R^2: 1.0000
 Relative importance of Variable
 feature importance of 'Rich Amine Hydrocarbons (t/d)'
 Attributes in order of importance
-['L Amine Flow (t/d)', 'MDEA (%)', 'PZ (%)', 'Heat Duty (GJ/h)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)']
+['MDEA (%)', 'Heat Duty (GJ/h)', 'PZ (%)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)']
 Least important feature is L Amine Pressure (bar)
-Most important feature is L Amine Flow (t/d)
-[0.99324338572295079, -0.1385882072800339, 0.99319406845670566, 0.99318676115866789, 0.91296411783076858, 0.95587836917589541]
-R^2: 0.9842
+Most important feature is MDEA (%)
+[-0.28729554623646131, -0.31587755762666431, -0.29776629179876191, -0.37442814923640427, -0.68144339090095851, -0.34131776892034099]
+R^2: 1.0000
 ----------------------------------------------------------
 Evaluate performance of 'R Amine HCO3 (mol/L)'
 ----------------------------------------------------------
-R^2: 0.9312
+R^2: 1.0000
 Relative importance of Variable
 feature importance of 'R Amine HCO3 (mol/L)'
 Attributes in order of importance
-['PZ (%)', 'L Amine Flow (t/d)', 'MDEA (%)', 'Heat Duty (GJ/h)', 'L Amine Pressure (bar)', 'L Amine Temp (\xc2\xb0C)']
-Least important feature is L Amine Temp (°C)
-Most important feature is PZ (%)
-[0.93416168682438716, 0.1791057515985012, 0.93463712447459224, 0.93245738621888508, 0.91732811729404562, -10.827377123249615]
-R^2: 0.9771
+['MDEA (%)', 'Heat Duty (GJ/h)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'PZ (%)']
+Least important feature is PZ (%)
+Most important feature is MDEA (%)
+[-0.24905269495160867, -0.2457009808520913, -0.25143097584951313, -0.29491971021962016, -0.51379798652617281, -0.22287062319015613]
+R^2: 1.0000
 ----------------------------------------------------------
 Evaluate performance of 'Sweet Gas PZ Flow (t/d)'
 ----------------------------------------------------------
-R^2: 0.3012
+R^2: 0.9957
 Relative importance of Variable
 feature importance of 'Sweet Gas PZ Flow (t/d)'
 Attributes in order of importance
-['PZ (%)', 'L Amine Temp (\xc2\xb0C)', 'MDEA (%)', 'Heat Duty (GJ/h)', 'L Amine Pressure (bar)', 'L Amine Flow (t/d)']
-Least important feature is L Amine Flow (t/d)
-Most important feature is PZ (%)
-[-0.0078341090686402833, -0.0012468212898868458, -0.11884815681188261, -0.011411307310519536, -0.094144528474715286, -89.209707112547505]
-R^2: -1389571031139813991553228079104.0000
-AOC of 'Sweet Gas CO2 (ppm)': 0.476787346402
-AOC of 'Sweet Gas C1 (ppm)': 2.07732775524
-AOC of 'Rich Amine Hydrocarbons (t/d)': 0.0177271731036
-AOC of 'R Amine HCO3 (mol/L)': 0.0240685293772
-AOC of 'Sweet Gas PZ Flow (t/d)': 0.00141789542248
+['MDEA (%)', 'Heat Duty (GJ/h)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)', 'PZ (%)']
+Least important feature is PZ (%)
+Most important feature is MDEA (%)
+[-0.23145939816307282, -0.26940788032641627, -0.24685838923300385, -0.29048953057274901, -0.53662701470503915, -0.22214257021123304]
+R^2: 0.9959
+AOC of 'Sweet Gas CO2 (ppm)': 0.132087781934
+AOC of 'Sweet Gas C1 (ppm)': 0.121448571253
+AOC of 'Rich Amine Hydrocarbons (t/d)': 0.000818880720086
+AOC of 'R Amine HCO3 (mol/L)': 0.000477732968718
+AOC of 'Sweet Gas PZ Flow (t/d)': 0.000559276400678
 ----------------------------------------------------------
 ----------------------------------------------------------
 ----------------------------------------------------------
@@ -177,1948 +206,1948 @@ Anfis Model
 ----------------------------------------------------------
 Evaluate performance of 'Sweet Gas CO2 (ppm)'
 ----------------------------------------------------------
-current error:  481.574796245
-current error:  481.574796245
-current error:  481.574796245
-current error:  481.574796245
-current error:  481.574796245
-current error:  481.574796245
-current error:  481.574796245
-current error:  481.574796245
-current error:  481.574796245
-current error:  512.697877933
-current error:  512.697877933
-current error:  512.697877933
-current error:  512.697877933
-current error:  512.697877933
-current error:  512.697877933
-current error:  512.697877933
-current error:  512.697877933
-current error:  512.697877933
-current error:  474.781531724
-current error:  474.781531724
-current error:  474.781531724
-current error:  474.781531724
-current error:  474.781531724
-current error:  474.781531724
-current error:  474.781531724
-current error:  474.781531724
-current error:  474.781531724
-current error:  266.429325395
-current error:  266.429325395
-current error:  266.429325395
-current error:  266.429325395
-current error:  266.429325395
-current error:  266.429325395
-current error:  266.429325395
-current error:  266.429325395
-current error:  266.429325395
-current error:  221.819308114
-current error:  221.819308114
-current error:  221.819308114
-current error:  221.819308114
-current error:  221.819308114
-current error:  221.819308114
-current error:  221.819308114
-current error:  221.819308114
-current error:  221.819308114
-R^2: -1.0510
-AVG R^2: -1.050978163
+current error:  449.397027174
+current error:  449.397027174
+current error:  449.397027174
+current error:  449.397027174
+current error:  449.397027174
+current error:  449.397027174
+current error:  449.397027174
+current error:  449.397027174
+current error:  449.397027174
+current error:  449.66185063
+current error:  449.66185063
+current error:  449.66185063
+current error:  449.66185063
+current error:  449.66185063
+current error:  449.66185063
+current error:  449.66185063
+current error:  449.66185063
+current error:  449.66185063
+current error:  441.346835355
+current error:  441.346835355
+current error:  441.346835355
+current error:  441.346835355
+current error:  441.346835355
+current error:  441.346835355
+current error:  441.346835355
+current error:  441.346835355
+current error:  441.346835355
+current error:  440.909963461
+current error:  440.909963461
+current error:  440.909963461
+current error:  440.909963461
+current error:  440.909963461
+current error:  440.909963461
+current error:  440.909963461
+current error:  440.909963461
+current error:  440.909963461
+current error:  441.93911433
+current error:  441.93911433
+current error:  441.93911433
+current error:  441.93911433
+current error:  441.93911433
+current error:  441.93911433
+current error:  441.93911433
+current error:  441.93911433
+current error:  441.93911433
+R^2: 0.8683
+AVG R^2: 0.868291373593
 Relative importance of Variable
 feature importance of 'Sweet Gas CO2 (ppm)'
-current error:  1056.10555052
-current error:  1056.10555052
-current error:  1056.10555052
-current error:  1056.10555052
-current error:  1056.10555052
-current error:  1056.10555052
-current error:  1056.10555052
-current error:  1056.10555052
-current error:  1056.10555052
-current error:  1083.2245783
-current error:  1083.2245783
-current error:  1083.2245783
-current error:  1083.2245783
-current error:  1083.2245783
-current error:  1083.2245783
-current error:  1083.2245783
-current error:  1083.2245783
-current error:  1083.2245783
-current error:  949.594009872
-current error:  949.594009872
-current error:  949.594009872
-current error:  949.594009872
-current error:  949.594009872
-current error:  949.594009872
-current error:  949.594009872
-current error:  949.594009872
-current error:  949.594009872
-current error:  589.328297774
-current error:  589.328297774
-current error:  589.328297774
-current error:  589.328297774
-current error:  589.328297774
-current error:  589.328297774
-current error:  589.328297774
-current error:  589.328297774
-current error:  589.328297774
-current error:  884.27785226
-current error:  884.27785226
-current error:  884.27785226
-current error:  884.27785226
-current error:  884.27785226
-current error:  884.27785226
-current error:  884.27785226
-current error:  884.27785226
-current error:  884.27785226
-R^2: -2.5894
-current error:  1058.4881448
-current error:  1058.4881448
-current error:  1058.4881448
-current error:  1058.4881448
-current error:  1058.4881448
-current error:  1058.4881448
-current error:  1058.4881448
-current error:  1058.4881448
-current error:  1058.4881448
-current error:  1085.66690294
-current error:  1085.66690294
-current error:  1085.66690294
-current error:  1085.66690294
-current error:  1085.66690294
-current error:  1085.66690294
-current error:  1085.66690294
-current error:  1085.66690294
-current error:  1085.66690294
-current error:  951.138204325
-current error:  951.138204325
-current error:  951.138204325
-current error:  951.138204325
-current error:  951.138204325
-current error:  951.138204325
-current error:  951.138204325
-current error:  951.138204325
-current error:  951.138204325
-current error:  593.160402981
-current error:  593.160402981
-current error:  593.160402981
-current error:  593.160402981
-current error:  593.160402981
-current error:  593.160402981
-current error:  593.160402981
-current error:  593.160402981
-current error:  593.160402981
-current error:  903.646891384
-current error:  903.646891384
-current error:  903.646891384
-current error:  903.646891384
-current error:  903.646891384
-current error:  903.646891384
-current error:  903.646891384
-current error:  903.646891384
-current error:  903.646891384
-R^2: -2.5054
-current error:  1098.30058439
-current error:  1098.30058439
-current error:  1098.30058439
-current error:  1098.30058439
-current error:  1098.30058439
-current error:  1098.30058439
-current error:  1098.30058439
-current error:  1098.30058439
-current error:  1098.30058439
-current error:  1133.62193924
-current error:  1133.62193924
-current error:  1133.62193924
-current error:  1133.62193924
-current error:  1133.62193924
-current error:  1133.62193924
-current error:  1133.62193924
-current error:  1133.62193924
-current error:  1133.62193924
-current error:  1001.21228183
-current error:  1001.21228183
-current error:  1001.21228183
-current error:  1001.21228183
-current error:  1001.21228183
-current error:  1001.21228183
-current error:  1001.21228183
-current error:  1001.21228183
-current error:  1001.21228183
-current error:  623.20624694
-current error:  623.20624694
-current error:  623.20624694
-current error:  623.20624694
-current error:  623.20624694
-current error:  623.20624694
-current error:  623.20624694
-current error:  623.20624694
-current error:  623.20624694
-current error:  929.169833404
-current error:  929.169833404
-current error:  929.169833404
-current error:  929.169833404
-current error:  929.169833404
-current error:  929.169833404
-current error:  929.169833404
-current error:  929.169833404
-current error:  929.169833404
-R^2: -2.6822
-current error:  1078.66812715
-current error:  1078.66812715
-current error:  1078.66812715
-current error:  1078.66812715
-current error:  1078.66812715
-current error:  1078.66812715
-current error:  1078.66812715
-current error:  1078.66812715
-current error:  1078.66812715
-current error:  1129.57925791
-current error:  1129.57925791
-current error:  1129.57925791
-current error:  1129.57925791
-current error:  1129.57925791
-current error:  1129.57925791
-current error:  1129.57925791
-current error:  1129.57925791
-current error:  1129.57925791
-current error:  997.82869234
-current error:  997.82869234
-current error:  997.82869234
-current error:  997.82869234
-current error:  997.82869234
-current error:  997.82869234
-current error:  997.82869234
-current error:  997.82869234
-current error:  997.82869234
-current error:  598.380191748
-current error:  598.380191748
-current error:  598.380191748
-current error:  598.380191748
-current error:  598.380191748
-current error:  598.380191748
-current error:  598.380191748
-current error:  598.380191748
-current error:  598.380191748
-current error:  928.464607124
-current error:  928.464607124
-current error:  928.464607124
-current error:  928.464607124
-current error:  928.464607124
-current error:  928.464607124
-current error:  928.464607124
-current error:  928.464607124
-current error:  928.464607124
-R^2: -2.6331
-current error:  1279.81096986
-current error:  1279.81096986
-current error:  1279.81096986
-current error:  1279.81096986
-current error:  1279.81096986
-current error:  1279.81096986
-current error:  1279.81096986
-current error:  1279.81096986
-current error:  1279.81096986
-current error:  1565.63408221
-current error:  1565.63408221
-current error:  1565.63408221
-current error:  1565.63408221
-current error:  1565.63408221
-current error:  1565.63408221
-current error:  1565.63408221
-current error:  1565.63408221
-current error:  1565.63408221
-current error:  1422.99167657
-current error:  1422.99167657
-current error:  1422.99167657
-current error:  1422.99167657
-current error:  1422.99167657
-current error:  1422.99167657
-current error:  1422.99167657
-current error:  1422.99167657
-current error:  1422.99167657
-current error:  644.197944307
-current error:  644.197944307
-current error:  644.197944307
-current error:  644.197944307
-current error:  644.197944307
-current error:  644.197944307
-current error:  644.197944307
-current error:  644.197944307
-current error:  644.197944307
-current error:  1199.90228158
-current error:  1199.90228158
-current error:  1199.90228158
-current error:  1199.90228158
-current error:  1199.90228158
-current error:  1199.90228158
-current error:  1199.90228158
-current error:  1199.90228158
-current error:  1199.90228158
-R^2: -3.0004
-current error:  3144.480538
-current error:  3144.480538
-current error:  3144.480538
-current error:  3144.480538
-current error:  3144.480538
-current error:  3144.480538
-current error:  3144.480538
-current error:  3144.480538
-current error:  3144.480538
-current error:  3386.34814854
-current error:  3386.34814854
-current error:  3386.34814854
-current error:  3386.34814854
-current error:  3386.34814854
-current error:  3386.34814854
-current error:  3386.34814854
-current error:  3386.34814854
-current error:  3386.34814854
-current error:  3632.67159603
-current error:  3632.67159603
-current error:  3632.67159603
-current error:  3632.67159603
-current error:  3632.67159603
-current error:  3632.67159603
-current error:  3632.67159603
-current error:  3632.67159603
-current error:  3632.67159603
-current error:  2542.7901507
-current error:  2542.7901507
-current error:  2542.7901507
-current error:  2542.7901507
-current error:  2542.7901507
-current error:  2542.7901507
-current error:  2542.7901507
-current error:  2542.7901507
-current error:  2542.7901507
-current error:  1626.60390587
-current error:  1626.60390587
-current error:  1626.60390587
-current error:  1626.60390587
-current error:  1626.60390587
-current error:  1626.60390587
-current error:  1626.60390587
-current error:  1626.60390587
-current error:  1626.60390587
-R^2: -6.5854
+current error:  3386.79426908
+current error:  3386.79426908
+current error:  3386.79426908
+current error:  3386.79426908
+current error:  3386.79426908
+current error:  3386.79426908
+current error:  3386.79426908
+current error:  3386.79426908
+current error:  3386.79426908
+current error:  3451.05324686
+current error:  3451.05324686
+current error:  3451.05324686
+current error:  3451.05324686
+current error:  3451.05324686
+current error:  3451.05324686
+current error:  3451.05324686
+current error:  3451.05324686
+current error:  3451.05324686
+current error:  3453.90174923
+current error:  3453.90174923
+current error:  3453.90174923
+current error:  3453.90174923
+current error:  3453.90174923
+current error:  3453.90174923
+current error:  3453.90174923
+current error:  3453.90174923
+current error:  3453.90174923
+current error:  3353.79243044
+current error:  3353.79243044
+current error:  3353.79243044
+current error:  3353.79243044
+current error:  3353.79243044
+current error:  3353.79243044
+current error:  3353.79243044
+current error:  3353.79243044
+current error:  3353.79243044
+current error:  3378.88000421
+current error:  3378.88000421
+current error:  3378.88000421
+current error:  3378.88000421
+current error:  3378.88000421
+current error:  3378.88000421
+current error:  3378.88000421
+current error:  3378.88000421
+current error:  3378.88000421
+R^2: -0.0050
+current error:  3385.2001037
+current error:  3385.2001037
+current error:  3385.2001037
+current error:  3385.2001037
+current error:  3385.2001037
+current error:  3385.2001037
+current error:  3385.2001037
+current error:  3385.2001037
+current error:  3385.2001037
+current error:  3447.2292977
+current error:  3447.2292977
+current error:  3447.2292977
+current error:  3447.2292977
+current error:  3447.2292977
+current error:  3447.2292977
+current error:  3447.2292977
+current error:  3447.2292977
+current error:  3447.2292977
+current error:  3453.67316644
+current error:  3453.67316644
+current error:  3453.67316644
+current error:  3453.67316644
+current error:  3453.67316644
+current error:  3453.67316644
+current error:  3453.67316644
+current error:  3453.67316644
+current error:  3453.67316644
+current error:  3353.68230357
+current error:  3353.68230357
+current error:  3353.68230357
+current error:  3353.68230357
+current error:  3353.68230357
+current error:  3353.68230357
+current error:  3353.68230357
+current error:  3353.68230357
+current error:  3353.68230357
+current error:  3378.83465015
+current error:  3378.83465015
+current error:  3378.83465015
+current error:  3378.83465015
+current error:  3378.83465015
+current error:  3378.83465015
+current error:  3378.83465015
+current error:  3378.83465015
+current error:  3378.83465015
+R^2: -0.0059
+current error:  3385.32385659
+current error:  3385.32385659
+current error:  3385.32385659
+current error:  3385.32385659
+current error:  3385.32385659
+current error:  3385.32385659
+current error:  3385.32385659
+current error:  3385.32385659
+current error:  3385.32385659
+current error:  3447.15316225
+current error:  3447.15316225
+current error:  3447.15316225
+current error:  3447.15316225
+current error:  3447.15316225
+current error:  3447.15316225
+current error:  3447.15316225
+current error:  3447.15316225
+current error:  3447.15316225
+current error:  3453.7502871
+current error:  3453.7502871
+current error:  3453.7502871
+current error:  3453.7502871
+current error:  3453.7502871
+current error:  3453.7502871
+current error:  3453.7502871
+current error:  3453.7502871
+current error:  3453.7502871
+current error:  3353.65235493
+current error:  3353.65235493
+current error:  3353.65235493
+current error:  3353.65235493
+current error:  3353.65235493
+current error:  3353.65235493
+current error:  3353.65235493
+current error:  3353.65235493
+current error:  3353.65235493
+current error:  3378.88181214
+current error:  3378.88181214
+current error:  3378.88181214
+current error:  3378.88181214
+current error:  3378.88181214
+current error:  3378.88181214
+current error:  3378.88181214
+current error:  3378.88181214
+current error:  3378.88181214
+R^2: -0.0058
+current error:  3385.34863707
+current error:  3385.34863707
+current error:  3385.34863707
+current error:  3385.34863707
+current error:  3385.34863707
+current error:  3385.34863707
+current error:  3385.34863707
+current error:  3385.34863707
+current error:  3385.34863707
+current error:  3447.07779077
+current error:  3447.07779077
+current error:  3447.07779077
+current error:  3447.07779077
+current error:  3447.07779077
+current error:  3447.07779077
+current error:  3447.07779077
+current error:  3447.07779077
+current error:  3447.07779077
+current error:  3453.72699452
+current error:  3453.72699452
+current error:  3453.72699452
+current error:  3453.72699452
+current error:  3453.72699452
+current error:  3453.72699452
+current error:  3453.72699452
+current error:  3453.72699452
+current error:  3453.72699452
+current error:  3355.40128273
+current error:  3355.40128273
+current error:  3355.40128273
+current error:  3355.40128273
+current error:  3355.40128273
+current error:  3355.40128273
+current error:  3355.40128273
+current error:  3355.40128273
+current error:  3355.40128273
+current error:  3378.96648111
+current error:  3378.96648111
+current error:  3378.96648111
+current error:  3378.96648111
+current error:  3378.96648111
+current error:  3378.96648111
+current error:  3378.96648111
+current error:  3378.96648111
+current error:  3378.96648111
+R^2: -0.0050
+current error:  3386.15925079
+current error:  3386.15925079
+current error:  3386.15925079
+current error:  3386.15925079
+current error:  3386.15925079
+current error:  3386.15925079
+current error:  3386.15925079
+current error:  3386.15925079
+current error:  3386.15925079
+current error:  3447.11745013
+current error:  3447.11745013
+current error:  3447.11745013
+current error:  3447.11745013
+current error:  3447.11745013
+current error:  3447.11745013
+current error:  3447.11745013
+current error:  3447.11745013
+current error:  3447.11745013
+current error:  3453.61652524
+current error:  3453.61652524
+current error:  3453.61652524
+current error:  3453.61652524
+current error:  3453.61652524
+current error:  3453.61652524
+current error:  3453.61652524
+current error:  3453.61652524
+current error:  3453.61652524
+current error:  3354.02539939
+current error:  3354.02539939
+current error:  3354.02539939
+current error:  3354.02539939
+current error:  3354.02539939
+current error:  3354.02539939
+current error:  3354.02539939
+current error:  3354.02539939
+current error:  3354.02539939
+current error:  3378.99137784
+current error:  3378.99137784
+current error:  3378.99137784
+current error:  3378.99137784
+current error:  3378.99137784
+current error:  3378.99137784
+current error:  3378.99137784
+current error:  3378.99137784
+current error:  3378.99137784
+R^2: -0.0050
+current error:  3388.05856889
+current error:  3388.05856889
+current error:  3388.05856889
+current error:  3388.05856889
+current error:  3388.05856889
+current error:  3388.05856889
+current error:  3388.05856889
+current error:  3388.05856889
+current error:  3388.05856889
+current error:  3447.82690571
+current error:  3447.82690571
+current error:  3447.82690571
+current error:  3447.82690571
+current error:  3447.82690571
+current error:  3447.82690571
+current error:  3447.82690571
+current error:  3447.82690571
+current error:  3447.82690571
+current error:  3454.65008445
+current error:  3454.65008445
+current error:  3454.65008445
+current error:  3454.65008445
+current error:  3454.65008445
+current error:  3454.65008445
+current error:  3454.65008445
+current error:  3454.65008445
+current error:  3454.65008445
+current error:  3354.20301544
+current error:  3354.20301544
+current error:  3354.20301544
+current error:  3354.20301544
+current error:  3354.20301544
+current error:  3354.20301544
+current error:  3354.20301544
+current error:  3354.20301544
+current error:  3354.20301544
+current error:  3379.79221997
+current error:  3379.79221997
+current error:  3379.79221997
+current error:  3379.79221997
+current error:  3379.79221997
+current error:  3379.79221997
+current error:  3379.79221997
+current error:  3379.79221997
+current error:  3379.79221997
+R^2: -0.0054
 Attributes in order of importance
-['PZ (%)', 'MDEA (%)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'L Amine Pressure (bar)', 'L Amine Flow (t/d)']
-Least important feature is L Amine Flow (t/d)
-Most important feature is PZ (%)
-[-2.5893546815772521, -2.5054172798851182, -2.6822373665283403, -2.6330576475008498, -3.0004485542604407, -6.5854036766888155]
-current error:  441.683881147
-current error:  441.683881147
-current error:  441.683881147
-current error:  441.683881147
-current error:  441.683881147
-current error:  441.683881147
-current error:  441.683881147
-current error:  441.683881147
-current error:  441.683881147
-R^2: -33.3933
+['L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'PZ (%)', 'MDEA (%)', 'L Amine Pressure (bar)', 'Heat Duty (GJ/h)']
+Least important feature is Heat Duty (GJ/h)
+Most important feature is L Amine Flow (t/d)
+[-0.0049955570846686118, -0.0059375744624476923, -0.0058415176658124235, -0.0049751950756343087, -0.0050311956413849222, -0.0053854876484484395]
+current error:  523.533183184
+current error:  523.533183184
+current error:  523.533183184
+current error:  523.533183184
+current error:  523.533183184
+current error:  523.533183184
+current error:  523.533183184
+current error:  523.533183184
+current error:  523.533183184
+R^2: 0.8703
 ----------------------------------------------------------
 Evaluate performance of 'Sweet Gas C1 (ppm)'
 ----------------------------------------------------------
-current error:  525818.338892
-current error:  525818.338892
-current error:  525818.338892
-current error:  525818.338892
-current error:  525818.338892
-current error:  525818.338892
-current error:  525818.338892
-current error:  525818.338892
-current error:  525818.338892
-current error:  610768.264235
-current error:  610768.264235
-current error:  610768.264235
-current error:  610768.264235
-current error:  610768.264235
-current error:  610768.264235
-current error:  610768.264235
-current error:  610768.264235
-current error:  610768.264235
-current error:  617223.430236
-current error:  617223.430236
-current error:  617223.430236
-current error:  617223.430236
-current error:  617223.430236
-current error:  617223.430236
-current error:  617223.430236
-current error:  617223.430236
-current error:  617223.430236
-current error:  551175.994731
-current error:  551175.994731
-current error:  551175.994731
-current error:  551175.994731
-current error:  551175.994731
-current error:  551175.994731
-current error:  551175.994731
-current error:  551175.994731
-current error:  551175.994731
-current error:  658056.027439
-current error:  658056.027439
-current error:  658056.027439
-current error:  658056.027439
-current error:  658056.027439
-current error:  658056.027439
-current error:  658056.027439
-current error:  658056.027439
-current error:  658056.027439
-R^2: -123.7332
-AVG R^2: -123.733178538
+current error:  560149.248267
+current error:  560149.248267
+current error:  560149.248267
+current error:  560149.248267
+current error:  560149.248267
+current error:  560149.248267
+current error:  560149.248267
+current error:  560149.248267
+current error:  560149.248267
+current error:  565591.140186
+current error:  565591.140186
+current error:  565591.140186
+current error:  565591.140186
+current error:  565591.140186
+current error:  565591.140186
+current error:  565591.140186
+current error:  565591.140186
+current error:  565591.140186
+current error:  555476.398226
+current error:  555476.398226
+current error:  555476.398226
+current error:  555476.398226
+current error:  555476.398226
+current error:  555476.398226
+current error:  555476.398226
+current error:  555476.398226
+current error:  555476.398226
+current error:  565320.798386
+current error:  565320.798386
+current error:  565320.798386
+current error:  565320.798386
+current error:  565320.798386
+current error:  565320.798386
+current error:  565320.798386
+current error:  565320.798386
+current error:  565320.798386
+current error:  559286.909864
+current error:  559286.909864
+current error:  559286.909864
+current error:  559286.909864
+current error:  559286.909864
+current error:  559286.909864
+current error:  559286.909864
+current error:  559286.909864
+current error:  559286.909864
+R^2: -9.0756
+AVG R^2: -9.07559623277
 Relative importance of Variable
 feature importance of 'Sweet Gas C1 (ppm)'
-current error:  479960.078638
-current error:  479960.078638
-current error:  479960.078638
-current error:  479960.078638
-current error:  479960.078638
-current error:  479960.078638
-current error:  479960.078638
-current error:  479960.078638
-current error:  479960.078638
-current error:  512779.204119
-current error:  512779.204119
-current error:  512779.204119
-current error:  512779.204119
-current error:  512779.204119
-current error:  512779.204119
-current error:  512779.204119
-current error:  512779.204119
-current error:  512779.204119
-current error:  530269.585419
-current error:  530269.585419
-current error:  530269.585419
-current error:  530269.585419
-current error:  530269.585419
-current error:  530269.585419
-current error:  530269.585419
-current error:  530269.585419
-current error:  530269.585419
-current error:  512005.125139
-current error:  512005.125139
-current error:  512005.125139
-current error:  512005.125139
-current error:  512005.125139
-current error:  512005.125139
-current error:  512005.125139
-current error:  512005.125139
-current error:  512005.125139
-current error:  475114.740627
-current error:  475114.740627
-current error:  475114.740627
-current error:  475114.740627
-current error:  475114.740627
-current error:  475114.740627
-current error:  475114.740627
-current error:  475114.740627
-current error:  475114.740627
-R^2: -28.6404
-current error:  444397.432014
-current error:  444397.432014
-current error:  444397.432014
-current error:  444397.432014
-current error:  444397.432014
-current error:  444397.432014
-current error:  444397.432014
-current error:  444397.432014
-current error:  444397.432014
-current error:  477121.131251
-current error:  477121.131251
-current error:  477121.131251
-current error:  477121.131251
-current error:  477121.131251
-current error:  477121.131251
-current error:  477121.131251
-current error:  477121.131251
-current error:  477121.131251
-current error:  494458.059333
-current error:  494458.059333
-current error:  494458.059333
-current error:  494458.059333
-current error:  494458.059333
-current error:  494458.059333
-current error:  494458.059333
-current error:  494458.059333
-current error:  494458.059333
-current error:  476016.216326
-current error:  476016.216326
-current error:  476016.216326
-current error:  476016.216326
-current error:  476016.216326
-current error:  476016.216326
-current error:  476016.216326
-current error:  476016.216326
-current error:  476016.216326
-current error:  439432.680881
-current error:  439432.680881
-current error:  439432.680881
-current error:  439432.680881
-current error:  439432.680881
-current error:  439432.680881
-current error:  439432.680881
-current error:  439432.680881
-current error:  439432.680881
-R^2: -26.6580
-current error:  495111.313142
-current error:  495111.313142
-current error:  495111.313142
-current error:  495111.313142
-current error:  495111.313142
-current error:  495111.313142
-current error:  495111.313142
-current error:  495111.313142
-current error:  495111.313142
-current error:  527637.007049
-current error:  527637.007049
-current error:  527637.007049
-current error:  527637.007049
-current error:  527637.007049
-current error:  527637.007049
-current error:  527637.007049
-current error:  527637.007049
-current error:  527637.007049
-current error:  545020.128728
-current error:  545020.128728
-current error:  545020.128728
-current error:  545020.128728
-current error:  545020.128728
-current error:  545020.128728
-current error:  545020.128728
-current error:  545020.128728
-current error:  545020.128728
-current error:  527617.316938
-current error:  527617.316938
-current error:  527617.316938
-current error:  527617.316938
-current error:  527617.316938
-current error:  527617.316938
-current error:  527617.316938
-current error:  527617.316938
-current error:  527617.316938
-current error:  491579.631464
-current error:  491579.631464
-current error:  491579.631464
-current error:  491579.631464
-current error:  491579.631464
-current error:  491579.631464
-current error:  491579.631464
-current error:  491579.631464
-current error:  491579.631464
-R^2: -29.5457
-current error:  379245.344951
-current error:  379245.344951
-current error:  379245.344951
-current error:  379245.344951
-current error:  379245.344951
-current error:  379245.344951
-current error:  379245.344951
-current error:  379245.344951
-current error:  379245.344951
-current error:  402239.860941
-current error:  402239.860941
-current error:  402239.860941
-current error:  402239.860941
-current error:  402239.860941
-current error:  402239.860941
-current error:  402239.860941
-current error:  402239.860941
-current error:  402239.860941
-current error:  414033.034074
-current error:  414033.034074
-current error:  414033.034074
-current error:  414033.034074
-current error:  414033.034074
-current error:  414033.034074
-current error:  414033.034074
-current error:  414033.034074
-current error:  414033.034074
-current error:  401476.442793
-current error:  401476.442793
-current error:  401476.442793
-current error:  401476.442793
-current error:  401476.442793
-current error:  401476.442793
-current error:  401476.442793
-current error:  401476.442793
-current error:  401476.442793
-current error:  375612.237528
-current error:  375612.237528
-current error:  375612.237528
-current error:  375612.237528
-current error:  375612.237528
-current error:  375612.237528
-current error:  375612.237528
-current error:  375612.237528
-current error:  375612.237528
-R^2: -21.9212
-current error:  294503.985075
-current error:  294503.985075
-current error:  294503.985075
-current error:  294503.985075
-current error:  294503.985075
-current error:  294503.985075
-current error:  294503.985075
-current error:  294503.985075
-current error:  294503.985075
-current error:  291362.75701
-current error:  291362.75701
-current error:  291362.75701
-current error:  291362.75701
-current error:  291362.75701
-current error:  291362.75701
-current error:  291362.75701
-current error:  291362.75701
-current error:  291362.75701
-current error:  291680.686685
-current error:  291680.686685
-current error:  291680.686685
-current error:  291680.686685
-current error:  291680.686685
-current error:  291680.686685
-current error:  291680.686685
-current error:  291680.686685
-current error:  291680.686685
-current error:  292074.707201
-current error:  292074.707201
-current error:  292074.707201
-current error:  292074.707201
-current error:  292074.707201
-current error:  292074.707201
-current error:  292074.707201
-current error:  292074.707201
-current error:  292074.707201
-current error:  295748.053918
-current error:  295748.053918
-current error:  295748.053918
-current error:  295748.053918
-current error:  295748.053918
-current error:  295748.053918
-current error:  295748.053918
-current error:  295748.053918
-current error:  295748.053918
-R^2: -16.7880
-current error:  546408.535439
-current error:  546408.535439
-current error:  546408.535439
-current error:  546408.535439
-current error:  546408.535439
-current error:  546408.535439
-current error:  546408.535439
-current error:  546408.535439
-current error:  546408.535439
-current error:  592039.836017
-current error:  592039.836017
-current error:  592039.836017
-current error:  592039.836017
-current error:  592039.836017
-current error:  592039.836017
-current error:  592039.836017
-current error:  592039.836017
-current error:  592039.836017
-current error:  609715.881902
-current error:  609715.881902
-current error:  609715.881902
-current error:  609715.881902
-current error:  609715.881902
-current error:  609715.881902
-current error:  609715.881902
-current error:  609715.881902
-current error:  609715.881902
-current error:  591017.476248
-current error:  591017.476248
-current error:  591017.476248
-current error:  591017.476248
-current error:  591017.476248
-current error:  591017.476248
-current error:  591017.476248
-current error:  591017.476248
-current error:  591017.476248
-current error:  540156.099225
-current error:  540156.099225
-current error:  540156.099225
-current error:  540156.099225
-current error:  540156.099225
-current error:  540156.099225
-current error:  540156.099225
-current error:  540156.099225
-current error:  540156.099225
-R^2: -39.6121
+current error:  534433.11927
+current error:  534433.11927
+current error:  534433.11927
+current error:  534433.11927
+current error:  534433.11927
+current error:  534433.11927
+current error:  534433.11927
+current error:  534433.11927
+current error:  534433.11927
+current error:  567683.789522
+current error:  567683.789522
+current error:  567683.789522
+current error:  567683.789522
+current error:  567683.789522
+current error:  567683.789522
+current error:  567683.789522
+current error:  567683.789522
+current error:  567683.789522
+current error:  584805.79362
+current error:  584805.79362
+current error:  584805.79362
+current error:  584805.79362
+current error:  584805.79362
+current error:  584805.79362
+current error:  584805.79362
+current error:  584805.79362
+current error:  584805.79362
+current error:  566020.745892
+current error:  566020.745892
+current error:  566020.745892
+current error:  566020.745892
+current error:  566020.745892
+current error:  566020.745892
+current error:  566020.745892
+current error:  566020.745892
+current error:  566020.745892
+current error:  530679.0671
+current error:  530679.0671
+current error:  530679.0671
+current error:  530679.0671
+current error:  530679.0671
+current error:  530679.0671
+current error:  530679.0671
+current error:  530679.0671
+current error:  530679.0671
+R^2: -10.1126
+current error:  496960.122427
+current error:  496960.122427
+current error:  496960.122427
+current error:  496960.122427
+current error:  496960.122427
+current error:  496960.122427
+current error:  496960.122427
+current error:  496960.122427
+current error:  496960.122427
+current error:  530077.335968
+current error:  530077.335968
+current error:  530077.335968
+current error:  530077.335968
+current error:  530077.335968
+current error:  530077.335968
+current error:  530077.335968
+current error:  530077.335968
+current error:  530077.335968
+current error:  547079.894098
+current error:  547079.894098
+current error:  547079.894098
+current error:  547079.894098
+current error:  547079.894098
+current error:  547079.894098
+current error:  547079.894098
+current error:  547079.894098
+current error:  547079.894098
+current error:  528327.810725
+current error:  528327.810725
+current error:  528327.810725
+current error:  528327.810725
+current error:  528327.810725
+current error:  528327.810725
+current error:  528327.810725
+current error:  528327.810725
+current error:  528327.810725
+current error:  493459.084888
+current error:  493459.084888
+current error:  493459.084888
+current error:  493459.084888
+current error:  493459.084888
+current error:  493459.084888
+current error:  493459.084888
+current error:  493459.084888
+current error:  493459.084888
+R^2: -9.4241
+current error:  548717.96346
+current error:  548717.96346
+current error:  548717.96346
+current error:  548717.96346
+current error:  548717.96346
+current error:  548717.96346
+current error:  548717.96346
+current error:  548717.96346
+current error:  548717.96346
+current error:  581315.053413
+current error:  581315.053413
+current error:  581315.053413
+current error:  581315.053413
+current error:  581315.053413
+current error:  581315.053413
+current error:  581315.053413
+current error:  581315.053413
+current error:  581315.053413
+current error:  598089.041914
+current error:  598089.041914
+current error:  598089.041914
+current error:  598089.041914
+current error:  598089.041914
+current error:  598089.041914
+current error:  598089.041914
+current error:  598089.041914
+current error:  598089.041914
+current error:  579727.276257
+current error:  579727.276257
+current error:  579727.276257
+current error:  579727.276257
+current error:  579727.276257
+current error:  579727.276257
+current error:  579727.276257
+current error:  579727.276257
+current error:  579727.276257
+current error:  545000.72797
+current error:  545000.72797
+current error:  545000.72797
+current error:  545000.72797
+current error:  545000.72797
+current error:  545000.72797
+current error:  545000.72797
+current error:  545000.72797
+current error:  545000.72797
+R^2: -10.3192
+current error:  433594.000756
+current error:  433594.000756
+current error:  433594.000756
+current error:  433594.000756
+current error:  433594.000756
+current error:  433594.000756
+current error:  433594.000756
+current error:  433594.000756
+current error:  433594.000756
+current error:  457033.168249
+current error:  457033.168249
+current error:  457033.168249
+current error:  457033.168249
+current error:  457033.168249
+current error:  457033.168249
+current error:  457033.168249
+current error:  457033.168249
+current error:  457033.168249
+current error:  468490.530683
+current error:  468490.530683
+current error:  468490.530683
+current error:  468490.530683
+current error:  468490.530683
+current error:  468490.530683
+current error:  468490.530683
+current error:  468490.530683
+current error:  468490.530683
+current error:  455465.735332
+current error:  455465.735332
+current error:  455465.735332
+current error:  455465.735332
+current error:  455465.735332
+current error:  455465.735332
+current error:  455465.735332
+current error:  455465.735332
+current error:  455465.735332
+current error:  431124.545769
+current error:  431124.545769
+current error:  431124.545769
+current error:  431124.545769
+current error:  431124.545769
+current error:  431124.545769
+current error:  431124.545769
+current error:  431124.545769
+current error:  431124.545769
+R^2: -7.7752
+current error:  342019.288851
+current error:  342019.288851
+current error:  342019.288851
+current error:  342019.288851
+current error:  342019.288851
+current error:  342019.288851
+current error:  342019.288851
+current error:  342019.288851
+current error:  342019.288851
+current error:  339415.499931
+current error:  339415.499931
+current error:  339415.499931
+current error:  339415.499931
+current error:  339415.499931
+current error:  339415.499931
+current error:  339415.499931
+current error:  339415.499931
+current error:  339415.499931
+current error:  338188.192319
+current error:  338188.192319
+current error:  338188.192319
+current error:  338188.192319
+current error:  338188.192319
+current error:  338188.192319
+current error:  338188.192319
+current error:  338188.192319
+current error:  338188.192319
+current error:  338920.674702
+current error:  338920.674702
+current error:  338920.674702
+current error:  338920.674702
+current error:  338920.674702
+current error:  338920.674702
+current error:  338920.674702
+current error:  338920.674702
+current error:  338920.674702
+current error:  343318.033786
+current error:  343318.033786
+current error:  343318.033786
+current error:  343318.033786
+current error:  343318.033786
+current error:  343318.033786
+current error:  343318.033786
+current error:  343318.033786
+current error:  343318.033786
+R^2: -5.1088
+current error:  570461.453592
+current error:  570461.453592
+current error:  570461.453592
+current error:  570461.453592
+current error:  570461.453592
+current error:  570461.453592
+current error:  570461.453592
+current error:  570461.453592
+current error:  570461.453592
+current error:  600683.403721
+current error:  600683.403721
+current error:  600683.403721
+current error:  600683.403721
+current error:  600683.403721
+current error:  600683.403721
+current error:  600683.403721
+current error:  600683.403721
+current error:  600683.403721
+current error:  611027.005315
+current error:  611027.005315
+current error:  611027.005315
+current error:  611027.005315
+current error:  611027.005315
+current error:  611027.005315
+current error:  611027.005315
+current error:  611027.005315
+current error:  611027.005315
+current error:  598321.411692
+current error:  598321.411692
+current error:  598321.411692
+current error:  598321.411692
+current error:  598321.411692
+current error:  598321.411692
+current error:  598321.411692
+current error:  598321.411692
+current error:  598321.411692
+current error:  567607.918326
+current error:  567607.918326
+current error:  567607.918326
+current error:  567607.918326
+current error:  567607.918326
+current error:  567607.918326
+current error:  567607.918326
+current error:  567607.918326
+current error:  567607.918326
+R^2: -9.9428
 Attributes in order of importance
-['PZ (%)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'Heat Duty (GJ/h)', 'MDEA (%)']
+['L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)', 'PZ (%)', 'L Amine Flow (t/d)', 'Heat Duty (GJ/h)', 'MDEA (%)']
 Least important feature is MDEA (%)
-Most important feature is PZ (%)
-[-28.640412530055603, -26.657985493047345, -29.545710995169014, -21.921241138433441, -16.788030862333112, -39.612071833680758]
-current error:  537565.767628
-current error:  537565.767628
-current error:  537565.767628
-current error:  537565.767628
-current error:  537565.767628
-current error:  537565.767628
-current error:  537565.767628
-current error:  537565.767628
-current error:  537565.767628
-R^2: -6.3247
+Most important feature is L Amine Temp (°C)
+[-10.112566091925446, -9.4240815312762418, -10.319177350730419, -7.7751504439437884, -5.1088350562357316, -9.9428118498451035]
+current error:  489029.144063
+current error:  489029.144063
+current error:  489029.144063
+current error:  489029.144063
+current error:  489029.144063
+current error:  489029.144063
+current error:  489029.144063
+current error:  489029.144063
+current error:  489029.144063
+R^2: 0.1986
 ----------------------------------------------------------
 Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'
 ----------------------------------------------------------
-current error:  1.04360378292
-current error:  1.04360378292
-current error:  1.04360378292
-current error:  1.04360378292
-current error:  1.04360378292
-current error:  1.04360378292
-current error:  1.04360378292
-current error:  1.04360378292
-current error:  1.04360378292
-current error:  0.794950468063
-current error:  0.794950468063
-current error:  0.794950468063
-current error:  0.794950468063
-current error:  0.794950468063
-current error:  0.794950468063
-current error:  0.794950468063
-current error:  0.794950468063
-current error:  0.794950468063
-current error:  1.10156950069
-current error:  1.10156950069
-current error:  1.10156950069
-current error:  1.10156950069
-current error:  1.10156950069
-current error:  1.10156950069
-current error:  1.10156950069
-current error:  1.10156950069
-current error:  1.10156950069
-current error:  1.01365923944
-current error:  1.01365923944
-current error:  1.01365923944
-current error:  1.01365923944
-current error:  1.01365923944
-current error:  1.01365923944
-current error:  1.01365923944
-current error:  1.01365923944
-current error:  1.01365923944
-current error:  0.771291366958
-current error:  0.771291366958
-current error:  0.771291366958
-current error:  0.771291366958
-current error:  0.771291366958
-current error:  0.771291366958
-current error:  0.771291366958
-current error:  0.771291366958
-current error:  0.771291366958
-R^2: 0.9808
-AVG R^2: 0.980822142649
+current error:  1.06695640249
+current error:  1.06695640249
+current error:  1.06695640249
+current error:  1.06695640249
+current error:  1.06695640249
+current error:  1.06695640249
+current error:  1.06695640249
+current error:  1.06695640249
+current error:  1.06695640249
+current error:  1.06892970111
+current error:  1.06892970111
+current error:  1.06892970111
+current error:  1.06892970111
+current error:  1.06892970111
+current error:  1.06892970111
+current error:  1.06892970111
+current error:  1.06892970111
+current error:  1.06892970111
+current error:  1.05755794424
+current error:  1.05755794424
+current error:  1.05755794424
+current error:  1.05755794424
+current error:  1.05755794424
+current error:  1.05755794424
+current error:  1.05755794424
+current error:  1.05755794424
+current error:  1.05755794424
+current error:  1.04999265726
+current error:  1.04999265726
+current error:  1.04999265726
+current error:  1.04999265726
+current error:  1.04999265726
+current error:  1.04999265726
+current error:  1.04999265726
+current error:  1.04999265726
+current error:  1.04999265726
+current error:  1.08085458624
+current error:  1.08085458624
+current error:  1.08085458624
+current error:  1.08085458624
+current error:  1.08085458624
+current error:  1.08085458624
+current error:  1.08085458624
+current error:  1.08085458624
+current error:  1.08085458624
+R^2: 0.9943
+AVG R^2: 0.99432254677
 Relative importance of Variable
 feature importance of 'Rich Amine Hydrocarbons (t/d)'
-current error:  1.6509190664
-current error:  1.6509190664
-current error:  1.6509190664
-current error:  1.6509190664
-current error:  1.6509190664
-current error:  1.6509190664
-current error:  1.6509190664
-current error:  1.6509190664
-current error:  1.6509190664
-current error:  1.1094742372
-current error:  1.1094742372
-current error:  1.1094742372
-current error:  1.1094742372
-current error:  1.1094742372
-current error:  1.1094742372
-current error:  1.1094742372
-current error:  1.1094742372
-current error:  1.1094742372
-current error:  1.73158896948
-current error:  1.73158896948
-current error:  1.73158896948
-current error:  1.73158896948
-current error:  1.73158896948
-current error:  1.73158896948
-current error:  1.73158896948
-current error:  1.73158896948
-current error:  1.73158896948
-current error:  1.26589162417
-current error:  1.26589162417
-current error:  1.26589162417
-current error:  1.26589162417
-current error:  1.26589162417
-current error:  1.26589162417
-current error:  1.26589162417
-current error:  1.26589162417
-current error:  1.26589162417
-current error:  1.67329305594
-current error:  1.67329305594
-current error:  1.67329305594
-current error:  1.67329305594
-current error:  1.67329305594
-current error:  1.67329305594
-current error:  1.67329305594
-current error:  1.67329305594
-current error:  1.67329305594
-R^2: 0.9865
-current error:  180.227974158
-current error:  180.227974158
-current error:  180.227974158
-current error:  180.227974158
-current error:  180.227974158
-current error:  180.227974158
-current error:  180.227974158
-current error:  180.227974158
-current error:  180.227974158
-current error:  181.48452191
-current error:  181.48452191
-current error:  181.48452191
-current error:  181.48452191
-current error:  181.48452191
-current error:  181.48452191
-current error:  181.48452191
-current error:  181.48452191
-current error:  181.48452191
-current error:  183.688040988
-current error:  183.688040988
-current error:  183.688040988
-current error:  183.688040988
-current error:  183.688040988
-current error:  183.688040988
-current error:  183.688040988
-current error:  183.688040988
-current error:  183.688040988
-current error:  183.281500161
-current error:  183.281500161
-current error:  183.281500161
-current error:  183.281500161
-current error:  183.281500161
-current error:  183.281500161
-current error:  183.281500161
-current error:  183.281500161
-current error:  183.281500161
-current error:  181.563044588
-current error:  181.563044588
-current error:  181.563044588
-current error:  181.563044588
-current error:  181.563044588
-current error:  181.563044588
-current error:  181.563044588
-current error:  181.563044588
-current error:  181.563044588
-R^2: 0.0053
-current error:  1.66471798177
-current error:  1.66471798177
-current error:  1.66471798177
-current error:  1.66471798177
-current error:  1.66471798177
-current error:  1.66471798177
-current error:  1.66471798177
-current error:  1.66471798177
-current error:  1.66471798177
-current error:  1.13302085493
-current error:  1.13302085493
-current error:  1.13302085493
-current error:  1.13302085493
-current error:  1.13302085493
-current error:  1.13302085493
-current error:  1.13302085493
-current error:  1.13302085493
-current error:  1.13302085493
-current error:  1.74780467042
-current error:  1.74780467042
-current error:  1.74780467042
-current error:  1.74780467042
-current error:  1.74780467042
-current error:  1.74780467042
-current error:  1.74780467042
-current error:  1.74780467042
-current error:  1.74780467042
-current error:  1.27696031215
-current error:  1.27696031215
-current error:  1.27696031215
-current error:  1.27696031215
-current error:  1.27696031215
-current error:  1.27696031215
-current error:  1.27696031215
-current error:  1.27696031215
-current error:  1.27696031215
-current error:  1.69158351066
-current error:  1.69158351066
-current error:  1.69158351066
-current error:  1.69158351066
-current error:  1.69158351066
-current error:  1.69158351066
-current error:  1.69158351066
-current error:  1.69158351066
-current error:  1.69158351066
-R^2: 0.9864
-current error:  1.66162073613
-current error:  1.66162073613
-current error:  1.66162073613
-current error:  1.66162073613
-current error:  1.66162073613
-current error:  1.66162073613
-current error:  1.66162073613
-current error:  1.66162073613
-current error:  1.66162073613
-current error:  1.10982591658
-current error:  1.10982591658
-current error:  1.10982591658
-current error:  1.10982591658
-current error:  1.10982591658
-current error:  1.10982591658
-current error:  1.10982591658
-current error:  1.10982591658
-current error:  1.10982591658
-current error:  1.73606047818
-current error:  1.73606047818
-current error:  1.73606047818
-current error:  1.73606047818
-current error:  1.73606047818
-current error:  1.73606047818
-current error:  1.73606047818
-current error:  1.73606047818
-current error:  1.73606047818
-current error:  1.28748025309
-current error:  1.28748025309
-current error:  1.28748025309
-current error:  1.28748025309
-current error:  1.28748025309
-current error:  1.28748025309
-current error:  1.28748025309
-current error:  1.28748025309
-current error:  1.28748025309
-current error:  1.67347630991
-current error:  1.67347630991
-current error:  1.67347630991
-current error:  1.67347630991
-current error:  1.67347630991
-current error:  1.67347630991
-current error:  1.67347630991
-current error:  1.67347630991
-current error:  1.67347630991
-R^2: 0.9867
-current error:  5.36110861073
-current error:  5.36110861073
-current error:  5.36110861073
-current error:  5.36110861073
-current error:  5.36110861073
-current error:  5.36110861073
-current error:  5.36110861073
-current error:  5.36110861073
-current error:  5.36110861073
-current error:  3.56691650687
-current error:  3.56691650687
-current error:  3.56691650687
-current error:  3.56691650687
-current error:  3.56691650687
-current error:  3.56691650687
-current error:  3.56691650687
-current error:  3.56691650687
-current error:  3.56691650687
-current error:  5.33029493904
-current error:  5.33029493904
-current error:  5.33029493904
-current error:  5.33029493904
-current error:  5.33029493904
-current error:  5.33029493904
-current error:  5.33029493904
-current error:  5.33029493904
-current error:  5.33029493904
-current error:  6.36966806334
-current error:  6.36966806334
-current error:  6.36966806334
-current error:  6.36966806334
-current error:  6.36966806334
-current error:  6.36966806334
-current error:  6.36966806334
-current error:  6.36966806334
-current error:  6.36966806334
-current error:  5.79846306566
-current error:  5.79846306566
-current error:  5.79846306566
-current error:  5.79846306566
-current error:  5.79846306566
-current error:  5.79846306566
-current error:  5.79846306566
-current error:  5.79846306566
-current error:  5.79846306566
-R^2: 0.9642
-current error:  4.61556285845
-current error:  4.61556285845
-current error:  4.61556285845
-current error:  4.61556285845
-current error:  4.61556285845
-current error:  4.61556285845
-current error:  4.61556285845
-current error:  4.61556285845
-current error:  4.61556285845
-current error:  5.03148417557
-current error:  5.03148417557
-current error:  5.03148417557
-current error:  5.03148417557
-current error:  5.03148417557
-current error:  5.03148417557
-current error:  5.03148417557
-current error:  5.03148417557
-current error:  5.03148417557
-current error:  5.65173092125
-current error:  5.65173092125
-current error:  5.65173092125
-current error:  5.65173092125
-current error:  5.65173092125
-current error:  5.65173092125
-current error:  5.65173092125
-current error:  5.65173092125
-current error:  5.65173092125
-current error:  4.41868034821
-current error:  4.41868034821
-current error:  4.41868034821
-current error:  4.41868034821
-current error:  4.41868034821
-current error:  4.41868034821
-current error:  4.41868034821
-current error:  4.41868034821
-current error:  4.41868034821
-current error:  3.29534251158
-current error:  3.29534251158
-current error:  3.29534251158
-current error:  3.29534251158
-current error:  3.29534251158
-current error:  3.29534251158
-current error:  3.29534251158
-current error:  3.29534251158
-current error:  3.29534251158
-R^2: 0.9591
+current error:  190.807657359
+current error:  190.807657359
+current error:  190.807657359
+current error:  190.807657359
+current error:  190.807657359
+current error:  190.807657359
+current error:  190.807657359
+current error:  190.807657359
+current error:  190.807657359
+current error:  188.925762812
+current error:  188.925762812
+current error:  188.925762812
+current error:  188.925762812
+current error:  188.925762812
+current error:  188.925762812
+current error:  188.925762812
+current error:  188.925762812
+current error:  188.925762812
+current error:  189.492642076
+current error:  189.492642076
+current error:  189.492642076
+current error:  189.492642076
+current error:  189.492642076
+current error:  189.492642076
+current error:  189.492642076
+current error:  189.492642076
+current error:  189.492642076
+current error:  189.508245114
+current error:  189.508245114
+current error:  189.508245114
+current error:  189.508245114
+current error:  189.508245114
+current error:  189.508245114
+current error:  189.508245114
+current error:  189.508245114
+current error:  189.508245114
+current error:  186.555017671
+current error:  186.555017671
+current error:  186.555017671
+current error:  186.555017671
+current error:  186.555017671
+current error:  186.555017671
+current error:  186.555017671
+current error:  186.555017671
+current error:  186.555017671
+R^2: -0.0045
+current error:  190.811466148
+current error:  190.811466148
+current error:  190.811466148
+current error:  190.811466148
+current error:  190.811466148
+current error:  190.811466148
+current error:  190.811466148
+current error:  190.811466148
+current error:  190.811466148
+current error:  188.926162622
+current error:  188.926162622
+current error:  188.926162622
+current error:  188.926162622
+current error:  188.926162622
+current error:  188.926162622
+current error:  188.926162622
+current error:  188.926162622
+current error:  188.926162622
+current error:  189.479562887
+current error:  189.479562887
+current error:  189.479562887
+current error:  189.479562887
+current error:  189.479562887
+current error:  189.479562887
+current error:  189.479562887
+current error:  189.479562887
+current error:  189.479562887
+current error:  189.499106816
+current error:  189.499106816
+current error:  189.499106816
+current error:  189.499106816
+current error:  189.499106816
+current error:  189.499106816
+current error:  189.499106816
+current error:  189.499106816
+current error:  189.499106816
+current error:  186.563527047
+current error:  186.563527047
+current error:  186.563527047
+current error:  186.563527047
+current error:  186.563527047
+current error:  186.563527047
+current error:  186.563527047
+current error:  186.563527047
+current error:  186.563527047
+R^2: -0.0046
+current error:  190.926566637
+current error:  190.926566637
+current error:  190.926566637
+current error:  190.926566637
+current error:  190.926566637
+current error:  190.926566637
+current error:  190.926566637
+current error:  190.926566637
+current error:  190.926566637
+current error:  189.069915062
+current error:  189.069915062
+current error:  189.069915062
+current error:  189.069915062
+current error:  189.069915062
+current error:  189.069915062
+current error:  189.069915062
+current error:  189.069915062
+current error:  189.069915062
+current error:  189.616719549
+current error:  189.616719549
+current error:  189.616719549
+current error:  189.616719549
+current error:  189.616719549
+current error:  189.616719549
+current error:  189.616719549
+current error:  189.616719549
+current error:  189.616719549
+current error:  189.549937517
+current error:  189.549937517
+current error:  189.549937517
+current error:  189.549937517
+current error:  189.549937517
+current error:  189.549937517
+current error:  189.549937517
+current error:  189.549937517
+current error:  189.549937517
+current error:  186.628856746
+current error:  186.628856746
+current error:  186.628856746
+current error:  186.628856746
+current error:  186.628856746
+current error:  186.628856746
+current error:  186.628856746
+current error:  186.628856746
+current error:  186.628856746
+R^2: -0.0052
+current error:  190.891344939
+current error:  190.891344939
+current error:  190.891344939
+current error:  190.891344939
+current error:  190.891344939
+current error:  190.891344939
+current error:  190.891344939
+current error:  190.891344939
+current error:  190.891344939
+current error:  189.004254232
+current error:  189.004254232
+current error:  189.004254232
+current error:  189.004254232
+current error:  189.004254232
+current error:  189.004254232
+current error:  189.004254232
+current error:  189.004254232
+current error:  189.004254232
+current error:  189.487444653
+current error:  189.487444653
+current error:  189.487444653
+current error:  189.487444653
+current error:  189.487444653
+current error:  189.487444653
+current error:  189.487444653
+current error:  189.487444653
+current error:  189.487444653
+current error:  189.501607974
+current error:  189.501607974
+current error:  189.501607974
+current error:  189.501607974
+current error:  189.501607974
+current error:  189.501607974
+current error:  189.501607974
+current error:  189.501607974
+current error:  189.501607974
+current error:  186.615916203
+current error:  186.615916203
+current error:  186.615916203
+current error:  186.615916203
+current error:  186.615916203
+current error:  186.615916203
+current error:  186.615916203
+current error:  186.615916203
+current error:  186.615916203
+R^2: -0.0047
+current error:  190.832356981
+current error:  190.832356981
+current error:  190.832356981
+current error:  190.832356981
+current error:  190.832356981
+current error:  190.832356981
+current error:  190.832356981
+current error:  190.832356981
+current error:  190.832356981
+current error:  188.932634723
+current error:  188.932634723
+current error:  188.932634723
+current error:  188.932634723
+current error:  188.932634723
+current error:  188.932634723
+current error:  188.932634723
+current error:  188.932634723
+current error:  188.932634723
+current error:  189.48283048
+current error:  189.48283048
+current error:  189.48283048
+current error:  189.48283048
+current error:  189.48283048
+current error:  189.48283048
+current error:  189.48283048
+current error:  189.48283048
+current error:  189.48283048
+current error:  189.511145086
+current error:  189.511145086
+current error:  189.511145086
+current error:  189.511145086
+current error:  189.511145086
+current error:  189.511145086
+current error:  189.511145086
+current error:  189.511145086
+current error:  189.511145086
+current error:  186.587508849
+current error:  186.587508849
+current error:  186.587508849
+current error:  186.587508849
+current error:  186.587508849
+current error:  186.587508849
+current error:  186.587508849
+current error:  186.587508849
+current error:  186.587508849
+R^2: -0.0045
+current error:  190.828517507
+current error:  190.828517507
+current error:  190.828517507
+current error:  190.828517507
+current error:  190.828517507
+current error:  190.828517507
+current error:  190.828517507
+current error:  190.828517507
+current error:  190.828517507
+current error:  188.92335564
+current error:  188.92335564
+current error:  188.92335564
+current error:  188.92335564
+current error:  188.92335564
+current error:  188.92335564
+current error:  188.92335564
+current error:  188.92335564
+current error:  188.92335564
+current error:  189.504435706
+current error:  189.504435706
+current error:  189.504435706
+current error:  189.504435706
+current error:  189.504435706
+current error:  189.504435706
+current error:  189.504435706
+current error:  189.504435706
+current error:  189.504435706
+current error:  189.499535079
+current error:  189.499535079
+current error:  189.499535079
+current error:  189.499535079
+current error:  189.499535079
+current error:  189.499535079
+current error:  189.499535079
+current error:  189.499535079
+current error:  189.499535079
+current error:  186.758815337
+current error:  186.758815337
+current error:  186.758815337
+current error:  186.758815337
+current error:  186.758815337
+current error:  186.758815337
+current error:  186.758815337
+current error:  186.758815337
+current error:  186.758815337
+R^2: -0.0030
 Attributes in order of importance
-['L Amine Flow (t/d)', 'PZ (%)', 'MDEA (%)', 'L Amine Temp (\xc2\xb0C)', 'L Amine Pressure (bar)', 'Heat Duty (GJ/h)']
-Least important feature is Heat Duty (GJ/h)
-Most important feature is L Amine Flow (t/d)
-[0.98652590972638698, 0.0052606238646560888, 0.98644861369809311, 0.98671579151977018, 0.96419438867483487, 0.95908336494925561]
-current error:  1.06598420452
-current error:  1.06598420452
-current error:  1.06598420452
-current error:  1.06598420452
-current error:  1.06598420452
-current error:  1.06598420452
-current error:  1.06598420452
-current error:  1.06598420452
-current error:  1.06598420452
-R^2: 0.9723
+['L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'L Amine Flow (t/d)', 'MDEA (%)', 'L Amine Pressure (bar)', 'PZ (%)']
+Least important feature is PZ (%)
+Most important feature is L Amine Temp (°C)
+[-0.0044632088663198125, -0.004626883461739251, -0.0052072917050168584, -0.0047198429836038166, -0.0045432812068654906, -0.0029698480995881127]
+current error:  1.22334082366
+current error:  1.22334082366
+current error:  1.22334082366
+current error:  1.22334082366
+current error:  1.22334082366
+current error:  1.22334082366
+current error:  1.22334082366
+current error:  1.22334082366
+current error:  1.22334082366
+R^2: 0.9939
 ----------------------------------------------------------
 Evaluate performance of 'R Amine HCO3 (mol/L)'
 ----------------------------------------------------------
-current error:  0.217538708144
-current error:  0.217538708144
-current error:  0.217538708144
-current error:  0.217538708144
-current error:  0.217538708144
-current error:  0.217538708144
-current error:  0.217538708144
-current error:  0.217538708144
-current error:  0.217538708144
-current error:  0.244240779767
-current error:  0.244240779767
-current error:  0.244240779767
-current error:  0.244240779767
-current error:  0.244240779767
-current error:  0.244240779767
-current error:  0.244240779767
-current error:  0.244240779767
-current error:  0.244240779767
-current error:  0.286721494771
-current error:  0.286721494771
-current error:  0.286721494771
-current error:  0.286721494771
-current error:  0.286721494771
-current error:  0.286721494771
-current error:  0.286721494771
-current error:  0.286721494771
-current error:  0.286721494771
-current error:  0.259379091825
-current error:  0.259379091825
-current error:  0.259379091825
-current error:  0.259379091825
-current error:  0.259379091825
-current error:  0.259379091825
-current error:  0.259379091825
-current error:  0.259379091825
-current error:  0.259379091825
-current error:  0.271435789557
-current error:  0.271435789557
-current error:  0.271435789557
-current error:  0.271435789557
-current error:  0.271435789557
-current error:  0.271435789557
-current error:  0.271435789557
-current error:  0.271435789557
-current error:  0.271435789557
-R^2: 0.9766
-AVG R^2: 0.976550865493
+current error:  0.280717211466
+current error:  0.280717211466
+current error:  0.280717211466
+current error:  0.280717211466
+current error:  0.280717211466
+current error:  0.280717211466
+current error:  0.280717211466
+current error:  0.280717211466
+current error:  0.280717211466
+current error:  0.279510440241
+current error:  0.279510440241
+current error:  0.279510440241
+current error:  0.279510440241
+current error:  0.279510440241
+current error:  0.279510440241
+current error:  0.279510440241
+current error:  0.279510440241
+current error:  0.279510440241
+current error:  0.266202452698
+current error:  0.266202452698
+current error:  0.266202452698
+current error:  0.266202452698
+current error:  0.266202452698
+current error:  0.266202452698
+current error:  0.266202452698
+current error:  0.266202452698
+current error:  0.266202452698
+current error:  0.275727061369
+current error:  0.275727061369
+current error:  0.275727061369
+current error:  0.275727061369
+current error:  0.275727061369
+current error:  0.275727061369
+current error:  0.275727061369
+current error:  0.275727061369
+current error:  0.275727061369
+current error:  0.279938744642
+current error:  0.279938744642
+current error:  0.279938744642
+current error:  0.279938744642
+current error:  0.279938744642
+current error:  0.279938744642
+current error:  0.279938744642
+current error:  0.279938744642
+current error:  0.279938744642
+R^2: 0.9984
+AVG R^2: 0.998443390693
 Relative importance of Variable
 feature importance of 'R Amine HCO3 (mol/L)'
-current error:  0.419717125583
-current error:  0.419717125583
-current error:  0.419717125583
-current error:  0.419717125583
-current error:  0.419717125583
-current error:  0.419717125583
-current error:  0.419717125583
-current error:  0.419717125583
-current error:  0.419717125583
-current error:  0.610562363714
-current error:  0.610562363714
-current error:  0.610562363714
-current error:  0.610562363714
-current error:  0.610562363714
-current error:  0.610562363714
-current error:  0.610562363714
-current error:  0.610562363714
-current error:  0.610562363714
-current error:  0.669164842803
-current error:  0.669164842803
-current error:  0.669164842803
-current error:  0.669164842803
-current error:  0.669164842803
-current error:  0.669164842803
-current error:  0.669164842803
-current error:  0.669164842803
-current error:  0.669164842803
-current error:  0.717579521193
-current error:  0.717579521193
-current error:  0.717579521193
-current error:  0.717579521193
-current error:  0.717579521193
-current error:  0.717579521193
-current error:  0.717579521193
-current error:  0.717579521193
-current error:  0.717579521193
-current error:  0.594106392621
-current error:  0.594106392621
-current error:  0.594106392621
-current error:  0.594106392621
-current error:  0.594106392621
-current error:  0.594106392621
-current error:  0.594106392621
-current error:  0.594106392621
-current error:  0.594106392621
-R^2: 0.9213
-current error:  21.77987167
-current error:  21.77987167
-current error:  21.77987167
-current error:  21.77987167
-current error:  21.77987167
-current error:  21.77987167
-current error:  21.77987167
-current error:  21.77987167
-current error:  21.77987167
-current error:  21.0780553448
-current error:  21.0780553448
-current error:  21.0780553448
-current error:  21.0780553448
-current error:  21.0780553448
-current error:  21.0780553448
-current error:  21.0780553448
-current error:  21.0780553448
-current error:  21.0780553448
-current error:  20.5742882579
-current error:  20.5742882579
-current error:  20.5742882579
-current error:  20.5742882579
-current error:  20.5742882579
-current error:  20.5742882579
-current error:  20.5742882579
-current error:  20.5742882579
-current error:  20.5742882579
-current error:  20.3980969165
-current error:  20.3980969165
-current error:  20.3980969165
-current error:  20.3980969165
-current error:  20.3980969165
-current error:  20.3980969165
-current error:  20.3980969165
-current error:  20.3980969165
-current error:  20.3980969165
-current error:  20.3343436695
-current error:  20.3343436695
-current error:  20.3343436695
-current error:  20.3343436695
-current error:  20.3343436695
-current error:  20.3343436695
-current error:  20.3343436695
-current error:  20.3343436695
-current error:  20.3343436695
-R^2: 0.3115
-current error:  0.420656999234
-current error:  0.420656999234
-current error:  0.420656999234
-current error:  0.420656999234
-current error:  0.420656999234
-current error:  0.420656999234
-current error:  0.420656999234
-current error:  0.420656999234
-current error:  0.420656999234
-current error:  0.610618503614
-current error:  0.610618503614
-current error:  0.610618503614
-current error:  0.610618503614
-current error:  0.610618503614
-current error:  0.610618503614
-current error:  0.610618503614
-current error:  0.610618503614
-current error:  0.610618503614
-current error:  0.669582653769
-current error:  0.669582653769
-current error:  0.669582653769
-current error:  0.669582653769
-current error:  0.669582653769
-current error:  0.669582653769
-current error:  0.669582653769
-current error:  0.669582653769
-current error:  0.669582653769
-current error:  0.718269971659
-current error:  0.718269971659
-current error:  0.718269971659
-current error:  0.718269971659
-current error:  0.718269971659
-current error:  0.718269971659
-current error:  0.718269971659
-current error:  0.718269971659
-current error:  0.718269971659
-current error:  0.59416120881
-current error:  0.59416120881
-current error:  0.59416120881
-current error:  0.59416120881
-current error:  0.59416120881
-current error:  0.59416120881
-current error:  0.59416120881
-current error:  0.59416120881
-current error:  0.59416120881
-R^2: 0.9214
-current error:  0.419929495871
-current error:  0.419929495871
-current error:  0.419929495871
-current error:  0.419929495871
-current error:  0.419929495871
-current error:  0.419929495871
-current error:  0.419929495871
-current error:  0.419929495871
-current error:  0.419929495871
-current error:  0.619667559536
-current error:  0.619667559536
-current error:  0.619667559536
-current error:  0.619667559536
-current error:  0.619667559536
-current error:  0.619667559536
-current error:  0.619667559536
-current error:  0.619667559536
-current error:  0.619667559536
-current error:  0.671662511059
-current error:  0.671662511059
-current error:  0.671662511059
-current error:  0.671662511059
-current error:  0.671662511059
-current error:  0.671662511059
-current error:  0.671662511059
-current error:  0.671662511059
-current error:  0.671662511059
-current error:  0.718198520092
-current error:  0.718198520092
-current error:  0.718198520092
-current error:  0.718198520092
-current error:  0.718198520092
-current error:  0.718198520092
-current error:  0.718198520092
-current error:  0.718198520092
-current error:  0.718198520092
-current error:  0.603184146111
-current error:  0.603184146111
-current error:  0.603184146111
-current error:  0.603184146111
-current error:  0.603184146111
-current error:  0.603184146111
-current error:  0.603184146111
-current error:  0.603184146111
-current error:  0.603184146111
-R^2: 0.9218
-current error:  0.878220275924
-current error:  0.878220275924
-current error:  0.878220275924
-current error:  0.878220275924
-current error:  0.878220275924
-current error:  0.878220275924
-current error:  0.878220275924
-current error:  0.878220275924
-current error:  0.878220275924
-current error:  1.57192338673
-current error:  1.57192338673
-current error:  1.57192338673
-current error:  1.57192338673
-current error:  1.57192338673
-current error:  1.57192338673
-current error:  1.57192338673
-current error:  1.57192338673
-current error:  1.57192338673
-current error:  1.27095413225
-current error:  1.27095413225
-current error:  1.27095413225
-current error:  1.27095413225
-current error:  1.27095413225
-current error:  1.27095413225
-current error:  1.27095413225
-current error:  1.27095413225
-current error:  1.27095413225
-current error:  1.19426397282
-current error:  1.19426397282
-current error:  1.19426397282
-current error:  1.19426397282
-current error:  1.19426397282
-current error:  1.19426397282
-current error:  1.19426397282
-current error:  1.19426397282
-current error:  1.19426397282
-current error:  1.47124830306
-current error:  1.47124830306
-current error:  1.47124830306
-current error:  1.47124830306
-current error:  1.47124830306
-current error:  1.47124830306
-current error:  1.47124830306
-current error:  1.47124830306
-current error:  1.47124830306
-R^2: 0.8939
-current error:  113.716121124
-current error:  113.716121124
-current error:  113.716121124
-current error:  113.716121124
-current error:  113.716121124
-current error:  113.716121124
-current error:  113.716121124
-current error:  113.716121124
-current error:  113.716121124
-current error:  168.133457152
-current error:  168.133457152
-current error:  168.133457152
-current error:  168.133457152
-current error:  168.133457152
-current error:  168.133457152
-current error:  168.133457152
-current error:  168.133457152
-current error:  168.133457152
-current error:  186.846802294
-current error:  186.846802294
-current error:  186.846802294
-current error:  186.846802294
-current error:  186.846802294
-current error:  186.846802294
-current error:  186.846802294
-current error:  186.846802294
-current error:  186.846802294
-current error:  168.467695119
-current error:  168.467695119
-current error:  168.467695119
-current error:  168.467695119
-current error:  168.467695119
-current error:  168.467695119
-current error:  168.467695119
-current error:  168.467695119
-current error:  168.467695119
-current error:  98.9429658132
-current error:  98.9429658132
-current error:  98.9429658132
-current error:  98.9429658132
-current error:  98.9429658132
-current error:  98.9429658132
-current error:  98.9429658132
-current error:  98.9429658132
-current error:  98.9429658132
-R^2: -10.0235
+current error:  178.759596962
+current error:  178.759596962
+current error:  178.759596962
+current error:  178.759596962
+current error:  178.759596962
+current error:  178.759596962
+current error:  178.759596962
+current error:  178.759596962
+current error:  178.759596962
+current error:  179.433640553
+current error:  179.433640553
+current error:  179.433640553
+current error:  179.433640553
+current error:  179.433640553
+current error:  179.433640553
+current error:  179.433640553
+current error:  179.433640553
+current error:  179.433640553
+current error:  178.455727581
+current error:  178.455727581
+current error:  178.455727581
+current error:  178.455727581
+current error:  178.455727581
+current error:  178.455727581
+current error:  178.455727581
+current error:  178.455727581
+current error:  178.455727581
+current error:  177.376435349
+current error:  177.376435349
+current error:  177.376435349
+current error:  177.376435349
+current error:  177.376435349
+current error:  177.376435349
+current error:  177.376435349
+current error:  177.376435349
+current error:  177.376435349
+current error:  179.671893582
+current error:  179.671893582
+current error:  179.671893582
+current error:  179.671893582
+current error:  179.671893582
+current error:  179.671893582
+current error:  179.671893582
+current error:  179.671893582
+current error:  179.671893582
+R^2: -0.0064
+current error:  178.636953619
+current error:  178.636953619
+current error:  178.636953619
+current error:  178.636953619
+current error:  178.636953619
+current error:  178.636953619
+current error:  178.636953619
+current error:  178.636953619
+current error:  178.636953619
+current error:  179.326956192
+current error:  179.326956192
+current error:  179.326956192
+current error:  179.326956192
+current error:  179.326956192
+current error:  179.326956192
+current error:  179.326956192
+current error:  179.326956192
+current error:  179.326956192
+current error:  178.454967102
+current error:  178.454967102
+current error:  178.454967102
+current error:  178.454967102
+current error:  178.454967102
+current error:  178.454967102
+current error:  178.454967102
+current error:  178.454967102
+current error:  178.454967102
+current error:  177.377163378
+current error:  177.377163378
+current error:  177.377163378
+current error:  177.377163378
+current error:  177.377163378
+current error:  177.377163378
+current error:  177.377163378
+current error:  177.377163378
+current error:  177.377163378
+current error:  179.687419961
+current error:  179.687419961
+current error:  179.687419961
+current error:  179.687419961
+current error:  179.687419961
+current error:  179.687419961
+current error:  179.687419961
+current error:  179.687419961
+current error:  179.687419961
+R^2: -0.0076
+current error:  178.697638543
+current error:  178.697638543
+current error:  178.697638543
+current error:  178.697638543
+current error:  178.697638543
+current error:  178.697638543
+current error:  178.697638543
+current error:  178.697638543
+current error:  178.697638543
+current error:  179.415930392
+current error:  179.415930392
+current error:  179.415930392
+current error:  179.415930392
+current error:  179.415930392
+current error:  179.415930392
+current error:  179.415930392
+current error:  179.415930392
+current error:  179.415930392
+current error:  178.608792704
+current error:  178.608792704
+current error:  178.608792704
+current error:  178.608792704
+current error:  178.608792704
+current error:  178.608792704
+current error:  178.608792704
+current error:  178.608792704
+current error:  178.608792704
+current error:  177.442123591
+current error:  177.442123591
+current error:  177.442123591
+current error:  177.442123591
+current error:  177.442123591
+current error:  177.442123591
+current error:  177.442123591
+current error:  177.442123591
+current error:  177.442123591
+current error:  179.732878797
+current error:  179.732878797
+current error:  179.732878797
+current error:  179.732878797
+current error:  179.732878797
+current error:  179.732878797
+current error:  179.732878797
+current error:  179.732878797
+current error:  179.732878797
+R^2: -0.0082
+current error:  178.652358978
+current error:  178.652358978
+current error:  178.652358978
+current error:  178.652358978
+current error:  178.652358978
+current error:  178.652358978
+current error:  178.652358978
+current error:  178.652358978
+current error:  178.652358978
+current error:  179.332376091
+current error:  179.332376091
+current error:  179.332376091
+current error:  179.332376091
+current error:  179.332376091
+current error:  179.332376091
+current error:  179.332376091
+current error:  179.332376091
+current error:  179.332376091
+current error:  178.4911477
+current error:  178.4911477
+current error:  178.4911477
+current error:  178.4911477
+current error:  178.4911477
+current error:  178.4911477
+current error:  178.4911477
+current error:  178.4911477
+current error:  178.4911477
+current error:  177.40230622
+current error:  177.40230622
+current error:  177.40230622
+current error:  177.40230622
+current error:  177.40230622
+current error:  177.40230622
+current error:  177.40230622
+current error:  177.40230622
+current error:  177.40230622
+current error:  179.672365066
+current error:  179.672365066
+current error:  179.672365066
+current error:  179.672365066
+current error:  179.672365066
+current error:  179.672365066
+current error:  179.672365066
+current error:  179.672365066
+current error:  179.672365066
+R^2: -0.0070
+current error:  178.71059166
+current error:  178.71059166
+current error:  178.71059166
+current error:  178.71059166
+current error:  178.71059166
+current error:  178.71059166
+current error:  178.71059166
+current error:  178.71059166
+current error:  178.71059166
+current error:  179.382800537
+current error:  179.382800537
+current error:  179.382800537
+current error:  179.382800537
+current error:  179.382800537
+current error:  179.382800537
+current error:  179.382800537
+current error:  179.382800537
+current error:  179.382800537
+current error:  178.479303429
+current error:  178.479303429
+current error:  178.479303429
+current error:  178.479303429
+current error:  178.479303429
+current error:  178.479303429
+current error:  178.479303429
+current error:  178.479303429
+current error:  178.479303429
+current error:  177.395538077
+current error:  177.395538077
+current error:  177.395538077
+current error:  177.395538077
+current error:  177.395538077
+current error:  177.395538077
+current error:  177.395538077
+current error:  177.395538077
+current error:  177.395538077
+current error:  179.69717815
+current error:  179.69717815
+current error:  179.69717815
+current error:  179.69717815
+current error:  179.69717815
+current error:  179.69717815
+current error:  179.69717815
+current error:  179.69717815
+current error:  179.69717815
+R^2: -0.0081
+current error:  178.637183228
+current error:  178.637183228
+current error:  178.637183228
+current error:  178.637183228
+current error:  178.637183228
+current error:  178.637183228
+current error:  178.637183228
+current error:  178.637183228
+current error:  178.637183228
+current error:  179.33643316
+current error:  179.33643316
+current error:  179.33643316
+current error:  179.33643316
+current error:  179.33643316
+current error:  179.33643316
+current error:  179.33643316
+current error:  179.33643316
+current error:  179.33643316
+current error:  178.454303164
+current error:  178.454303164
+current error:  178.454303164
+current error:  178.454303164
+current error:  178.454303164
+current error:  178.454303164
+current error:  178.454303164
+current error:  178.454303164
+current error:  178.454303164
+current error:  177.38132685
+current error:  177.38132685
+current error:  177.38132685
+current error:  177.38132685
+current error:  177.38132685
+current error:  177.38132685
+current error:  177.38132685
+current error:  177.38132685
+current error:  177.38132685
+current error:  179.705760989
+current error:  179.705760989
+current error:  179.705760989
+current error:  179.705760989
+current error:  179.705760989
+current error:  179.705760989
+current error:  179.705760989
+current error:  179.705760989
+current error:  179.705760989
+R^2: -0.0068
 Attributes in order of importance
-['PZ (%)', 'L Amine Flow (t/d)', 'MDEA (%)', 'L Amine Pressure (bar)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)']
-Least important feature is Heat Duty (GJ/h)
-Most important feature is PZ (%)
-[0.92133015835860255, 0.31154684592830401, 0.92138991850428265, 0.92176215593924904, 0.89394288034617075, -10.023529947176366]
-current error:  0.330333434963
-current error:  0.330333434963
-current error:  0.330333434963
-current error:  0.330333434963
-current error:  0.330333434963
-current error:  0.330333434963
-current error:  0.330333434963
-current error:  0.330333434963
-current error:  0.330333434963
-R^2: 0.9875
+['L Amine Temp (\xc2\xb0C)', 'MDEA (%)', 'L Amine Flow (t/d)', 'Heat Duty (GJ/h)', 'PZ (%)', 'L Amine Pressure (bar)']
+Least important feature is L Amine Pressure (bar)
+Most important feature is L Amine Temp (°C)
+[-0.006439581622841928, -0.0076103600401565604, -0.0081582895343934141, -0.0069697202067417145, -0.0080976556852618391, -0.0068406357705789846]
+current error:  0.322673001108
+current error:  0.322673001108
+current error:  0.322673001108
+current error:  0.322673001108
+current error:  0.322673001108
+current error:  0.322673001108
+current error:  0.322673001108
+current error:  0.322673001108
+current error:  0.322673001108
+R^2: 0.9985
 ----------------------------------------------------------
 Evaluate performance of 'Sweet Gas PZ Flow (t/d)'
 ----------------------------------------------------------
-current error:  0.00162799566002
-current error:  0.00162799566002
-current error:  0.00162799566002
-current error:  0.00162799566002
-current error:  0.00162799566002
-current error:  0.00162799566002
-current error:  0.00162799566002
-current error:  0.00162799566002
-current error:  0.00162799566002
-current error:  0.00201911794598
-current error:  0.00201911794598
-current error:  0.00201911794598
-current error:  0.00201911794598
-current error:  0.00201911794598
-current error:  0.00201911794598
-current error:  0.00201911794598
-current error:  0.00201911794598
-current error:  0.00201911794598
-current error:  0.00265737446604
-current error:  0.00265737446604
-current error:  0.00265737446604
-current error:  0.00265737446604
-current error:  0.00265737446604
-current error:  0.00265737446604
-current error:  0.00265737446604
-current error:  0.00265737446604
-current error:  0.00265737446604
-current error:  0.00246054705542
-current error:  0.00246054705542
-current error:  0.00246054705542
-current error:  0.00246054705542
-current error:  0.00246054705542
-current error:  0.00246054705542
-current error:  0.00246054705542
-current error:  0.00246054705542
-current error:  0.00246054705542
-current error:  0.00200268534765
-current error:  0.00200268534765
-current error:  0.00200268534765
-current error:  0.00200268534765
-current error:  0.00200268534765
-current error:  0.00200268534765
-current error:  0.00200268534765
-current error:  0.00200268534765
-current error:  0.00200268534765
-R^2: -4.9095
-AVG R^2: -4.90946734362
+current error:  0.00230585415121
+current error:  0.00230585415121
+current error:  0.00230585415121
+current error:  0.00230585415121
+current error:  0.00230585415121
+current error:  0.00230585415121
+current error:  0.00230585415121
+current error:  0.00230585415121
+current error:  0.00230585415121
+current error:  0.00233431700084
+current error:  0.00233431700084
+current error:  0.00233431700084
+current error:  0.00233431700084
+current error:  0.00233431700084
+current error:  0.00233431700084
+current error:  0.00233431700084
+current error:  0.00233431700084
+current error:  0.00233431700084
+current error:  0.00226143844793
+current error:  0.00226143844793
+current error:  0.00226143844793
+current error:  0.00226143844793
+current error:  0.00226143844793
+current error:  0.00226143844793
+current error:  0.00226143844793
+current error:  0.00226143844793
+current error:  0.00226143844793
+current error:  0.00232788010001
+current error:  0.00232788010001
+current error:  0.00232788010001
+current error:  0.00232788010001
+current error:  0.00232788010001
+current error:  0.00232788010001
+current error:  0.00232788010001
+current error:  0.00232788010001
+current error:  0.00232788010001
+current error:  0.00235253480244
+current error:  0.00235253480244
+current error:  0.00235253480244
+current error:  0.00235253480244
+current error:  0.00235253480244
+current error:  0.00235253480244
+current error:  0.00235253480244
+current error:  0.00235253480244
+current error:  0.00235253480244
+R^2: 0.9541
+AVG R^2: 0.954095046012
 Relative importance of Variable
 feature importance of 'Sweet Gas PZ Flow (t/d)'
-current error:  0.00209955873143
-current error:  0.00209955873143
-current error:  0.00209955873143
-current error:  0.00209955873143
-current error:  0.00209955873143
-current error:  0.00209955873143
-current error:  0.00209955873143
-current error:  0.00209955873143
-current error:  0.00209955873143
-current error:  0.00219879165977
-current error:  0.00219879165977
-current error:  0.00219879165977
-current error:  0.00219879165977
-current error:  0.00219879165977
-current error:  0.00219879165977
-current error:  0.00219879165977
-current error:  0.00219879165977
-current error:  0.00219879165977
-current error:  0.00306842275182
-current error:  0.00306842275182
-current error:  0.00306842275182
-current error:  0.00306842275182
-current error:  0.00306842275182
-current error:  0.00306842275182
-current error:  0.00306842275182
-current error:  0.00306842275182
-current error:  0.00306842275182
-current error:  0.00260230220336
-current error:  0.00260230220336
-current error:  0.00260230220336
-current error:  0.00260230220336
-current error:  0.00260230220336
-current error:  0.00260230220336
-current error:  0.00260230220336
-current error:  0.00260230220336
-current error:  0.00260230220336
-current error:  0.00256501788492
-current error:  0.00256501788492
-current error:  0.00256501788492
-current error:  0.00256501788492
-current error:  0.00256501788492
-current error:  0.00256501788492
-current error:  0.00256501788492
-current error:  0.00256501788492
-current error:  0.00256501788492
-R^2: -1.7132
-current error:  0.00212214548961
-current error:  0.00212214548961
-current error:  0.00212214548961
-current error:  0.00212214548961
-current error:  0.00212214548961
-current error:  0.00212214548961
-current error:  0.00212214548961
-current error:  0.00212214548961
-current error:  0.00212214548961
-current error:  0.00223879474907
-current error:  0.00223879474907
-current error:  0.00223879474907
-current error:  0.00223879474907
-current error:  0.00223879474907
-current error:  0.00223879474907
-current error:  0.00223879474907
-current error:  0.00223879474907
-current error:  0.00223879474907
-current error:  0.00312335266202
-current error:  0.00312335266202
-current error:  0.00312335266202
-current error:  0.00312335266202
-current error:  0.00312335266202
-current error:  0.00312335266202
-current error:  0.00312335266202
-current error:  0.00312335266202
-current error:  0.00312335266202
-current error:  0.00267185600833
-current error:  0.00267185600833
-current error:  0.00267185600833
-current error:  0.00267185600833
-current error:  0.00267185600833
-current error:  0.00267185600833
-current error:  0.00267185600833
-current error:  0.00267185600833
-current error:  0.00267185600833
-current error:  0.00265432994435
-current error:  0.00265432994435
-current error:  0.00265432994435
-current error:  0.00265432994435
-current error:  0.00265432994435
-current error:  0.00265432994435
-current error:  0.00265432994435
-current error:  0.00265432994435
-current error:  0.00265432994435
-R^2: -1.6381
-current error:  0.0036143022384
-current error:  0.0036143022384
-current error:  0.0036143022384
-current error:  0.0036143022384
-current error:  0.0036143022384
-current error:  0.0036143022384
-current error:  0.0036143022384
-current error:  0.0036143022384
-current error:  0.0036143022384
-current error:  0.00433132604483
-current error:  0.00433132604483
-current error:  0.00433132604483
-current error:  0.00433132604483
-current error:  0.00433132604483
-current error:  0.00433132604483
-current error:  0.00433132604483
-current error:  0.00433132604483
-current error:  0.00433132604483
-current error:  0.00577466108324
-current error:  0.00577466108324
-current error:  0.00577466108324
-current error:  0.00577466108324
-current error:  0.00577466108324
-current error:  0.00577466108324
-current error:  0.00577466108324
-current error:  0.00577466108324
-current error:  0.00577466108324
-current error:  0.00585225628961
-current error:  0.00585225628961
-current error:  0.00585225628961
-current error:  0.00585225628961
-current error:  0.00585225628961
-current error:  0.00585225628961
-current error:  0.00585225628961
-current error:  0.00585225628961
-current error:  0.00585225628961
-current error:  0.00631356649309
-current error:  0.00631356649309
-current error:  0.00631356649309
-current error:  0.00631356649309
-current error:  0.00631356649309
-current error:  0.00631356649309
-current error:  0.00631356649309
-current error:  0.00631356649309
-current error:  0.00631356649309
-R^2: -0.2030
-current error:  0.0021493302334
-current error:  0.0021493302334
-current error:  0.0021493302334
-current error:  0.0021493302334
-current error:  0.0021493302334
-current error:  0.0021493302334
-current error:  0.0021493302334
-current error:  0.0021493302334
-current error:  0.0021493302334
-current error:  0.00220441126593
-current error:  0.00220441126593
-current error:  0.00220441126593
-current error:  0.00220441126593
-current error:  0.00220441126593
-current error:  0.00220441126593
-current error:  0.00220441126593
-current error:  0.00220441126593
-current error:  0.00220441126593
-current error:  0.00311550014335
-current error:  0.00311550014335
-current error:  0.00311550014335
-current error:  0.00311550014335
-current error:  0.00311550014335
-current error:  0.00311550014335
-current error:  0.00311550014335
-current error:  0.00311550014335
-current error:  0.00311550014335
-current error:  0.00268411914453
-current error:  0.00268411914453
-current error:  0.00268411914453
-current error:  0.00268411914453
-current error:  0.00268411914453
-current error:  0.00268411914453
-current error:  0.00268411914453
-current error:  0.00268411914453
-current error:  0.00268411914453
-current error:  0.0025919260173
-current error:  0.0025919260173
-current error:  0.0025919260173
-current error:  0.0025919260173
-current error:  0.0025919260173
-current error:  0.0025919260173
-current error:  0.0025919260173
-current error:  0.0025919260173
-current error:  0.0025919260173
-R^2: -1.7864
-current error:  0.00354251592944
-current error:  0.00354251592944
-current error:  0.00354251592944
-current error:  0.00354251592944
-current error:  0.00354251592944
-current error:  0.00354251592944
-current error:  0.00354251592944
-current error:  0.00354251592944
-current error:  0.00354251592944
-current error:  0.00314913072926
-current error:  0.00314913072926
-current error:  0.00314913072926
-current error:  0.00314913072926
-current error:  0.00314913072926
-current error:  0.00314913072926
-current error:  0.00314913072926
-current error:  0.00314913072926
-current error:  0.00314913072926
-current error:  0.0048447685268
-current error:  0.0048447685268
-current error:  0.0048447685268
-current error:  0.0048447685268
-current error:  0.0048447685268
-current error:  0.0048447685268
-current error:  0.0048447685268
-current error:  0.0048447685268
-current error:  0.0048447685268
-current error:  0.00513943556769
-current error:  0.00513943556769
-current error:  0.00513943556769
-current error:  0.00513943556769
-current error:  0.00513943556769
-current error:  0.00513943556769
-current error:  0.00513943556769
-current error:  0.00513943556769
-current error:  0.00513943556769
-current error:  0.00453700422729
-current error:  0.00453700422729
-current error:  0.00453700422729
-current error:  0.00453700422729
-current error:  0.00453700422729
-current error:  0.00453700422729
-current error:  0.00453700422729
-current error:  0.00453700422729
-current error:  0.00453700422729
-R^2: -3.2009
-current error:  0.0299564187581
-current error:  0.0299564187581
-current error:  0.0299564187581
-current error:  0.0299564187581
-current error:  0.0299564187581
-current error:  0.0299564187581
-current error:  0.0299564187581
-current error:  0.0299564187581
-current error:  0.0299564187581
-current error:  0.0474829551668
-current error:  0.0474829551668
-current error:  0.0474829551668
-current error:  0.0474829551668
-current error:  0.0474829551668
-current error:  0.0474829551668
-current error:  0.0474829551668
-current error:  0.0474829551668
-current error:  0.0474829551668
-current error:  0.0555328451953
-current error:  0.0555328451953
-current error:  0.0555328451953
-current error:  0.0555328451953
-current error:  0.0555328451953
-current error:  0.0555328451953
-current error:  0.0555328451953
-current error:  0.0555328451953
-current error:  0.0555328451953
-current error:  0.0505905873904
-current error:  0.0505905873904
-current error:  0.0505905873904
-current error:  0.0505905873904
-current error:  0.0505905873904
-current error:  0.0505905873904
-current error:  0.0505905873904
-current error:  0.0505905873904
-current error:  0.0505905873904
-current error:  0.0337756213252
-current error:  0.0337756213252
-current error:  0.0337756213252
-current error:  0.0337756213252
-current error:  0.0337756213252
-current error:  0.0337756213252
-current error:  0.0337756213252
-current error:  0.0337756213252
-current error:  0.0337756213252
-R^2: -85.2607
+current error:  0.0502591051091
+current error:  0.0502591051091
+current error:  0.0502591051091
+current error:  0.0502591051091
+current error:  0.0502591051091
+current error:  0.0502591051091
+current error:  0.0502591051091
+current error:  0.0502591051091
+current error:  0.0502591051091
+current error:  0.0509430920598
+current error:  0.0509430920598
+current error:  0.0509430920598
+current error:  0.0509430920598
+current error:  0.0509430920598
+current error:  0.0509430920598
+current error:  0.0509430920598
+current error:  0.0509430920598
+current error:  0.0509430920598
+current error:  0.0509548529875
+current error:  0.0509548529875
+current error:  0.0509548529875
+current error:  0.0509548529875
+current error:  0.0509548529875
+current error:  0.0509548529875
+current error:  0.0509548529875
+current error:  0.0509548529875
+current error:  0.0509548529875
+current error:  0.0509103438436
+current error:  0.0509103438436
+current error:  0.0509103438436
+current error:  0.0509103438436
+current error:  0.0509103438436
+current error:  0.0509103438436
+current error:  0.0509103438436
+current error:  0.0509103438436
+current error:  0.0509103438436
+current error:  0.0516501336249
+current error:  0.0516501336249
+current error:  0.0516501336249
+current error:  0.0516501336249
+current error:  0.0516501336249
+current error:  0.0516501336249
+current error:  0.0516501336249
+current error:  0.0516501336249
+current error:  0.0516501336249
+R^2: -0.0027
+current error:  0.0502355429977
+current error:  0.0502355429977
+current error:  0.0502355429977
+current error:  0.0502355429977
+current error:  0.0502355429977
+current error:  0.0502355429977
+current error:  0.0502355429977
+current error:  0.0502355429977
+current error:  0.0502355429977
+current error:  0.0509214596002
+current error:  0.0509214596002
+current error:  0.0509214596002
+current error:  0.0509214596002
+current error:  0.0509214596002
+current error:  0.0509214596002
+current error:  0.0509214596002
+current error:  0.0509214596002
+current error:  0.0509214596002
+current error:  0.0509540806123
+current error:  0.0509540806123
+current error:  0.0509540806123
+current error:  0.0509540806123
+current error:  0.0509540806123
+current error:  0.0509540806123
+current error:  0.0509540806123
+current error:  0.0509540806123
+current error:  0.0509540806123
+current error:  0.0509112980734
+current error:  0.0509112980734
+current error:  0.0509112980734
+current error:  0.0509112980734
+current error:  0.0509112980734
+current error:  0.0509112980734
+current error:  0.0509112980734
+current error:  0.0509112980734
+current error:  0.0509112980734
+current error:  0.0516587177849
+current error:  0.0516587177849
+current error:  0.0516587177849
+current error:  0.0516587177849
+current error:  0.0516587177849
+current error:  0.0516587177849
+current error:  0.0516587177849
+current error:  0.0516587177849
+current error:  0.0516587177849
+R^2: -0.0040
+current error:  0.0502420940145
+current error:  0.0502420940145
+current error:  0.0502420940145
+current error:  0.0502420940145
+current error:  0.0502420940145
+current error:  0.0502420940145
+current error:  0.0502420940145
+current error:  0.0502420940145
+current error:  0.0502420940145
+current error:  0.0509319654962
+current error:  0.0509319654962
+current error:  0.0509319654962
+current error:  0.0509319654962
+current error:  0.0509319654962
+current error:  0.0509319654962
+current error:  0.0509319654962
+current error:  0.0509319654962
+current error:  0.0509319654962
+current error:  0.0509896975844
+current error:  0.0509896975844
+current error:  0.0509896975844
+current error:  0.0509896975844
+current error:  0.0509896975844
+current error:  0.0509896975844
+current error:  0.0509896975844
+current error:  0.0509896975844
+current error:  0.0509896975844
+current error:  0.050930886965
+current error:  0.050930886965
+current error:  0.050930886965
+current error:  0.050930886965
+current error:  0.050930886965
+current error:  0.050930886965
+current error:  0.050930886965
+current error:  0.050930886965
+current error:  0.050930886965
+current error:  0.0516723275666
+current error:  0.0516723275666
+current error:  0.0516723275666
+current error:  0.0516723275666
+current error:  0.0516723275666
+current error:  0.0516723275666
+current error:  0.0516723275666
+current error:  0.0516723275666
+current error:  0.0516723275666
+R^2: -0.0045
+current error:  0.0502207521757
+current error:  0.0502207521757
+current error:  0.0502207521757
+current error:  0.0502207521757
+current error:  0.0502207521757
+current error:  0.0502207521757
+current error:  0.0502207521757
+current error:  0.0502207521757
+current error:  0.0502207521757
+current error:  0.050909122641
+current error:  0.050909122641
+current error:  0.050909122641
+current error:  0.050909122641
+current error:  0.050909122641
+current error:  0.050909122641
+current error:  0.050909122641
+current error:  0.050909122641
+current error:  0.050909122641
+current error:  0.050956852453
+current error:  0.050956852453
+current error:  0.050956852453
+current error:  0.050956852453
+current error:  0.050956852453
+current error:  0.050956852453
+current error:  0.050956852453
+current error:  0.050956852453
+current error:  0.050956852453
+current error:  0.0509303748503
+current error:  0.0509303748503
+current error:  0.0509303748503
+current error:  0.0509303748503
+current error:  0.0509303748503
+current error:  0.0509303748503
+current error:  0.0509303748503
+current error:  0.0509303748503
+current error:  0.0509303748503
+current error:  0.0516559753793
+current error:  0.0516559753793
+current error:  0.0516559753793
+current error:  0.0516559753793
+current error:  0.0516559753793
+current error:  0.0516559753793
+current error:  0.0516559753793
+current error:  0.0516559753793
+current error:  0.0516559753793
+R^2: -0.0033
+current error:  0.0502548492102
+current error:  0.0502548492102
+current error:  0.0502548492102
+current error:  0.0502548492102
+current error:  0.0502548492102
+current error:  0.0502548492102
+current error:  0.0502548492102
+current error:  0.0502548492102
+current error:  0.0502548492102
+current error:  0.0509349606002
+current error:  0.0509349606002
+current error:  0.0509349606002
+current error:  0.0509349606002
+current error:  0.0509349606002
+current error:  0.0509349606002
+current error:  0.0509349606002
+current error:  0.0509349606002
+current error:  0.0509349606002
+current error:  0.0509623968271
+current error:  0.0509623968271
+current error:  0.0509623968271
+current error:  0.0509623968271
+current error:  0.0509623968271
+current error:  0.0509623968271
+current error:  0.0509623968271
+current error:  0.0509623968271
+current error:  0.0509623968271
+current error:  0.0509294104361
+current error:  0.0509294104361
+current error:  0.0509294104361
+current error:  0.0509294104361
+current error:  0.0509294104361
+current error:  0.0509294104361
+current error:  0.0509294104361
+current error:  0.0509294104361
+current error:  0.0509294104361
+current error:  0.0516603696328
+current error:  0.0516603696328
+current error:  0.0516603696328
+current error:  0.0516603696328
+current error:  0.0516603696328
+current error:  0.0516603696328
+current error:  0.0516603696328
+current error:  0.0516603696328
+current error:  0.0516603696328
+R^2: -0.0044
+current error:  0.0502403686775
+current error:  0.0502403686775
+current error:  0.0502403686775
+current error:  0.0502403686775
+current error:  0.0502403686775
+current error:  0.0502403686775
+current error:  0.0502403686775
+current error:  0.0502403686775
+current error:  0.0502403686775
+current error:  0.0509306807565
+current error:  0.0509306807565
+current error:  0.0509306807565
+current error:  0.0509306807565
+current error:  0.0509306807565
+current error:  0.0509306807565
+current error:  0.0509306807565
+current error:  0.0509306807565
+current error:  0.0509306807565
+current error:  0.0509688851423
+current error:  0.0509688851423
+current error:  0.0509688851423
+current error:  0.0509688851423
+current error:  0.0509688851423
+current error:  0.0509688851423
+current error:  0.0509688851423
+current error:  0.0509688851423
+current error:  0.0509688851423
+current error:  0.0509246241537
+current error:  0.0509246241537
+current error:  0.0509246241537
+current error:  0.0509246241537
+current error:  0.0509246241537
+current error:  0.0509246241537
+current error:  0.0509246241537
+current error:  0.0509246241537
+current error:  0.0509246241537
+current error:  0.0516512853291
+current error:  0.0516512853291
+current error:  0.0516512853291
+current error:  0.0516512853291
+current error:  0.0516512853291
+current error:  0.0516512853291
+current error:  0.0516512853291
+current error:  0.0516512853291
+current error:  0.0516512853291
+R^2: -0.0041
 Attributes in order of importance
-['PZ (%)', 'MDEA (%)', 'Heat Duty (GJ/h)', 'L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)']
-Least important feature is L Amine Temp (°C)
-Most important feature is PZ (%)
-[-1.7132050798108587, -1.6380673486722674, -0.20295635403294909, -1.7864167806735853, -3.2008722492864505, -85.260686084070954]
-current error:  0.00256732535425
-current error:  0.00256732535425
-current error:  0.00256732535425
-current error:  0.00256732535425
-current error:  0.00256732535425
-current error:  0.00256732535425
-current error:  0.00256732535425
-current error:  0.00256732535425
-current error:  0.00256732535425
-R^2: -0.5745
-current error:  481.574796245
-current error:  481.574796245
-current error:  481.574796245
-current error:  481.574796245
-current error:  481.574796245
-current error:  481.574796245
-current error:  481.574796245
-current error:  481.574796245
-current error:  481.574796245
-current error:  512.697877933
-current error:  512.697877933
-current error:  512.697877933
-current error:  512.697877933
-current error:  512.697877933
-current error:  512.697877933
-current error:  512.697877933
-current error:  512.697877933
-current error:  512.697877933
-current error:  474.781531724
-current error:  474.781531724
-current error:  474.781531724
-current error:  474.781531724
-current error:  474.781531724
-current error:  474.781531724
-current error:  474.781531724
-current error:  474.781531724
-current error:  474.781531724
-current error:  266.429325395
-current error:  266.429325395
-current error:  266.429325395
-current error:  266.429325395
-current error:  266.429325395
-current error:  266.429325395
-current error:  266.429325395
-current error:  266.429325395
-current error:  266.429325395
-current error:  221.819308114
-current error:  221.819308114
-current error:  221.819308114
-current error:  221.819308114
-current error:  221.819308114
-current error:  221.819308114
-current error:  221.819308114
-current error:  221.819308114
-current error:  221.819308114
-AOC of 'Sweet Gas CO2 (ppm)': 0.869392437676
-current error:  525818.338892
-current error:  525818.338892
-current error:  525818.338892
-current error:  525818.338892
-current error:  525818.338892
-current error:  525818.338892
-current error:  525818.338892
-current error:  525818.338892
-current error:  525818.338892
-current error:  610768.264235
-current error:  610768.264235
-current error:  610768.264235
-current error:  610768.264235
-current error:  610768.264235
-current error:  610768.264235
-current error:  610768.264235
-current error:  610768.264235
-current error:  610768.264235
-current error:  617223.430236
-current error:  617223.430236
-current error:  617223.430236
-current error:  617223.430236
-current error:  617223.430236
-current error:  617223.430236
-current error:  617223.430236
-current error:  617223.430236
-current error:  617223.430236
-current error:  551175.994731
-current error:  551175.994731
-current error:  551175.994731
-current error:  551175.994731
-current error:  551175.994731
-current error:  551175.994731
-current error:  551175.994731
-current error:  551175.994731
-current error:  551175.994731
-current error:  658056.027439
-current error:  658056.027439
-current error:  658056.027439
-current error:  658056.027439
-current error:  658056.027439
-current error:  658056.027439
-current error:  658056.027439
-current error:  658056.027439
-current error:  658056.027439
-AOC of 'Sweet Gas C1 (ppm)': 28.0060620039
-current error:  1.04360378292
-current error:  1.04360378292
-current error:  1.04360378292
-current error:  1.04360378292
-current error:  1.04360378292
-current error:  1.04360378292
-current error:  1.04360378292
-current error:  1.04360378292
-current error:  1.04360378292
-current error:  0.794950468063
-current error:  0.794950468063
-current error:  0.794950468063
-current error:  0.794950468063
-current error:  0.794950468063
-current error:  0.794950468063
-current error:  0.794950468063
-current error:  0.794950468063
-current error:  0.794950468063
-current error:  1.10156950069
-current error:  1.10156950069
-current error:  1.10156950069
-current error:  1.10156950069
-current error:  1.10156950069
-current error:  1.10156950069
-current error:  1.10156950069
-current error:  1.10156950069
-current error:  1.10156950069
-current error:  1.01365923944
-current error:  1.01365923944
-current error:  1.01365923944
-current error:  1.01365923944
-current error:  1.01365923944
-current error:  1.01365923944
-current error:  1.01365923944
-current error:  1.01365923944
-current error:  1.01365923944
-current error:  0.771291366958
-current error:  0.771291366958
-current error:  0.771291366958
-current error:  0.771291366958
-current error:  0.771291366958
-current error:  0.771291366958
-current error:  0.771291366958
-current error:  0.771291366958
-current error:  0.771291366958
-AOC of 'Rich Amine Hydrocarbons (t/d)': 0.0407004336453
-current error:  0.217538708144
-current error:  0.217538708144
-current error:  0.217538708144
-current error:  0.217538708144
-current error:  0.217538708144
-current error:  0.217538708144
-current error:  0.217538708144
-current error:  0.217538708144
-current error:  0.217538708144
-current error:  0.244240779767
-current error:  0.244240779767
-current error:  0.244240779767
-current error:  0.244240779767
-current error:  0.244240779767
-current error:  0.244240779767
-current error:  0.244240779767
-current error:  0.244240779767
-current error:  0.244240779767
-current error:  0.286721494771
-current error:  0.286721494771
-current error:  0.286721494771
-current error:  0.286721494771
-current error:  0.286721494771
-current error:  0.286721494771
-current error:  0.286721494771
-current error:  0.286721494771
-current error:  0.286721494771
-current error:  0.259379091825
-current error:  0.259379091825
-current error:  0.259379091825
-current error:  0.259379091825
-current error:  0.259379091825
-current error:  0.259379091825
-current error:  0.259379091825
-current error:  0.259379091825
-current error:  0.259379091825
-current error:  0.271435789557
-current error:  0.271435789557
-current error:  0.271435789557
-current error:  0.271435789557
-current error:  0.271435789557
-current error:  0.271435789557
-current error:  0.271435789557
-current error:  0.271435789557
-current error:  0.271435789557
-AOC of 'R Amine HCO3 (mol/L)': 0.0157442430768
-current error:  0.00162799566002
-current error:  0.00162799566002
-current error:  0.00162799566002
-current error:  0.00162799566002
-current error:  0.00162799566002
-current error:  0.00162799566002
-current error:  0.00162799566002
-current error:  0.00162799566002
-current error:  0.00162799566002
-current error:  0.00201911794598
-current error:  0.00201911794598
-current error:  0.00201911794598
-current error:  0.00201911794598
-current error:  0.00201911794598
-current error:  0.00201911794598
-current error:  0.00201911794598
-current error:  0.00201911794598
-current error:  0.00201911794598
-current error:  0.00265737446604
-current error:  0.00265737446604
-current error:  0.00265737446604
-current error:  0.00265737446604
-current error:  0.00265737446604
-current error:  0.00265737446604
-current error:  0.00265737446604
-current error:  0.00265737446604
-current error:  0.00265737446604
-current error:  0.00246054705542
-current error:  0.00246054705542
-current error:  0.00246054705542
-current error:  0.00246054705542
-current error:  0.00246054705542
-current error:  0.00246054705542
-current error:  0.00246054705542
-current error:  0.00246054705542
-current error:  0.00246054705542
-current error:  0.00200268534765
-current error:  0.00200268534765
-current error:  0.00200268534765
-current error:  0.00200268534765
-current error:  0.00200268534765
-current error:  0.00200268534765
-current error:  0.00200268534765
-current error:  0.00200268534765
-current error:  0.00200268534765
-AOC of 'Sweet Gas PZ Flow (t/d)': 0.00225819123698
+['L Amine Temp (\xc2\xb0C)', 'MDEA (%)', 'PZ (%)', 'L Amine Flow (t/d)', 'Heat Duty (GJ/h)', 'L Amine Pressure (bar)']
+Least important feature is L Amine Pressure (bar)
+Most important feature is L Amine Temp (°C)
+[-0.0026593718758255668, -0.0040061262516043247, -0.0045416010455424424, -0.0032899424531571907, -0.0043806546278204904, -0.0041182561259377696]
+current error:  0.00267446886305
+current error:  0.00267446886305
+current error:  0.00267446886305
+current error:  0.00267446886305
+current error:  0.00267446886305
+current error:  0.00267446886305
+current error:  0.00267446886305
+current error:  0.00267446886305
+current error:  0.00267446886305
+R^2: 0.9502
+current error:  449.397027174
+current error:  449.397027174
+current error:  449.397027174
+current error:  449.397027174
+current error:  449.397027174
+current error:  449.397027174
+current error:  449.397027174
+current error:  449.397027174
+current error:  449.397027174
+current error:  449.66185063
+current error:  449.66185063
+current error:  449.66185063
+current error:  449.66185063
+current error:  449.66185063
+current error:  449.66185063
+current error:  449.66185063
+current error:  449.66185063
+current error:  449.66185063
+current error:  441.346835355
+current error:  441.346835355
+current error:  441.346835355
+current error:  441.346835355
+current error:  441.346835355
+current error:  441.346835355
+current error:  441.346835355
+current error:  441.346835355
+current error:  441.346835355
+current error:  440.909963461
+current error:  440.909963461
+current error:  440.909963461
+current error:  440.909963461
+current error:  440.909963461
+current error:  440.909963461
+current error:  440.909963461
+current error:  440.909963461
+current error:  440.909963461
+current error:  441.93911433
+current error:  441.93911433
+current error:  441.93911433
+current error:  441.93911433
+current error:  441.93911433
+current error:  441.93911433
+current error:  441.93911433
+current error:  441.93911433
+current error:  441.93911433
+AOC of 'Sweet Gas CO2 (ppm)': 2.02631916079
+current error:  560149.248267
+current error:  560149.248267
+current error:  560149.248267
+current error:  560149.248267
+current error:  560149.248267
+current error:  560149.248267
+current error:  560149.248267
+current error:  560149.248267
+current error:  560149.248267
+current error:  565591.140186
+current error:  565591.140186
+current error:  565591.140186
+current error:  565591.140186
+current error:  565591.140186
+current error:  565591.140186
+current error:  565591.140186
+current error:  565591.140186
+current error:  565591.140186
+current error:  555476.398226
+current error:  555476.398226
+current error:  555476.398226
+current error:  555476.398226
+current error:  555476.398226
+current error:  555476.398226
+current error:  555476.398226
+current error:  555476.398226
+current error:  555476.398226
+current error:  565320.798386
+current error:  565320.798386
+current error:  565320.798386
+current error:  565320.798386
+current error:  565320.798386
+current error:  565320.798386
+current error:  565320.798386
+current error:  565320.798386
+current error:  565320.798386
+current error:  559286.909864
+current error:  559286.909864
+current error:  559286.909864
+current error:  559286.909864
+current error:  559286.909864
+current error:  559286.909864
+current error:  559286.909864
+current error:  559286.909864
+current error:  559286.909864
+AOC of 'Sweet Gas C1 (ppm)': 27.0224680273
+current error:  1.06695640249
+current error:  1.06695640249
+current error:  1.06695640249
+current error:  1.06695640249
+current error:  1.06695640249
+current error:  1.06695640249
+current error:  1.06695640249
+current error:  1.06695640249
+current error:  1.06695640249
+current error:  1.06892970111
+current error:  1.06892970111
+current error:  1.06892970111
+current error:  1.06892970111
+current error:  1.06892970111
+current error:  1.06892970111
+current error:  1.06892970111
+current error:  1.06892970111
+current error:  1.06892970111
+current error:  1.05755794424
+current error:  1.05755794424
+current error:  1.05755794424
+current error:  1.05755794424
+current error:  1.05755794424
+current error:  1.05755794424
+current error:  1.05755794424
+current error:  1.05755794424
+current error:  1.05755794424
+current error:  1.04999265726
+current error:  1.04999265726
+current error:  1.04999265726
+current error:  1.04999265726
+current error:  1.04999265726
+current error:  1.04999265726
+current error:  1.04999265726
+current error:  1.04999265726
+current error:  1.04999265726
+current error:  1.08085458624
+current error:  1.08085458624
+current error:  1.08085458624
+current error:  1.08085458624
+current error:  1.08085458624
+current error:  1.08085458624
+current error:  1.08085458624
+current error:  1.08085458624
+current error:  1.08085458624
+AOC of 'Rich Amine Hydrocarbons (t/d)': 0.0496544115721
+current error:  0.280717211466
+current error:  0.280717211466
+current error:  0.280717211466
+current error:  0.280717211466
+current error:  0.280717211466
+current error:  0.280717211466
+current error:  0.280717211466
+current error:  0.280717211466
+current error:  0.280717211466
+current error:  0.279510440241
+current error:  0.279510440241
+current error:  0.279510440241
+current error:  0.279510440241
+current error:  0.279510440241
+current error:  0.279510440241
+current error:  0.279510440241
+current error:  0.279510440241
+current error:  0.279510440241
+current error:  0.266202452698
+current error:  0.266202452698
+current error:  0.266202452698
+current error:  0.266202452698
+current error:  0.266202452698
+current error:  0.266202452698
+current error:  0.266202452698
+current error:  0.266202452698
+current error:  0.266202452698
+current error:  0.275727061369
+current error:  0.275727061369
+current error:  0.275727061369
+current error:  0.275727061369
+current error:  0.275727061369
+current error:  0.275727061369
+current error:  0.275727061369
+current error:  0.275727061369
+current error:  0.275727061369
+current error:  0.279938744642
+current error:  0.279938744642
+current error:  0.279938744642
+current error:  0.279938744642
+current error:  0.279938744642
+current error:  0.279938744642
+current error:  0.279938744642
+current error:  0.279938744642
+current error:  0.279938744642
+AOC of 'R Amine HCO3 (mol/L)': 0.0183046317517
+current error:  0.00230585415121
+current error:  0.00230585415121
+current error:  0.00230585415121
+current error:  0.00230585415121
+current error:  0.00230585415121
+current error:  0.00230585415121
+current error:  0.00230585415121
+current error:  0.00230585415121
+current error:  0.00230585415121
+current error:  0.00233431700084
+current error:  0.00233431700084
+current error:  0.00233431700084
+current error:  0.00233431700084
+current error:  0.00233431700084
+current error:  0.00233431700084
+current error:  0.00233431700084
+current error:  0.00233431700084
+current error:  0.00233431700084
+current error:  0.00226143844793
+current error:  0.00226143844793
+current error:  0.00226143844793
+current error:  0.00226143844793
+current error:  0.00226143844793
+current error:  0.00226143844793
+current error:  0.00226143844793
+current error:  0.00226143844793
+current error:  0.00226143844793
+current error:  0.00232788010001
+current error:  0.00232788010001
+current error:  0.00232788010001
+current error:  0.00232788010001
+current error:  0.00232788010001
+current error:  0.00232788010001
+current error:  0.00232788010001
+current error:  0.00232788010001
+current error:  0.00232788010001
+current error:  0.00235253480244
+current error:  0.00235253480244
+current error:  0.00235253480244
+current error:  0.00235253480244
+current error:  0.00235253480244
+current error:  0.00235253480244
+current error:  0.00235253480244
+current error:  0.00235253480244
+current error:  0.00235253480244
+AOC of 'Sweet Gas PZ Flow (t/d)': 0.00322308181242
 ----------------------------------------------------------
 ----------------------------------------------------------
 ----------------------------------------------------------
@@ -2130,28 +2159,28 @@ Base Model
 ----------------------------------------------------------
 Evaluate performance of 'Sweet Gas CO2 (ppm)'
 ----------------------------------------------------------
-R^2: -5.2042
+R^2: -0.0028
 ----------------------------------------------------------
 Evaluate performance of 'Sweet Gas C1 (ppm)'
 ----------------------------------------------------------
-R^2: -4.3314
+R^2: -0.0025
 ----------------------------------------------------------
 Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'
 ----------------------------------------------------------
-R^2: -0.0433
+R^2: -0.0025
 ----------------------------------------------------------
 Evaluate performance of 'R Amine HCO3 (mol/L)'
 ----------------------------------------------------------
-R^2: -9.6069
+R^2: -0.0048
 ----------------------------------------------------------
 Evaluate performance of 'Sweet Gas MDEA Flow (t/d)'
 ----------------------------------------------------------
 ----------------------------------------------------------
 Evaluate performance of 'Sweet Gas PZ Flow (t/d)'
 ----------------------------------------------------------
-R^2: -69.1291
-AOC of 'Sweet Gas CO2 (ppm)': 1.54078550716
-AOC of 'Sweet Gas C1 (ppm)': 5.7633218645
-AOC of 'Rich Amine Hydrocarbons (t/d)': 0.185350920683
-AOC of 'R Amine HCO3 (mol/L)': 0.185476939461
-AOC of 'Sweet Gas PZ Flow (t/d)': 0.00423144893776
+R^2: -0.0024
+AOC of 'Sweet Gas CO2 (ppm)': 3.48834033578
+AOC of 'Sweet Gas C1 (ppm)': 7.23616166174
+AOC of 'Rich Amine Hydrocarbons (t/d)': 0.205554506111
+AOC of 'R Amine HCO3 (mol/L)': 0.253079476207
+AOC of 'Sweet Gas PZ Flow (t/d)': 0.00807704552068
