@@ -14,7 +14,8 @@ from sklearn import tree
 
 
 from sklearn.model_selection import StratifiedKFold
-from sklearn.metrics import r2_score, roc_curve, auc, roc_auc_score
+from sklearn.metrics import r2_score, mean_absolute_error , mean_squared_error 	 
+
 from sklearn.model_selection import train_test_split
 
 import ggplot 
@@ -46,6 +47,13 @@ predictorLabel = df.columns[:-8].tolist()
 
 print "List of Attributes"
 print predictorLabel
+
+
+print 'Evaluation metrics'
+print '-------------------------------'
+print 'R^2: Coefficient of Determination'
+print 'MAE: Mean Absolute Error'
+print 'MSE: Mean Squared Error '
 
 
 def mean(a):
@@ -83,15 +91,20 @@ def evaluate (model, X, y):
         get the coefficient of determination
     '''
     scoresr2 = cross_val_score(model, X, y, cv=5, scoring='r2')
-    print("R^2: %0.4f" % scoresr2.mean() )
-    return scoresr2.mean()
+    scoresnmae = cross_val_score(model, X, y, cv=5, scoring='neg_mean_absolute_error') # mean_absolute_error 
+    scoresnmse = cross_val_score(model, X, y, cv=5, scoring='neg_mean_squared_error') # mean_squared_error 	 
+
+    dictVal = { "R^2": round(scoresr2.mean(), 4), "MAE": -1 * round(scoresnmae.mean(), 4), "MSE": -1 * round(scoresnmse.mean(), 4) }
+    return dictVal
 
 
 def evalEnsembleModel (classifierlist, X, y, n_folds=5):
     '''
         get the R2 of an ensemble on cross validation
     '''
-    xOutput = []
+    R2Output = []
+    MAEOutput = []
+    MSEOutput = []
     skf = StratifiedKFold(n_splits=n_folds)
 
     nlen = ( len (X) // n_folds ) * n_folds
@@ -120,12 +133,20 @@ def evalEnsembleModel (classifierlist, X, y, n_folds=5):
         avgOutput = np.mean(output, axis=1)
 
         r2Val = r2_score(y_test, avgOutput)
-        xOutput.append (r2Val)
+        R2Output.append (r2Val)
 
-    result = sum (xOutput) / len (xOutput) 
+        maeVal = mean_absolute_error(y_test, avgOutput)
+        MAEOutput.append (maeVal)
 
-    print("R^2: %0.4f" % result )
-    return result
+        mseVal = mean_squared_error(y_test, avgOutput)
+        MSEOutput.append (mseVal)
+
+    resultR2 = sum (R2Output) / len (R2Output) 
+    resultMAE = sum (MAEOutput) / len (MAEOutput) 
+    resultMSE = sum (MSEOutput) / len (MSEOutput) 
+
+    dictVal = { "R^2": round (resultR2, 4), "MAE": round (resultMAE, 4), "MSE": round (resultMSE, 4) }
+    return dictVal
 
 
 
@@ -133,7 +154,10 @@ def crossValScore (cls, X, y, n_folds=5):
     '''
         get the R2 of an ensemble on cross validation
     '''
-    xOutput = []
+    R2Output = []
+    MAEOutput = []
+    MSEOutput = []
+
     skf = StratifiedKFold(n_splits=n_folds)
 
     nlen = ( len (X) // n_folds ) * n_folds
@@ -157,12 +181,20 @@ def crossValScore (cls, X, y, n_folds=5):
         y_pred = np.array (y_pred.T.tolist()[0] )
 
         r2Val = r2_score( y_test, y_pred )
-        xOutput.append (r2Val)
+        R2Output.append (r2Val)
 
-    result = sum (xOutput) / len (xOutput) 
+        maeVal = mean_absolute_error( y_test, y_pred )
+        MAEOutput.append (maeVal)
 
-    print("R^2: %0.4f" % result )
-    return result
+        mseVal = mean_squared_error( y_test, y_pred )
+        MSEOutput.append (mseVal)
+
+    resultR2 = sum (R2Output) / len (R2Output) 
+    resultMAE = sum (MAEOutput) / len (MAEOutput) 
+    resultMSE = sum (MSEOutput) / len (MSEOutput) 
+
+    dictVal = { "R^2": round (resultR2, 4), "MAE": round (resultMAE, 4), "MSE": round (resultMSE, 4) }
+    return dictVal
 
 
 
@@ -428,7 +460,7 @@ def modelValidation (clf, X, y ):
 
 
 
-def modelValidationCV (clf, X, y ):
+def modelValidationCV (clf, X, y, scale = 1.0  ):
     '''
         
         return list of area of the Cv, average x, y of REC curve
@@ -448,6 +480,11 @@ def modelValidationCV (clf, X, y ):
 
     xAvgList =  map(mean, zip(*xlistOfLists))
     yAvgList =  map(mean, zip(*ylistOfLists))
+
+    #apply the scaling on the y axis
+
+    yAvgList = [(x / scale) for x in yAvgList]
+
 
     aucValAvg = AUC( xAvgList, yAvgList )
     #Calculate the area over the curve
@@ -490,7 +527,11 @@ def modelNULLValidation (X, y ):
 
 
 def crossValNULLScore ( X, y, n_folds=5 ):
-    xOutput = []
+
+    R2Output = []
+    MAEOutput = []
+    MSEOutput = []
+
     skf = StratifiedKFold(n_splits=n_folds)
 
     nlen = ( len (X) // n_folds ) * n_folds
@@ -512,16 +553,25 @@ def crossValNULLScore ( X, y, n_folds=5 ):
         avg = np.average(y_train)
         y_pred = avg * np.ones( len( X_test ) )
 
+
         r2Val = r2_score(y_test, y_pred)
-        xOutput.append (r2Val)
+        R2Output.append (r2Val)
 
-    result = sum (xOutput) / len (xOutput) 
+        maeVal = mean_absolute_error(y_test, y_pred)
+        MAEOutput.append (maeVal)
 
-    print("R^2: %0.4f" % result )
-    return result
+        mseVal = mean_squared_error(y_test, y_pred)
+        MSEOutput.append (mseVal)
+
+    resultR2 = sum (R2Output) / len (R2Output) 
+    resultMAE = sum (MAEOutput) / len (MAEOutput) 
+    resultMSE = sum (MSEOutput) / len (MSEOutput) 
+
+    dictVal = { "R^2": round (resultR2, 4), "MAE": round (resultMAE, 4), "MSE": round (resultMSE, 4) }
+    return dictVal
 
 
-def drawRECCURVE ( recObjectList, rsquaredList, label  ):
+def drawRECCURVE ( recObjectList,  label  ):
     '''
         accepts list of REC Objects, list of rsquared
     '''
@@ -534,8 +584,7 @@ def drawRECCURVE ( recObjectList, rsquaredList, label  ):
         dfA['y'] = rec['yAvgList']
         dfA['group'] = [ind]*len( rec['yAvgList'] )
         area = "%.2f" % round( rec['avgArea'], 2 )
-        rsquared = "%.2f" % round( rsquaredList[ind], 2 )
-        #legend = clsLabel[ind] + "(AOC=" + area + ",R2=" + rsquared +")"
+
         legend = clsLabel[ind]
         dfA['Classifier'] = [legend]*len( rec['yAvgList'] )
         df = df.append(dfA, ignore_index=True)
@@ -548,7 +597,6 @@ def drawRECCURVE ( recObjectList, rsquaredList, label  ):
     nullModel = recObjectList[-1]
     xMax = nullModel['xAvgList'][-1]
 
-    #pVal =  p + geom_point() + geom_line() +  scale_y_continuous(limits=(0,1)) +  scale_x_continuous(limits=(0,xMax)) + ggtitle('REC curve comparing the models for label: (' +label +')') + xlab('Absolute deviation') + ylab('Accuracy')  
 
     pVal =  p + geom_line() +  scale_y_continuous(limits=(0,1)) +  scale_x_continuous(limits=(0,xMax)) + ggtitle('REC curve comparing the models for label: (' +label +')') + xlab('Absolute deviation') + ylab('Accuracy')  + theme_bw()
 
@@ -598,21 +646,27 @@ def drawTree (clf, X, y, filename):
 
 
 
-def drawParityChart ( xdata, ydata, label ):
+def drawParityChart ( xdata, ydata, label, scale = 1.0 ):
     '''
         plot parity chart
     '''
+
+    r2Val = r2_score(  xdata, ydata )
+    maeVal = mean_absolute_error(  xdata, ydata )
+
+    mseVal = mean_squared_error(  xdata, ydata )
+
+
     df = pd.DataFrame()
+    xdata = [(x / scale) for x in xdata]
+    ydata = [(x / scale) for x in ydata]
+
     df['x'] = xdata
     df['y'] = ydata
 
-    #pVal = ggplot(df, aes(x='x', y='y')) + geom_point() + ggtitle('Parity Chart: '+label) + xlab('Experimental Value') + ylab('Predicted Value') + geom_abline()
 
-    r2Val = r2_score(  xdata, ydata )
+    pVal = ggplot(df, aes(x='x', y='y')) + geom_point(color='blue') + ggtitle( 'Parity Chart: {0} | R^2: {1} | MAE: {2} | MSE: {3}'.format( label, round(r2Val, 3), round(maeVal, 3), round(mseVal, 3))  ) + xlab('Experimental Value') + ylab('Predicted Value')  + stat_smooth( se=False )  + theme_bw() + scale_x_continuous( limits=( min(xdata)- 0.000000005,max(xdata)+0.000000005 ) ) + scale_y_continuous( limits=(min(xdata)- 0.000000005, max(ydata)+0.000000005 ) )
 
-    pVal = ggplot(df, aes(x='x', y='y')) + geom_point(color='blue') + ggtitle('Parity Chart: '+label+' | ' +"R^2: %0.4f" % r2Val ) + xlab('Experimental Value') + ylab('Predicted Value')  + stat_smooth( se=False )  + theme_bw()
-
-    print("R^2: %0.4f" % r2Val )
 
 
     file_name = label.replace(" ", "_")
@@ -631,6 +685,7 @@ def unison_shuffled(a, b):
     return a[p], b[p]
 
 
+
 class AnfisClassifier:
     'ANFIS classifier'
 
@@ -644,8 +699,54 @@ class AnfisClassifier:
         self.mem = membership.membershipfunction
         self.pred = anfis.predict
 
+        self.type = 'gaussmf'
 
-    def fit(self, X, y, epochs=10):
+
+
+    def setType (self, type):
+        self.type = type
+
+
+    def parameters (self, X):
+        self.X = X
+
+
+
+    def fitbell(self, X, y, epochs=10):
+
+        mf = []
+
+
+        meanList = self.X.mean( axis=0 )
+        stdList = self.X.std(axis=0) 
+
+        minArr = np.amin( self.X, axis=0 )
+        maxArr  = np.amax( self.X, axis=0 )
+
+
+        for ind in range(len(meanList)):
+            #temp  = [['gbellmf',{'a': round(minArr[ind]),'b': round(meanList[ind]), 'c': round(maxArr[ind]) }]]
+
+            #temp  = [['sigmf',{'b': round(minArr[ind]), 'c': round(meanList[ind]) }]]
+
+            aVal = minArr[ind] + 0.2 * ( maxArr[ind] - minArr[ind] )
+            bVal = minArr[ind] + 0.4 * ( maxArr[ind] - minArr[ind] )
+            cVal = minArr[ind] + 0.6 * ( maxArr[ind] - minArr[ind] )
+
+            #temp  = [['sigmf',{'b': bVal, 'c': meanList[ind]  }]]
+            temp  = [['gbellmf',{'a': aVal,'b': bVal, 'c': cVal }]]
+            mf.append (temp)
+
+
+        #mfc = membership.membershipfunction.MemFuncs(mf)
+        mfc = self.mem.MemFuncs(mf)
+        #self.anf = anfis.ANFIS(X, y, mfc)
+        self.anf = self.anfis(X, y, mfc)
+        self.anf.trainHybridJangOffLine(epochs=epochs)
+
+
+
+    def fitgauss(self, X, y, epochs=10):
 
         mf = []
 
@@ -663,18 +764,55 @@ class AnfisClassifier:
         self.anf.trainHybridJangOffLine(epochs=epochs)
 
 
+    def fitsigmf(self, X, y, epochs=10):
+
+        mf = []
+
+
+        meanList = self.X.mean( axis=0 )
+        stdList = self.X.std(axis=0) 
+
+        minArr = np.amin( self.X, axis=0 )
+        maxArr  = np.amax( self.X, axis=0 )
+
+
+        for ind in range(len(meanList)):
+
+            bVal = minArr[ind] + 0.2 * ( maxArr[ind] - minArr[ind] )
+            cVal = minArr[ind] + 0.6 * ( maxArr[ind] - minArr[ind] )
+
+
+            temp  = [['sigmf',{'b': bVal, 'c': cVal }]]
+            mf.append (temp)
+
+
+        #mfc = membership.membershipfunction.MemFuncs(mf)
+        mfc = self.mem.MemFuncs(mf)
+        #self.anf = anfis.ANFIS(X, y, mfc)
+        self.anf = self.anfis(X, y, mfc)
+        self.anf.trainHybridJangOffLine(epochs=epochs)
+
+
+
+
+    def fit(self, X, y, epochs=10):
+
+        if self.type == 'gbellmf':
+            self.parameters (X )
+            self.fitbell( X, y, epochs )
+
+
+        if self.type == 'gaussmf':
+            self.fitgauss( X, y, epochs)
+
+
+        if self.type == 'sigmf':
+            self.parameters (X )
+            self.fitsigmf( X, y, epochs)
+
     def predict(self, X):
         #return anfis.predict( self.anf, X )
         return self.pred( self.anf, X )
-
-'''
-    How to use program
-
-    anfis = AnfisClassifier()
-    anfis.fit(X, y_sweetgasc1)
-    print anfis.predict(X)
-'''
-
 
 
 
@@ -689,16 +827,6 @@ if __name__ == "__main__":
     y_richaminehco3 = getLabelData (df, 'R Amine HCO3 (mol/L)')
     y_sweetgasmdeaflow = getLabelData (df, 'Sweet Gas MDEA Flow (t/d)')
     y_sweetgaspzflow = getLabelData (df, 'Sweet Gas PZ Flow (t/d)')
-
-
-    y_sweetgasco2Log = np.log ( y_sweetgasco2.ravel() )
-    y_sweetgasc1Log = np.log ( y_sweetgasc1.ravel() )
-    y_richaminehydroLog = np.log ( y_richaminehydro.ravel() )
-
-    y_richaminehco3Log = np.log ( y_richaminehco3.ravel() )
-    y_sweetgasmdeaflowLog = np.log ( y_sweetgasmdeaflow.ravel() )
-    y_sweetgaspzflowLog = np.log ( y_sweetgaspzflow.ravel() )
-
 
 
     y_sweetgasco2 = y_sweetgasco2.ravel() 
@@ -720,34 +848,35 @@ if __name__ == "__main__":
     cX = np.hstack((  X, mdea_pzratio ))
 
 
-    ntrainingSize = len ( cX ) - 300
+    ntrainingSize = int (0.7 * len ( cX )) # 70 - 30 split
 
     recListSweetGasCO2 = [] 
     recListSweetGasC1 = []
     recListRichAmineHydro  = []
     recListRichAmineHco3 = [] 
-    #recListSweetGasMdeaFlow = []
+    recListSweetGasMdeaFlow = []
     recListSweetGaspzFlow  = []
-
-
-    rsquaredSweetGasCO2 = [] 
-    rsquaredSweetGasC1 = [] 
-    rsquaredRichAmineHydro = [] 
-    rsquaredRichAmineHco3 = [] 
-    #rsquaredSweetGasMdeaFlow = []
-    rsquaredSweetGaspzFlow  = []
-
-
-    featureImpList = []
 
     #shuffling the data
     cX, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow  = unison_shuffled_copies(cX, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow )
 
 
+    #zero mean for ANFIS model
+    meanList = cX.mean(axis=0)
+    meanMatrixlist = []
+    for i in range(len(cX)):
+        mean_line = meanList.reshape(1,len(meanList))
+        meanMatrixlist.append(mean_line)
+
+    meanMatrix = np.vstack(meanMatrixlist)
+
+    zero_meanX = cX - meanMatrix
+
+
+
     #Regression Based Model
     #MARS
     model = Earth()
-    currentlist = []
     print "----------------------------------------------------------"
     print "----------------------------------------------------------"
     print "MARS Model"
@@ -756,7 +885,7 @@ if __name__ == "__main__":
 
     print "Evaluate performance of 'Sweet Gas CO2 (ppm)'"
     r2 = evaluate (model, cX, y_sweetgasco2)
-    rsquaredSweetGasCO2.append (r2)
+    print r2
 
     model = Earth()
 
@@ -773,21 +902,11 @@ if __name__ == "__main__":
 
     drawParityChart ( xdata, ydata, label )
 
-    #Relative importance of Variable
-    print "Relative importance of Variable"
-    #feature importance
-    print "feature importance of 'Sweet Gas CO2 (ppm)'"
-    imp1 = featureImportance(model, df, y_sweetgasco2)
-    currentlist.append (imp1)
-
-    print imp1 
-
-
 
     print "Evaluate performance of 'Sweet Gas C1 (ppm)'"
     model = Earth()
     r2 = evaluate (model, cX, y_sweetgasc1)
-    rsquaredSweetGasC1.append (r2)
+    print r2
 
     model = Earth()
     X,y = unison_shuffled(cX, y_sweetgasc1)
@@ -803,20 +922,11 @@ if __name__ == "__main__":
 
     drawParityChart ( xdata, ydata, label )
 
-    #Relative importance of Variable
-    print "Relative importance of Variable"
-    #feature importance
-    print "feature importance of 'Sweet Gas C1 (ppm)'"
-    imp1 = featureImportance(model, df, y_sweetgasc1)
-    currentlist.append (imp1)
-
-    print imp1 
-
 
     print "Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'"
     model = Earth()
     r2 = evaluate (model, cX, y_richaminehydro)
-    rsquaredRichAmineHydro.append (r2)
+    print r2
 
     model = Earth()
     X,y = unison_shuffled(cX, y_richaminehydro)
@@ -832,20 +942,12 @@ if __name__ == "__main__":
 
     drawParityChart ( xdata, ydata, label )
 
-    #Relative importance of Variable
-    print "Relative importance of Variable"
-    #feature importance
-    print "feature importance of 'Rich Amine Hydrocarbons (t/d)'"
-    imp1 = featureImportance(model, df, y_richaminehydro)
-    currentlist.append (imp1)
-
-    print imp1 
 
 
     print "Evaluate performance of 'R Amine HCO3 (mol/L)'"
     model = Earth()
     r2 = evaluate (model, cX, y_richaminehco3)
-    rsquaredRichAmineHco3.append (r2)
+    print r2
 
     model = Earth()
     X,y = unison_shuffled(cX, y_richaminehco3)
@@ -861,20 +963,11 @@ if __name__ == "__main__":
 
     drawParityChart ( xdata, ydata, label )
 
-    #Relative importance of Variable
-    print "Relative importance of Variable"
-    #feature importance
-    print "feature importance of 'R Amine HCO3 (mol/L)'"
-    imp1 = featureImportance(model, df, y_richaminehco3)
-    currentlist.append (imp1)
 
-    print imp1 
-
-    '''
     print "Evaluate performance of 'Sweet Gas MDEA Flow (t/d)'"
     model = Earth()
     r2 = evaluate (model, cX, y_sweetgasmdeaflow)
-    rsquaredSweetGasMdeaFlow.append (r2)
+    print r2
 
     model.fit( cX[range (ntrainingSize), :], y_sweetgasmdeaflow[:ntrainingSize] )
     print(model.summary())
@@ -883,17 +976,17 @@ if __name__ == "__main__":
     nxdata = cX[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist() 
-    ydata = y_sweetgasmdeaflowLog[ntrainingSize:]
+    ydata = y_sweetgasmdeaflow[ntrainingSize:]
     label="Sweet Gas MDEA Flow (MARS)"
 
     drawParityChart ( xdata, ydata, label )
-    '''
+
 
 
     print "Evaluate performance of 'Sweet Gas PZ Flow (t/d)'"
     model = Earth()
     r2 = evaluate (model, cX, y_sweetgaspzflow)
-    rsquaredSweetGaspzFlow.append (r2)
+    print r2
 
     model = Earth()
     X,y = unison_shuffled(cX, y_sweetgaspzflow)
@@ -909,16 +1002,6 @@ if __name__ == "__main__":
 
     drawParityChart ( xdata, ydata, label )
 
-    #Relative importance of Variable
-    print "Relative importance of Variable"
-    #feature importance
-    print "feature importance of 'Sweet Gas PZ Flow (t/d)'"
-    imp1 = featureImportance(model, df, y_sweetgaspzflow)
-    currentlist.append (imp1)
-
-    print imp1 
-
-    featureImpList.append ( currentlist )
 
 
     #REC and sensitivity analysis
@@ -952,14 +1035,14 @@ if __name__ == "__main__":
     #print cur
     recListRichAmineHco3.append ( cur )
 
-    '''
+
     model = Earth()
     #print "REC of Sweet Gas MDEA Flow (t/d)"
     cur = modelValidation (model, cX, y_sweetgasmdeaflow )
     print "AOC of 'Sweet Gas MDEA Flow (t/d)': " +str (cur["avgArea"])
     #print cur
     recListSweetGasMdeaFlow.append ( cur )
-    '''
+
 
 
     model = Earth()
@@ -988,25 +1071,15 @@ if __name__ == "__main__":
     clf2 = DecisionTreeRegressor(max_depth=15, random_state=10)
     clf3 = DecisionTreeRegressor(max_depth=15, random_state=10) #
     clf4 = DecisionTreeRegressor(max_depth=10, random_state=10) #
-    #clf5 = DecisionTreeRegressor(max_depth=0, random_state=10)
+    clf5 = DecisionTreeRegressor(max_depth=10, random_state=10)
     clf6 = DecisionTreeRegressor(max_depth=10, random_state=10) #
 
 
     print "Evaluate performance of 'Sweet Gas CO2 (ppm)'"
     print "----------------------------------------------------------"
-    currentlist = []
 
     r2 = evaluate (clf1, cX, y_sweetgasco2)
-    rsquaredSweetGasCO2.append (r2)
-
-    #Relative importance of Variable
-    print "Relative importance of Variable"
-    #feature importance
-    print "feature importance of 'Sweet Gas CO2 (ppm)'"
-    imp1 = featureImportance(clf1, df, y_sweetgasco2)
-    currentlist.append (imp1)
-
-    print imp1 
+    print r2
 
 
     clf1 = DecisionTreeRegressor(max_depth=15, random_state=10)
@@ -1035,16 +1108,8 @@ if __name__ == "__main__":
     print "----------------------------------------------------------"
 
     r2 = evaluate (clf2, cX, y_sweetgasc1)
-    rsquaredSweetGasC1.append (r2)
+    print r2
 
-    #Relative importance of Variable
-    print "Relative importance of Variable"
-    #feature importance
-    print "feature importance of 'Sweet Gas C1 (ppm)'"
-    imp1 = featureImportance(clf2, df, y_sweetgasc1)
-    currentlist.append (imp1)
-
-    print imp1 
 
     clf2 = DecisionTreeRegressor(max_depth=15, random_state=10)
     X,y = unison_shuffled(cX, y_sweetgasc1)
@@ -1070,16 +1135,8 @@ if __name__ == "__main__":
     print "----------------------------------------------------------"
 
     r2 = evaluate (clf3, cX, y_richaminehydro)
-    rsquaredRichAmineHydro.append (r2)
+    print r2
 
-    #Relative importance of Variable
-    print "Relative importance of Variable"
-    #feature importance
-    print "feature importance of 'Rich Amine Hydrocarbons (t/d)'"
-    imp1 = featureImportance(clf3, df, y_richaminehydro)
-    currentlist.append (imp1)
-
-    print imp1 
 
     clf3 = DecisionTreeRegressor(max_depth=15, random_state=10) #
     X,y = unison_shuffled(cX, y_richaminehydro)
@@ -1105,16 +1162,8 @@ if __name__ == "__main__":
     print "----------------------------------------------------------"
 
     r2 = evaluate (clf4, cX, y_richaminehco3)
-    rsquaredRichAmineHco3.append (r2)
+    print r2
 
-    #Relative importance of Variable
-    print "Relative importance of Variable"
-    #feature importance
-    print "feature importance of 'R Amine HCO3 (mol/L)'"
-    imp1 = featureImportance(clf4, df, y_richaminehco3)
-    currentlist.append (imp1)
-
-    print imp1 
 
     clf4 = DecisionTreeRegressor(max_depth=10, random_state=10)
     X,y = unison_shuffled(cX, y_richaminehco3)
@@ -1135,24 +1184,21 @@ if __name__ == "__main__":
 
     drawParityChart ( xdata, ydata, label )
 
-    '''
+
     print "----------------------------------------------------------"
     print "Evaluate performance of 'Sweet Gas MDEA Flow (t/d)'"
     print "----------------------------------------------------------"
 
     r2 = evaluate (clf5, cX, y_sweetgasmdeaflow)
-    rsquaredSweetGasMdeaFlow.append (r2)
+    print r2
 
-    #Relative importance of Variable
-    print "Relative importance of Variable"
-    #feature importance
-    print "feature importance of 'Sweet Gas MDEA Flow (t/d)'"
-    imp1 = featureImportance(clf5, df, y_sweetgasmdeaflow)
-    currentlist.append (imp1)
-
-    print imp1 
 
     clf5.fit( cX[range (ntrainingSize), :], y_sweetgasmdeaflow[:ntrainingSize])
+
+    #draw a tree
+    filename = "DecisionTreeRegressor_Sweet_Gas_MDEA_Flow"
+
+    drawTree (clf5, X[range (ntrainingSize), :], y[:ntrainingSize], filename)
 
     #plot parity chart here
     nxdata = cX[range (ntrainingSize, len(X)), :]
@@ -1162,7 +1208,7 @@ if __name__ == "__main__":
     label="Sweet Gas MDEA Flow (Tree)"
 
     drawParityChart ( xdata, ydata, label )
-    '''
+
 
 
     print "----------------------------------------------------------"
@@ -1170,16 +1216,8 @@ if __name__ == "__main__":
     print "----------------------------------------------------------"
 
     r2 = evaluate (clf6, cX, y_sweetgaspzflow)
-    rsquaredSweetGaspzFlow.append (r2)
+    print r2
 
-    #Relative importance of Variable
-    print "Relative importance of Variable"
-    #feature importance
-    print "feature importance of 'Sweet Gas PZ Flow (t/d)'"
-    imp1 = featureImportance(clf6, df, y_sweetgaspzflow)
-    currentlist.append (imp1)
-
-    print imp1 
 
     clf6 = DecisionTreeRegressor(max_depth=10, random_state=10)
     X,y = unison_shuffled(cX, y_sweetgaspzflow)
@@ -1195,13 +1233,9 @@ if __name__ == "__main__":
     xdata = clf6.predict(nxdata)
     xdata = xdata.T.tolist() 
     ydata = y[ntrainingSize:]
-    label="Sweet Gas MDEA Flow (Tree)"
+    label="Sweet Gas PZ Flow (Tree)"
 
     drawParityChart ( xdata, ydata, label )
-
-
-
-    featureImpList.append ( currentlist )
 
 
 
@@ -1231,13 +1265,13 @@ if __name__ == "__main__":
     #print cur
     recListRichAmineHco3.append ( cur )
 
-    '''
+
     #print "REC of Sweet Gas MDEA Flow (t/d)"
     cur = modelValidation (clf5, cX, y_sweetgasmdeaflow )
     print "AOC of 'Sweet Gas MDEA Flow (t/d)': " +str (cur["avgArea"])
     #print cur
     recListSweetGasMdeaFlow.append ( cur )
-    '''
+
 
 
     #print "REC of Sweet Gas PZ Flow (t/d)'"
@@ -1261,26 +1295,18 @@ if __name__ == "__main__":
 
     #Anfis Model
     model = AnfisClassifier()
+    model.setType ('gaussmf')
 
     print "Evaluate performance of 'Sweet Gas CO2 (ppm)'"
     print "----------------------------------------------------------"
-    currentlist = []
 
-    r2 = crossValScore (model, cX, y_sweetgasco2)
-    print "AVG R^2: " + str (r2)
-    rsquaredSweetGasCO2.append (r2)
+    r2 = crossValScore (model, zero_meanX, y_sweetgasco2)
+    print r2
 
-    #Relative importance of Variable
-    print "Relative importance of Variable"
-    #feature importance
-    print "feature importance of 'Sweet Gas CO2 (ppm)'"
-    imp1 = featureImportanceCV(model, df, y_sweetgasco2)
-    currentlist.append (imp1)
-
-    print imp1 
 
     model = AnfisClassifier()
-    X,y = unison_shuffled(cX, y_sweetgasco2)
+    model.setType ('gaussmf')
+    X,y = unison_shuffled(zero_meanX, y_sweetgasco2)
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
     #plot parity chart here
@@ -1298,21 +1324,14 @@ if __name__ == "__main__":
     print "Evaluate performance of 'Sweet Gas C1 (ppm)'"
     print "----------------------------------------------------------"
     model = AnfisClassifier()
-    r2 = crossValScore (model, cX, y_sweetgasc1)
-    print "AVG R^2: " + str (r2)
-    rsquaredSweetGasC1.append (r2)
+    model.setType ('gaussmf')
+    r2 = crossValScore (model, zero_meanX, y_sweetgasc1)
+    print r2
 
-    #Relative importance of Variable
-    print "Relative importance of Variable"
-    #feature importance
-    print "feature importance of 'Sweet Gas C1 (ppm)'"
-    imp1 = featureImportanceCV(model, df, y_sweetgasc1)
-    currentlist.append (imp1)
-
-    print imp1 
 
     model = AnfisClassifier()
-    X,y = unison_shuffled(cX, y_sweetgasc1)
+    model.setType ('gaussmf')
+    X,y = unison_shuffled(zero_meanX, y_sweetgasc1)
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
     #plot parity chart here
@@ -1328,22 +1347,14 @@ if __name__ == "__main__":
     print "Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'"
     print "----------------------------------------------------------"
     model = AnfisClassifier()
-    r2 = crossValScore (model, cX, y_richaminehydro)
-    print "AVG R^2: " + str (r2)
-    rsquaredRichAmineHydro.append (r2)
-
-    #Relative importance of Variable
-    print "Relative importance of Variable"
-    #feature importance
-    print "feature importance of 'Rich Amine Hydrocarbons (t/d)'"
-    imp1 = featureImportanceCV(model, df, y_richaminehydro)
-    currentlist.append (imp1)
-
-    print imp1 
+    model.setType ('gaussmf')
+    r2 = crossValScore (model, zero_meanX, y_richaminehydro)
+    print r2
 
 
     model = AnfisClassifier()
-    X,y = unison_shuffled(cX, y_richaminehydro)
+    model.setType ('gaussmf')
+    X,y = unison_shuffled(zero_meanX, y_richaminehydro)
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
     #plot parity chart here
@@ -1359,22 +1370,14 @@ if __name__ == "__main__":
     print "Evaluate performance of 'R Amine HCO3 (mol/L)'"
     print "----------------------------------------------------------"
     model = AnfisClassifier()
-    r2 = crossValScore (model, cX, y_richaminehco3)
-    print "AVG R^2: " + str (r2)
-    rsquaredRichAmineHco3.append (r2)
-
-    #Relative importance of Variable
-    print "Relative importance of Variable"
-    #feature importance
-    print "feature importance of 'R Amine HCO3 (mol/L)'"
-    imp1 = featureImportanceCV(model, df, y_richaminehco3)
-    currentlist.append (imp1)
-
-    print imp1 
+    model.setType ('gaussmf')
+    r2 = crossValScore (model, zero_meanX, y_richaminehco3)
+    print r2
 
 
     model = AnfisClassifier()
-    X,y = unison_shuffled(cX, y_richaminehco3)
+    model.setType ('gaussmf')
+    X,y = unison_shuffled(zero_meanX, y_richaminehco3)
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
     #plot parity chart here
@@ -1386,58 +1389,45 @@ if __name__ == "__main__":
 
     drawParityChart ( xdata, ydata, label )
 
-    '''
+
     print "----------------------------------------------------------"
     print "Evaluate performance of 'Sweet Gas MDEA Flow (t/d)'"
     print "----------------------------------------------------------"
     print y_sweetgasmdeaflow
     model = AnfisClassifier()
-    r2 = crossValScore (model, cX, y_sweetgasmdeaflow)
-    print "AVG R^2: " + str (r2)
-    rsquaredSweetGasMdeaFlow.append (r2)
+    model.setType ('gaussmf')
 
-    #Relative importance of Variable
-    print "Relative importance of Variable"
-    #feature importance
-    print "feature importance of 'Sweet Gas MDEA Flow (t/d)'"
-    imp1 = featureImportanceCV(model, df, y_sweetgasmdeaflow)
-    currentlist.append (imp1)
+    scaleVal = 1000000000000.0
+    r2 = crossValScore (model, zero_meanX, scaleVal * y_sweetgasmdeaflow)
+    print r2
 
-    print imp1 
-
-    model.fit( cX[range (ntrainingSize), :], y_sweetgasmdeaflow[:ntrainingSize])
+    X,y = unison_shuffled(zero_meanX, y_sweetgasmdeaflow)
+    model.fit( X[range (ntrainingSize), :], scaleVal * y[:ntrainingSize])
 
     #plot parity chart here
-    nxdata = cX[range (ntrainingSize, len(X)), :]
+    nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()[0]
-    ydata = y_sweetgasmdeaflow[ntrainingSize:]
+    ydata = scaleVal * y_sweetgasmdeaflow[ntrainingSize:]
     label="Sweet Gas MDEA Flow (ANFIS)"
 
-    drawParityChart ( xdata, ydata, label )
-    '''
+    drawParityChart ( xdata, ydata, label, scale = scaleVal )
+
 
 
     print "----------------------------------------------------------"
     print "Evaluate performance of 'Sweet Gas PZ Flow (t/d)'"
     print "----------------------------------------------------------"
     model = AnfisClassifier()
-    r2 = crossValScore (model, cX, y_sweetgaspzflow)
-    print "AVG R^2: " + str (r2)
-    rsquaredSweetGaspzFlow.append (r2)
+    model.setType ('gaussmf')
+    r2 = crossValScore (model, zero_meanX, y_sweetgaspzflow)
+    print r2
 
-    #Relative importance of Variable
-    print "Relative importance of Variable"
-    #feature importance
-    print "feature importance of 'Sweet Gas PZ Flow (t/d)'"
-    imp1 = featureImportanceCV(model, df, y_sweetgaspzflow)
-    currentlist.append (imp1)
-
-    print imp1 
 
 
     model = AnfisClassifier()
-    X,y = unison_shuffled(cX, y_sweetgaspzflow)
+    model.setType ('gaussmf')
+    X,y = unison_shuffled(zero_meanX, y_sweetgaspzflow)
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
     #plot parity chart here
@@ -1449,51 +1439,56 @@ if __name__ == "__main__":
 
     drawParityChart ( xdata, ydata, label )
 
-    featureImpList.append ( currentlist )
-
 
     #REC and sensitivity analysis
 
     #print "REC of 'Sweet Gas CO2 (ppm)'"
     model = AnfisClassifier()
-    cur = modelValidationCV (model,  cX, y_sweetgasco2)
+    model.setType ('gaussmf')
+    cur = modelValidationCV (model,  zero_meanX, y_sweetgasco2)
     print "AOC of 'Sweet Gas CO2 (ppm)': " +str (cur["avgArea"])
     #print cur
     recListSweetGasCO2.append ( cur )
 
     #print "REC of 'Sweet Gas C1 (ppm)'"
     model = AnfisClassifier()
-    cur = modelValidationCV (model, cX, y_sweetgasc1 )
+    model.setType ('gaussmf')
+    cur = modelValidationCV (model, zero_meanX, y_sweetgasc1 )
     print "AOC of 'Sweet Gas C1 (ppm)': " +str (cur["avgArea"])
     #print cur
     recListSweetGasC1.append ( cur )
 
     #print "REC of 'Rich Amine Hydrocarbons (t/d)'"
     model = AnfisClassifier()
-    cur = modelValidationCV (model, cX, y_richaminehydro )
+    model.setType ('gaussmf')
+    cur = modelValidationCV (model, zero_meanX, y_richaminehydro )
     print "AOC of 'Rich Amine Hydrocarbons (t/d)': " +str (cur["avgArea"])
     #print cur
     recListRichAmineHydro.append ( cur )
 
     #print "REC of 'R Amine HCO3 (mol/L)'"
     model = AnfisClassifier()
-    cur = modelValidationCV (model, cX, y_richaminehco3)
+    model.setType ('gaussmf')
+    cur = modelValidationCV (model, zero_meanX, y_richaminehco3)
     print "AOC of 'R Amine HCO3 (mol/L)': " +str (cur["avgArea"])
     recListRichAmineHco3.append ( cur )
 
-    '''
+
     #print "REC of Sweet Gas MDEA Flow (t/d)"
+    scaleVal = 1000000000000.0
     model = AnfisClassifier()
-    cur = modelValidationCV (model, cX, y_sweetgasmdeaflow )
+    model.setType ('gaussmf')
+    cur = modelValidationCV (model, zero_meanX, scaleVal * y_sweetgasmdeaflow, scale = scaleVal )
     print "AOC of 'Sweet Gas MDEA Flow (t/d)': " +str (cur["avgArea"])
     #print cur
     recListSweetGasMdeaFlow.append ( cur )
-    '''
+
     
 
     #print "REC of Sweet Gas PZ Flow (t/d)'"
     model = AnfisClassifier()
-    cur = modelValidationCV (model, cX, y_sweetgaspzflow )
+    model.setType ('gaussmf')
+    cur = modelValidationCV (model, zero_meanX, y_sweetgaspzflow )
     print "AOC of 'Sweet Gas PZ Flow (t/d)': " +str (cur["avgArea"])
     #print cur
     recListSweetGaspzFlow.append ( cur )
@@ -1517,7 +1512,7 @@ if __name__ == "__main__":
 
 
     r2 = crossValNULLScore ( cX, y_sweetgasco2)
-    rsquaredSweetGasCO2.append (r2)
+    print r2
 
 
     print "----------------------------------------------------------"
@@ -1525,30 +1520,30 @@ if __name__ == "__main__":
     print "----------------------------------------------------------"
 
     r2 = crossValNULLScore ( cX, y_sweetgasc1)
-    rsquaredSweetGasC1.append (r2)
+    print r2
 
     print "----------------------------------------------------------"
     print "Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'"
     print "----------------------------------------------------------"
 
     r2 = crossValNULLScore ( cX, y_richaminehydro)
-    rsquaredRichAmineHydro.append (r2)
+    print r2
 
     print "----------------------------------------------------------"
     print "Evaluate performance of 'R Amine HCO3 (mol/L)'"
     print "----------------------------------------------------------"
 
     r2 = crossValNULLScore ( cX, y_richaminehco3)
-    rsquaredRichAmineHco3.append (r2)
+    print r2
 
     print "----------------------------------------------------------"
     print "Evaluate performance of 'Sweet Gas MDEA Flow (t/d)'"
     print "----------------------------------------------------------"
 
-    '''
+
     r2 = crossValNULLScore ( cX, y_sweetgasmdeaflow)
-    rsquaredSweetGasMdeaFlow.append (r2)
-    '''
+    print r2
+
 
 
     print "----------------------------------------------------------"
@@ -1556,7 +1551,7 @@ if __name__ == "__main__":
     print "----------------------------------------------------------"
 
     r2 = crossValNULLScore ( cX, y_sweetgaspzflow)
-    rsquaredSweetGaspzFlow.append (r2)
+    print r2
 
     #REC and sensitivity analysis
 
@@ -1583,13 +1578,13 @@ if __name__ == "__main__":
     print "AOC of 'R Amine HCO3 (mol/L)': " +str (cur["avgArea"])
     recListRichAmineHco3.append ( cur )
 
-    '''
+
     #print "REC of Sweet Gas MDEA Flow (t/d)"
     cur = modelNULLValidation ( cX, y_sweetgasmdeaflow )
     print "AOC of 'Sweet Gas MDEA Flow (t/d)': " +str (cur["avgArea"])
     #print cur
     recListSweetGasMdeaFlow.append ( cur )
-    '''
+ 
 
 
     #print "REC of Sweet Gas PZ Flow (t/d)'"
@@ -1601,17 +1596,14 @@ if __name__ == "__main__":
 
     #plot the REC curve
 
-    drawRECCURVE ( recListSweetGasCO2, rsquaredSweetGasCO2, 'Sweet Gas CO2'  )
-    drawRECCURVE ( recListSweetGasC1, rsquaredSweetGasC1, 'Sweet Gas C1 ' )
-    drawRECCURVE ( recListRichAmineHydro, rsquaredRichAmineHydro, 'Rich Amine Hydrocarbons' )
-    drawRECCURVE ( recListRichAmineHco3, rsquaredRichAmineHco3, 'R Amine HCO3'  )
-    #drawRECCURVE ( recListSweetGasMdeaFlow, rsquaredSweetGasMdeaFlow, 'Sweet Gas MDEA Flow' )
-    drawRECCURVE ( recListSweetGaspzFlow, rsquaredSweetGaspzFlow, 'Sweet Gas PZ Flow' )
+    drawRECCURVE ( recListSweetGasCO2,  'Sweet Gas CO2'  )
+    drawRECCURVE ( recListSweetGasC1,  'Sweet Gas C1 ' )
+    drawRECCURVE ( recListRichAmineHydro,  'Rich Amine Hydrocarbons' )
+    drawRECCURVE ( recListRichAmineHco3,  'R Amine HCO3'  )
+    drawRECCURVE ( recListSweetGasMdeaFlow,  'Sweet Gas MDEA Flow' )
+    drawRECCURVE ( recListSweetGaspzFlow, 'Sweet Gas PZ Flow' )
 
 
-    #plot variable importance using histogram
-
-    drawFeatureImportance ( featureImpList)
 
 
 
