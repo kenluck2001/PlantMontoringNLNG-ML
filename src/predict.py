@@ -150,7 +150,7 @@ def evalEnsembleModel (classifierlist, X, y, n_folds=5):
 
 
 
-def crossValScore (cls, X, y, n_folds=5):
+def crossValScore (cls, X, y, n_folds=5, scale = 1.0):
     '''
         get the R2 of an ensemble on cross validation
     '''
@@ -193,7 +193,7 @@ def crossValScore (cls, X, y, n_folds=5):
     resultMAE = sum (MAEOutput) / len (MAEOutput) 
     resultMSE = sum (MSEOutput) / len (MSEOutput) 
 
-    dictVal = { "R^2": round (resultR2, 4), "MAE": round (resultMAE, 4), "MSE": round (resultMSE, 4) }
+    dictVal = { "R^2": round (resultR2, 4), "MAE": round ( (resultMAE / scale), 4 ), "MSE": round ( (resultMSE / scale**2), 4) }
     return dictVal
 
 
@@ -466,10 +466,13 @@ def modelValidationCV (clf, X, y, scale = 1.0  ):
         return list of area of the Cv, average x, y of REC curve
     '''
     dictVal = crossValRECCV(clf, X, y )
-    xlistOfLists =  dictVal["x"]
+    xlistOfLists =  dictVal["x"] # absolute error
+
+
     ylistOfLists =  dictVal["y"]
     areaList = []
     for xlist, ylist in zip (xlistOfLists, ylistOfLists):
+        xlist = [(x / scale) for x in xlist] #scale the error
         aucVal = AUC( xlist, ylist )
         #Calculate the area over the curve
         xlistSort = sorted (xlist)
@@ -483,7 +486,7 @@ def modelValidationCV (clf, X, y, scale = 1.0  ):
 
     #apply the scaling on the y axis
 
-    yAvgList = [(x / scale) for x in yAvgList]
+    #yAvgList = [(x / scale) for x in yAvgList]
 
 
     aucValAvg = AUC( xAvgList, yAvgList )
@@ -653,9 +656,10 @@ def drawParityChart ( xdata, ydata, label, scale = 1.0 ):
 
     r2Val = r2_score(  xdata, ydata )
     maeVal = mean_absolute_error(  xdata, ydata )
+    maeVal = maeVal / scale
 
     mseVal = mean_squared_error(  xdata, ydata )
-
+    mseVal = mseVal / scale**2
 
     df = pd.DataFrame()
     xdata = [(x / scale) for x in xdata]
@@ -1398,20 +1402,27 @@ if __name__ == "__main__":
     model.setType ('gaussmf')
 
     scaleVal = 1000000000000.0
-    r2 = crossValScore (model, zero_meanX, scaleVal * y_sweetgasmdeaflow)
+    r2 = crossValScore (model, zero_meanX, scaleVal * y_sweetgasmdeaflow, scale = scaleVal)
     print r2
 
-    X,y = unison_shuffled(zero_meanX, y_sweetgasmdeaflow)
-    model.fit( X[range (ntrainingSize), :], scaleVal * y[:ntrainingSize])
+
+    model = AnfisClassifier()
+    model.setType ('gaussmf')
+    X,y = unison_shuffled(zero_meanX, scaleVal * y_sweetgasmdeaflow)
+    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
     #plot parity chart here
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()[0]
-    ydata = scaleVal * y_sweetgasmdeaflow[ntrainingSize:]
+    ydata = y[ntrainingSize:]
+
     label="Sweet Gas MDEA Flow (ANFIS)"
 
     drawParityChart ( xdata, ydata, label, scale = scaleVal )
+
+
+
 
 
 
