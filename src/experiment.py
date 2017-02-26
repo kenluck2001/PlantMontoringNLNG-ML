@@ -37,7 +37,8 @@ See paper below
 Model comparison is done using Regression Error Characteristics Curves as described in Jinbo Bi, Kristin Bennett. Regression error characteristic curves. In Proceedings of the 20th international conference on machine learning, pages 43--50, 2003.
 '''
 
-df = pd.read_csv('data/data.csv')
+df = pd.read_csv('data/data1.csv')
+df2 = pd.read_csv('data/data2.csv')
 
 
 predictorLabel = df.columns[:-8].tolist()
@@ -93,11 +94,11 @@ def evaluate (model, X, y):
 
 
 
-def getHeightOfDecisionTreeRegressor(X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow):
+def getHeightOfDecisionTreeRegressor(X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow, y_rAmineloading , y_lAmineloading):
     "return optimal height"
 
-    rsquaredList = [0]*6
-    heighList = [0]*6
+    rsquaredList = [0]*8
+    heighList = [0]*8
     for maxind in range (5, 100, 5):
         clf = DecisionTreeRegressor(max_depth=maxind, random_state=10)
 
@@ -131,15 +132,25 @@ def getHeightOfDecisionTreeRegressor(X, y_sweetgasco2, y_sweetgasc1, y_richamine
             heighList[5] = maxind
             rsquaredList[5] = r2
 
+        r2 = evaluate (clf, X, y_rAmineloading )
+        if rsquaredList[6] < r2:
+            heighList[6] = maxind
+            rsquaredList[6] = r2
+
+        r2 = evaluate (clf, X, y_lAmineloading)
+        if rsquaredList[7] < r2:
+            heighList[7] = maxind
+            rsquaredList[7] = r2
+
     return     rsquaredList, heighList
 
 
-def getHeightOfRandomForestRegressor(X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow):
+def getHeightOfRandomForestRegressor(X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow, y_rAmineloading , y_lAmineloading):
     "return optimal height"
 
-    rsquaredList = [0]*6
-    heighList = [0]*6
-    estimatList = [0]*6
+    rsquaredList = [0]*8
+    heighList = [0]*8
+    estimatList = [0]*8
     for nestimator in range (30, 500, 30):
         for maxind in range (5, 100, 5):
             clf = RandomForestRegressor(max_depth=maxind, n_estimators=nestimator, random_state=10)
@@ -180,15 +191,27 @@ def getHeightOfRandomForestRegressor(X, y_sweetgasco2, y_sweetgasc1, y_richamine
                 estimatList[5] = nestimator
                 rsquaredList[5] = r2
 
+            r2 = evaluate (clf, X, y_rAmineloading )
+            if rsquaredList[6] < r2:
+                heighList[6] = maxind
+                estimatList[6] = nestimator
+                rsquaredList[6] = r2
+
+            r2 = evaluate (clf, X, y_lAmineloading)
+            if rsquaredList[7] < r2:
+                heighList[7] = maxind
+                estimatList[7] = nestimator
+                rsquaredList[7] = r2
+
     return     rsquaredList, heighList, estimatList 
 
 
-def getHeightOfExtraTreesRegressor(X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow):
+def getHeightOfExtraTreesRegressor(X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow, y_rAmineloading , y_lAmineloading):
     "return optimal height"
 
-    rsquaredList = [0]*6
-    heighList = [0]*6
-    estimatList = [0]*6
+    rsquaredList = [0]*8
+    heighList = [0]*8
+    estimatList = [0]*8
     for nestimator in range (30, 500, 30):
         for maxind in range (5, 100, 5):
             clf = ExtraTreesRegressor(max_depth=maxind, n_estimators=nestimator, random_state=10)
@@ -229,12 +252,24 @@ def getHeightOfExtraTreesRegressor(X, y_sweetgasco2, y_sweetgasc1, y_richaminehy
                 estimatList[5] = nestimator
                 rsquaredList[5] = r2
 
+            r2 = evaluate (clf, X, y_rAmineloading )
+            if rsquaredList[6] < r2:
+                heighList[6] = maxind
+                estimatList[6] = nestimator
+                rsquaredList[6] = r2
+
+            r2 = evaluate (clf, X, y_lAmineloading)
+            if rsquaredList[7] < r2:
+                heighList[7] = maxind
+                estimatList[7] = nestimator
+                rsquaredList[7] = r2
+
     return     rsquaredList, heighList, estimatList 
 
 
-def unison_shuffled_copies(a, b, c, d, e, f, g):
+def unison_shuffled_copies(a, b, c, d, e, f, g, h, i ):
     p = np.random.permutation(len(a))
-    return a[p], b[p], c[p], d[p], e[p], f[p], g[p]
+    return a[p], b[p], c[p], d[p], e[p], f[p], g[p], h[p], i[p]
 
 if __name__ == "__main__":
 
@@ -249,6 +284,11 @@ if __name__ == "__main__":
     y_sweetgaspzflow = getLabelData (df, 'Sweet Gas PZ Flow (t/d)')
 
 
+    y_rAmineloading = getLabelData (df2, 'R Amine Loading')
+    y_lAmineloading = getLabelData (df2, 'L Amine Loading')
+
+
+
     y_sweetgasco2 = y_sweetgasco2.ravel() 
     y_sweetgasc1 = y_sweetgasc1.ravel() 
     y_richaminehydro = y_richaminehydro.ravel() 
@@ -256,6 +296,9 @@ if __name__ == "__main__":
     y_richaminehco3 = y_richaminehco3.ravel() 
     y_sweetgasmdeaflow = y_sweetgasmdeaflow.ravel() 
     y_sweetgaspzflow = y_sweetgaspzflow.ravel()
+
+    y_rAmineloading = y_rAmineloading.ravel()
+    y_lAmineloading = y_rAmineloading.ravel()
 
     mdeaCol = X [:,[4]]
     pzCol = X [:,[5]]
@@ -266,16 +309,18 @@ if __name__ == "__main__":
     X = np.hstack((  X, mdea_pzratio ))
 
     #shuffling the data
-    X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow  = unison_shuffled_copies(X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow )
+    X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow, y_rAmineloading , y_lAmineloading  = unison_shuffled_copies(X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow, y_rAmineloading , y_lAmineloading )
+
+     
 
     print "Decision Tree"
-    print getHeightOfDecisionTreeRegressor(X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow)
+    print getHeightOfDecisionTreeRegressor(X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow, y_rAmineloading , y_lAmineloading)
 
     print "Random Forest Tree"
-    print getHeightOfRandomForestRegressor(X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow)
+    print getHeightOfRandomForestRegressor(X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow, y_rAmineloading , y_lAmineloading)
 
     print "Extra Tree"
-    print getHeightOfExtraTreesRegressor(X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow)
+    print getHeightOfExtraTreesRegressor(X, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow, y_rAmineloading , y_lAmineloading)
 
 
 

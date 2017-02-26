@@ -32,7 +32,9 @@ See paper below
 Model comparison is done using Regression Error Characteristics Curves as described in Jinbo Bi, Kristin Bennett. Regression error characteristic curves. In Proceedings of the 20th international conference on machine learning, pages 43--50, 2003.
 '''
 
-df = pd.read_csv('data/data.csv')
+df = pd.read_csv('data/data1.csv')
+
+df2 = pd.read_csv('data/data2.csv')
 
 
 predictorLabel = df.columns[:-8].tolist()
@@ -48,12 +50,13 @@ predictorLabel = df.columns[:-8].tolist()
 print "List of Attributes"
 print predictorLabel
 
-
 print 'Evaluation metrics'
 print '-------------------------------'
 print 'R^2: Coefficient of Determination'
 print 'MAE: Mean Absolute Error'
-print 'MSE: Mean Squared Error '
+print 'MSE: Mean Squared Error'
+print '%AARD: % Average Absolute Relative Deviation'
+
 
 
 def mean(a):
@@ -86,15 +89,69 @@ def getLabelData (df, label):
     return y
 
 
-def evaluate (model, X, y):
-    '''
-        get the coefficient of determination
-    '''
-    scoresr2 = cross_val_score(model, X, y, cv=5, scoring='r2')
-    scoresnmae = cross_val_score(model, X, y, cv=5, scoring='neg_mean_absolute_error') # mean_absolute_error 
-    scoresnmse = cross_val_score(model, X, y, cv=5, scoring='neg_mean_squared_error') # mean_squared_error 	 
+def getAARD ( y_test, y_pred ):
+    """
+        Both input are numpy array
+    """
+    diff =  np.fabs ( y_test - y_pred) / y_test 
+    result = ( 100.0 / len(y_test) ) *  np.sum (diff)
+    return result
 
-    dictVal = { "R^2": round(scoresr2.mean(), 4), "MAE": -1 * round(scoresnmae.mean(), 4), "MSE": -1 * round(scoresnmse.mean(), 4) }
+
+
+def evaluate (model, X, y, n_folds=5, scale = 1.0):
+    '''
+        get the R2 of an ensemble on cross validation
+    '''
+    R2Output = []
+    MAEOutput = []
+    MSEOutput = []
+    AARDOutput = []
+
+    skf = StratifiedKFold(n_splits=n_folds)
+
+    nlen = ( len (X) // n_folds ) * n_folds
+
+    X = X[:nlen]
+    y = y[:nlen]
+
+    sX = np.ones( nlen )
+    sy = np.ones( nlen )
+    skf = StratifiedKFold(n_splits=n_folds)
+
+    for train, test in skf.split(sX, sy) :
+        X_train = np.array([X[index] for index in list (train)])
+        X_test = np.array([X[index] for index in list (test)])
+        y_train = np.array([y[index] for index in list (train)])
+        y_test = np.array([y[index] for index in list (test)])
+
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_test)
+
+
+        y_pred = y_pred.reshape ((len(X_test),1))
+        y_test = y_test.reshape ((len(X_test),1))
+
+
+        r2Val = r2_score( y_test, y_pred )
+        R2Output.append (r2Val)
+
+        maeVal = mean_absolute_error( y_test, y_pred )
+        MAEOutput.append (maeVal)
+
+        mseVal = mean_squared_error( y_test, y_pred )
+        MSEOutput.append (mseVal)
+
+        aardVal = getAARD ( y_test, y_pred )
+        AARDOutput.append (aardVal)
+
+    resultR2 = sum (R2Output) / len (R2Output) 
+    resultMAE = sum (MAEOutput) / len (MAEOutput) 
+    resultMSE = sum (MSEOutput) / len (MSEOutput) 
+    resultAARD = sum (AARDOutput) / len (AARDOutput) 
+
+    dictVal = { "R^2": round (resultR2, 4), "MAE": round ( (resultMAE / scale), 4 ), "MSE": round ( (resultMSE / scale**2), 4), "AARD": round (resultAARD, 4) }
+
     return dictVal
 
 
@@ -105,6 +162,8 @@ def evalEnsembleModel (classifierlist, X, y, n_folds=5):
     R2Output = []
     MAEOutput = []
     MSEOutput = []
+    AARDOutput = []
+
     skf = StratifiedKFold(n_splits=n_folds)
 
     nlen = ( len (X) // n_folds ) * n_folds
@@ -141,11 +200,15 @@ def evalEnsembleModel (classifierlist, X, y, n_folds=5):
         mseVal = mean_squared_error(y_test, avgOutput)
         MSEOutput.append (mseVal)
 
+        aardVal = getAARD ( y_test, y_pred )
+        AARDOutput.append (aardVal)
+
     resultR2 = sum (R2Output) / len (R2Output) 
     resultMAE = sum (MAEOutput) / len (MAEOutput) 
     resultMSE = sum (MSEOutput) / len (MSEOutput) 
+    resultAARD = sum (AARDOutput) / len (AARDOutput) 
 
-    dictVal = { "R^2": round (resultR2, 4), "MAE": round (resultMAE, 4), "MSE": round (resultMSE, 4) }
+    dictVal = { "R^2": round (resultR2, 4), "MAE": round ( (resultMAE / scale), 4 ), "MSE": round ( (resultMSE / scale**2), 4), "AARD": round (resultAARD, 4) }
     return dictVal
 
 
@@ -157,6 +220,7 @@ def crossValScore (cls, X, y, n_folds=5, scale = 1.0):
     R2Output = []
     MAEOutput = []
     MSEOutput = []
+    AARDOutput = []
 
     skf = StratifiedKFold(n_splits=n_folds)
 
@@ -189,11 +253,16 @@ def crossValScore (cls, X, y, n_folds=5, scale = 1.0):
         mseVal = mean_squared_error( y_test, y_pred )
         MSEOutput.append (mseVal)
 
+        aardVal = getAARD ( y_test, y_pred )
+        AARDOutput.append (aardVal)
+
+
     resultR2 = sum (R2Output) / len (R2Output) 
     resultMAE = sum (MAEOutput) / len (MAEOutput) 
     resultMSE = sum (MSEOutput) / len (MSEOutput) 
+    resultAARD = sum (AARDOutput) / len (AARDOutput) 
 
-    dictVal = { "R^2": round (resultR2, 4), "MAE": round ( (resultMAE / scale), 4 ), "MSE": round ( (resultMSE / scale**2), 4) }
+    dictVal = { "R^2": round (resultR2, 4), "MAE": round ( (resultMAE / scale), 4 ), "MSE": round ( (resultMSE / scale**2), 4), "AARD": round (resultAARD, 4) }
     return dictVal
 
 
@@ -529,11 +598,12 @@ def modelNULLValidation (X, y ):
 
 
 
-def crossValNULLScore ( X, y, n_folds=5 ):
+def crossValNULLScore ( X, y, n_folds=5, scale=1.0 ):
 
     R2Output = []
     MAEOutput = []
     MSEOutput = []
+    AARDOutput = []
 
     skf = StratifiedKFold(n_splits=n_folds)
 
@@ -566,11 +636,15 @@ def crossValNULLScore ( X, y, n_folds=5 ):
         mseVal = mean_squared_error(y_test, y_pred)
         MSEOutput.append (mseVal)
 
+        aardVal = getAARD ( y_test, y_pred )
+        AARDOutput.append (aardVal)
+
     resultR2 = sum (R2Output) / len (R2Output) 
     resultMAE = sum (MAEOutput) / len (MAEOutput) 
     resultMSE = sum (MSEOutput) / len (MSEOutput) 
+    resultAARD = sum (AARDOutput) / len (AARDOutput) 
 
-    dictVal = { "R^2": round (resultR2, 4), "MAE": round (resultMAE, 4), "MSE": round (resultMSE, 4) }
+    dictVal = { "R^2": round (resultR2, 4), "MAE": round ( (resultMAE / scale), 4 ), "MSE": round ( (resultMSE / scale**2), 4), "AARD": round (resultAARD, 4) }
     return dictVal
 
 
@@ -648,6 +722,27 @@ def drawTree (clf, X, y, filename):
     os.system(cmd)
 
 
+def parityChartToCSV ( xdata, ydata, label, scale = 1.0 ):
+    """
+        write to CSV
+    """
+
+    labels = ["Predicted Value", "Expected Value"]
+    dfv = pd.DataFrame(columns=labels)
+
+    xdata = [(x / scale) for x in xdata]
+    ydata = [(x / scale) for x in ydata]
+
+    for i in range(len(xdata)):
+        dfv.loc[i] = [xdata[i], ydata[i]]
+
+    #dfv[labels] = df[labels].astype(float)
+
+    file_name = label.replace(" ", "_")
+    filename = "result/csv/"+file_name + ".csv"
+    dfv.to_csv(filename, header=True, index=False)
+
+
 
 def drawParityChart ( xdata, ydata, label, scale = 1.0 ):
     '''
@@ -661,6 +756,11 @@ def drawParityChart ( xdata, ydata, label, scale = 1.0 ):
     mseVal = mean_squared_error(  xdata, ydata )
     mseVal = mseVal / scale**2
 
+
+    xdatanpArr = np.asarray(xdata)
+    ydatanpArr = np.asarray(xdata)
+    aardVal = getAARD ( xdatanpArr, ydatanpArr)
+
     df = pd.DataFrame()
     xdata = [(x / scale) for x in xdata]
     ydata = [(x / scale) for x in ydata]
@@ -669,7 +769,13 @@ def drawParityChart ( xdata, ydata, label, scale = 1.0 ):
     df['y'] = ydata
 
 
-    pVal = ggplot(df, aes(x='x', y='y')) + geom_point(color='blue') + ggtitle( 'Parity Chart: {0} | R^2: {1} | MAE: {2} | MSE: {3}'.format( label, round(r2Val, 3), round(maeVal, 3), round(mseVal, 3))  ) + xlab('Experimental Value') + ylab('Predicted Value')  + stat_smooth( se=False )  + theme_bw() + scale_x_continuous( limits=( min(xdata)- 0.000000005,max(xdata)+0.000000005 ) ) + scale_y_continuous( limits=(min(xdata)- 0.000000005, max(ydata)+0.000000005 ) )
+
+
+
+    print 'Parity Chart: {0} | R^2: {1} | MAE: {2} | MSE: {3} | AARD: {4}'.format( label, round(r2Val, 3), round(maeVal, 3), round(mseVal, 3), round(aardVal, 3))
+
+
+    pVal = ggplot(df, aes(x='x', y='y')) + geom_point(color='blue') + ggtitle( 'Parity Chart: {0} | R^2: {1} | MAE: {2} | MSE: {3} | AARD: {4}'.format( label, round(r2Val, 3), round(maeVal, 3), round(mseVal, 3), round(aardVal, 3))  ) + xlab('Experimental Value') + ylab('Predicted Value')  + stat_smooth( se=False )  + theme_bw() + scale_x_continuous( limits=( min(xdata)- 0.000000005,max(xdata)+0.000000005 ) ) + scale_y_continuous( limits=(min(xdata)- 0.000000005, max(ydata)+0.000000005 ) )
 
 
 
@@ -678,9 +784,9 @@ def drawParityChart ( xdata, ydata, label, scale = 1.0 ):
 
 
 
-def unison_shuffled_copies(a, b, c, d, e, f, g):
+def unison_shuffled_copies(a, b, c, d, e, f, g, h, i):
     p = np.random.permutation(len(a))
-    return a[p], b[p], c[p], d[p], e[p], f[p], g[p]
+    return a[p], b[p], c[p], d[p], e[p], f[p], g[p], h[p], i[p]
 
 
 
@@ -820,6 +926,7 @@ class AnfisClassifier:
 
 
 
+
 if __name__ == "__main__":
 
     X = getPredictorData (df)
@@ -832,6 +939,9 @@ if __name__ == "__main__":
     y_sweetgasmdeaflow = getLabelData (df, 'Sweet Gas MDEA Flow (t/d)')
     y_sweetgaspzflow = getLabelData (df, 'Sweet Gas PZ Flow (t/d)')
 
+    y_rAmineloading = getLabelData (df2, 'R Amine Loading')
+    y_lAmineloading = getLabelData (df2, 'L Amine Loading')
+
 
     y_sweetgasco2 = y_sweetgasco2.ravel() 
     y_sweetgasc1 = y_sweetgasc1.ravel() 
@@ -841,6 +951,8 @@ if __name__ == "__main__":
     y_sweetgasmdeaflow = y_sweetgasmdeaflow.ravel() 
     y_sweetgaspzflow = y_sweetgaspzflow.ravel() 
 
+    y_rAmineloading = y_rAmineloading.ravel()
+    y_lAmineloading = y_rAmineloading.ravel()
 
 
     mdeaCol = X [:,[4]]
@@ -861,10 +973,15 @@ if __name__ == "__main__":
     recListSweetGasMdeaFlow = []
     recListSweetGaspzFlow  = []
 
+    recListSweetRAmineloading  = []
+    recListSweetLAmineloading  = []
+
     #shuffling the data
-    cX, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow  = unison_shuffled_copies(cX, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow )
+    cX, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow, y_rAmineloading , y_lAmineloading  = unison_shuffled_copies(cX, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow, y_rAmineloading , y_lAmineloading  )
 
 
+    
+    """
     #zero mean for ANFIS model
     meanList = cX.mean(axis=0)
     meanMatrixlist = []
@@ -897,14 +1014,27 @@ if __name__ == "__main__":
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
     print(model.summary())
 
-    #plot parity chart here
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[:ntrainingSize]
+    label="Sweet Gas CO2 (training)(MARS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+
+
+    #plot parity chart here (testing)
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist() 
     ydata = y[ntrainingSize:]
-    label="Sweet Gas CO2 (MARS)"
+    label="Sweet Gas CO2 (testing)(MARS)"
 
     drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
 
     print "Evaluate performance of 'Sweet Gas C1 (ppm)'"
@@ -917,14 +1047,25 @@ if __name__ == "__main__":
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
     print(model.summary())
 
-    #plot parity chart here
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[:ntrainingSize]
+    label="Sweet Gas C1 (training)(MARS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+    #plot parity chart here (testing)
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()
     ydata = y[ntrainingSize:]
-    label="Sweet Gas C1 (MARS)"
+    label="Sweet Gas C1 (testing)(MARS)"
 
     drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
 
     print "Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'"
@@ -937,14 +1078,25 @@ if __name__ == "__main__":
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
     print(model.summary())
 
-    #plot parity chart here
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[:ntrainingSize]
+    label="Rich Amine Hydrocarbons (training)(MARS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+    #plot parity chart here (testing)
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()
     ydata = y[ntrainingSize:]
-    label="Rich Amine Hydrocarbons (MARS)"
+    label="Rich Amine Hydrocarbons (testing)(MARS)"
 
     drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
 
 
@@ -958,14 +1110,25 @@ if __name__ == "__main__":
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize] )
     print(model.summary())
 
-    #plot parity chart here
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[:ntrainingSize]
+    label="R Amine HCO3 (training)(MARS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+    #plot parity chart here (testing)
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()
     ydata = y[ntrainingSize:]
-    label="R Amine HCO3 (MARS)"
+    label="R Amine HCO3 (testing)(MARS)"
 
     drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
 
     print "Evaluate performance of 'Sweet Gas MDEA Flow (t/d)'"
@@ -976,14 +1139,25 @@ if __name__ == "__main__":
     model.fit( cX[range (ntrainingSize), :], y_sweetgasmdeaflow[:ntrainingSize] )
     print(model.summary())
 
-    #plot parity chart here
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[:ntrainingSize]
+    label="Sweet Gas MDEA Flow (training)(MARS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+    #plot parity chart here (testing)
     nxdata = cX[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist() 
     ydata = y_sweetgasmdeaflow[ntrainingSize:]
-    label="Sweet Gas MDEA Flow (MARS)"
+    label="Sweet Gas MDEA Flow (testing)(MARS)"
 
     drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
 
 
@@ -997,14 +1171,86 @@ if __name__ == "__main__":
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
     print(model.summary())
 
-    #plot parity chart here
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[:ntrainingSize]
+    label="Sweet Gas PZ Flow (training)(MARS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+    #plot parity chart here (testing)
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist() 
     ydata = y[ntrainingSize:]
-    label="Sweet Gas PZ Flow (MARS)"
+    label="Sweet Gas PZ Flow (testing)(MARS)"
 
     drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+    print "Evaluate performance of 'R Amine Loading'"
+    model = Earth()
+    r2 = evaluate (model, cX, y_rAmineloading)
+    print r2
+
+    model = Earth()
+    X,y = unison_shuffled(cX, y_rAmineloading)
+    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
+    print(model.summary())
+
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[:ntrainingSize]
+    label="R Amine Loading (training)(MARS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+    #plot parity chart here (testing)
+    nxdata = X[range (ntrainingSize, len(X)), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[ntrainingSize:]
+    label="R Amine Loading (testing)(MARS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+
+    print "Evaluate performance of 'L Amine Loading'"
+    model = Earth()
+    r2 = evaluate (model, cX, y_lAmineloading)
+    print r2
+
+    model = Earth()
+    X,y = unison_shuffled(cX, y_lAmineloading)
+    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
+    print(model.summary())
+
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[:ntrainingSize]
+    label="L Amine Loading (training)(MARS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+    #plot parity chart here (testing)
+    nxdata = X[range (ntrainingSize, len(X)), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[ntrainingSize:]
+    label="L Amine Loading (testing)(MARS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
 
 
@@ -1057,6 +1303,21 @@ if __name__ == "__main__":
     recListSweetGaspzFlow.append ( cur )
 
 
+    model = Earth()
+    #print "REC of 'R Amine Loading'"
+    cur = modelValidation (model, X, y_rAmineloading )
+    print "AOC of 'R Amine Loading': " +str (cur["avgArea"])
+    #print cur
+    recListSweetRAmineloading.append ( cur )
+
+    model = Earth()
+    #print "REC of 'L Amine Loading'"
+    cur = modelValidation (model, X, y_lAmineloading )
+    print "AOC of 'L Amine Loading': " +str (cur["avgArea"])
+    #print cur
+    recListSweetLAmineloading.append ( cur )
+
+
 
     print "----------------------------------------------------------"
     print "----------------------------------------------------------"
@@ -1077,6 +1338,8 @@ if __name__ == "__main__":
     clf4 = DecisionTreeRegressor(max_depth=10, random_state=10) #
     clf5 = DecisionTreeRegressor(max_depth=10, random_state=10)
     clf6 = DecisionTreeRegressor(max_depth=10, random_state=10) #
+    clf7 = DecisionTreeRegressor(max_depth=10, random_state=10)
+    clf8 = DecisionTreeRegressor(max_depth=10, random_state=10)
 
 
     print "Evaluate performance of 'Sweet Gas CO2 (ppm)'"
@@ -1095,15 +1358,27 @@ if __name__ == "__main__":
 
     drawTree (clf1, X[range (ntrainingSize), :], y[:ntrainingSize], filename)
 
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = clf1.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[:ntrainingSize]
+    label="Sweet Gas CO2 (training)(Tree)"
 
-    #plot parity chart here
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+
+
+    #plot parity chart here (testing)
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = clf1.predict(nxdata)
     xdata = xdata.T.tolist() 
     ydata = y[ntrainingSize:]
-    label="Sweet Gas CO2 (Tree)"
+    label="Sweet Gas CO2 (testing)(Tree)"
 
     drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
 
 
@@ -1124,15 +1399,26 @@ if __name__ == "__main__":
 
     drawTree (clf2, X[range (ntrainingSize), :], y[:ntrainingSize], filename)
 
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = clf2.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[:ntrainingSize]
+    label="Sweet Gas C1 (training)(Tree)"
 
-    #plot parity chart here
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+
+    #plot parity chart here (testing)
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = clf2.predict(nxdata)
     xdata = xdata.T.tolist() 
     ydata = y[ntrainingSize:]
-    label="Sweet Gas C1 (Tree)"
+    label="Sweet Gas C1 (testing)(Tree)"
 
     drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
     print "----------------------------------------------------------"
     print "Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'"
@@ -1151,15 +1437,26 @@ if __name__ == "__main__":
 
     drawTree (clf3, X[range (ntrainingSize), :], y[:ntrainingSize], filename)
 
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = clf3.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[:ntrainingSize]
+    label="Rich Amine Hydrocarbons (training)(Tree)"
 
-    #plot parity chart here
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+
+    #plot parity chart here (testing)
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = clf3.predict(nxdata)
     xdata = xdata.T.tolist()
     ydata = y[ntrainingSize:]
-    label="Rich Amine Hydrocarbons (Tree)"
+    label="Rich Amine Hydrocarbons (testing)(Tree)"
 
     drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
     print "----------------------------------------------------------"
     print "Evaluate performance of 'R Amine HCO3 (mol/L)'"
@@ -1178,15 +1475,26 @@ if __name__ == "__main__":
 
     drawTree (clf4, X[range (ntrainingSize), :], y[:ntrainingSize], filename)
 
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = clf4.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[:ntrainingSize]
+    label="R Amine HCO3 (training)(Tree)"
 
-    #plot parity chart here
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+
+    #plot parity chart here (testing)
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = clf4.predict(nxdata)
     xdata = xdata.T.tolist() 
     ydata = y[ntrainingSize:]
-    label="R Amine HCO3 (Tree)"
+    label="R Amine HCO3 (testing)(Tree)"
 
     drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
 
     print "----------------------------------------------------------"
@@ -1204,14 +1512,25 @@ if __name__ == "__main__":
 
     drawTree (clf5, X[range (ntrainingSize), :], y[:ntrainingSize], filename)
 
-    #plot parity chart here
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = clf5.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[:ntrainingSize]
+    label="Sweet Gas MDEA Flow (training)(Tree)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+    #plot parity chart here (testing)
     nxdata = cX[range (ntrainingSize, len(X)), :]
     xdata = clf5.predict(nxdata)
     xdata = xdata.T.tolist() 
     ydata = y_sweetgasmdeaflow[ntrainingSize:]
-    label="Sweet Gas MDEA Flow (Tree)"
+    label="Sweet Gas MDEA Flow (testing)(Tree)"
 
     drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
 
 
@@ -1232,15 +1551,101 @@ if __name__ == "__main__":
 
     drawTree (clf6, X[range (ntrainingSize), :], y[:ntrainingSize], filename)
 
-    #plot parity chart here
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = clf6.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[:ntrainingSize]
+    label="Sweet Gas PZ Flow (training)(Tree)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+    #plot parity chart here (testing)
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = clf6.predict(nxdata)
     xdata = xdata.T.tolist() 
     ydata = y[ntrainingSize:]
-    label="Sweet Gas PZ Flow (Tree)"
+    label="Sweet Gas PZ Flow (testing)(Tree)"
 
     drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
+
+    print "----------------------------------------------------------"
+    print "Evaluate performance of 'R Amine Loading'"
+    print "----------------------------------------------------------"
+
+    r2 = evaluate (clf7, cX, y_rAmineloading)
+    print r2
+
+
+    clf7 = DecisionTreeRegressor(max_depth=10, random_state=10)
+    X,y = unison_shuffled(cX, y_rAmineloading)
+    clf7.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
+
+    #draw a tree
+    filename = "DecisionTreeRegressor_R_Amine_Loading"
+
+    drawTree (clf7, X[range (ntrainingSize), :], y[:ntrainingSize], filename)
+
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = clf7.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[:ntrainingSize]
+    label="R Amine Loading (training)(Tree)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+    #plot parity chart here (testing)
+    nxdata = X[range (ntrainingSize, len(X)), :]
+    xdata = clf7.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[ntrainingSize:]
+    label="R Amine Loading (testing)(Tree)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+
+    print "----------------------------------------------------------"
+    print "Evaluate performance of 'L Amine Loading'"
+    print "----------------------------------------------------------"
+
+    r2 = evaluate (clf8, cX, y_lAmineloading)
+    print r2
+
+
+    clf8 = DecisionTreeRegressor(max_depth=10, random_state=10)
+    X,y = unison_shuffled(cX, y_lAmineloading)
+    clf8.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
+
+    #draw a tree
+    filename = "DecisionTreeRegressor_L_Amine_Loading"
+
+    drawTree (clf8, X[range (ntrainingSize), :], y[:ntrainingSize], filename)
+
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = clf8.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[:ntrainingSize]
+    label="L Amine Loading (training)(Tree)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+    #plot parity chart here (testing)
+    nxdata = X[range (ntrainingSize, len(X)), :]
+    xdata = clf8.predict(nxdata)
+    xdata = xdata.T.tolist() 
+    ydata = y[ntrainingSize:]
+    label="L Amine Loading (testing)(Tree)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
 
     #REC and sensitivity analysis
@@ -1285,6 +1690,20 @@ if __name__ == "__main__":
     recListSweetGaspzFlow.append ( cur )
 
 
+    #print "REC of 'R Amine Loading'"
+    cur = modelValidation (clf7, X, y_rAmineloading )
+    print "AOC of 'R Amine Loading': " +str (cur["avgArea"])
+    #print cur
+    recListSweetRAmineloading.append ( cur )
+
+
+    #print "REC of 'L Amine Loading'"
+    cur = modelValidation (clf8, X, y_lAmineloading )
+    print "AOC of 'L Amine Loading': " +str (cur["avgArea"])
+    #print cur
+    recListSweetLAmineloading.append ( cur )
+
+
 
     print "----------------------------------------------------------"
     print "----------------------------------------------------------"
@@ -1313,14 +1732,26 @@ if __name__ == "__main__":
     X,y = unison_shuffled(zero_meanX, y_sweetgasco2)
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
-    #plot parity chart here
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist()[0]
+    ydata = y[:ntrainingSize]
+    label="Sweet Gas CO2 (training)(ANFIS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+
+    #plot parity chart here (testing)
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()[0]
     ydata = y[ntrainingSize:]
-    label="Sweet Gas CO2 (ANFIS)"
+    label="Sweet Gas CO2 (testing)(ANFIS)"
 
     drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
 
 
@@ -1338,14 +1769,26 @@ if __name__ == "__main__":
     X,y = unison_shuffled(zero_meanX, y_sweetgasc1)
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
-    #plot parity chart here
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist()[0]
+    ydata = y[:ntrainingSize]
+    label="Sweet Gas C1 (training)(ANFIS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+
+    #plot parity chart here (testing)
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()[0]
     ydata = y[ntrainingSize:]
-    label="Sweet Gas C1 (ANFIS)"
+    label="Sweet Gas C1 (testing)(ANFIS)"
 
     drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
     print "----------------------------------------------------------"
     print "Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'"
@@ -1361,14 +1804,25 @@ if __name__ == "__main__":
     X,y = unison_shuffled(zero_meanX, y_richaminehydro)
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
-    #plot parity chart here
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist()[0]
+    ydata = y[:ntrainingSize]
+    label="Rich Amine Hydrocarbons (training)(ANFIS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+    #plot parity chart here (testing)
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()[0]
     ydata = y[ntrainingSize:]
-    label="Rich Amine Hydrocarbons (ANFIS)"
+    label="Rich Amine Hydrocarbons (testing)(ANFIS)"
 
     drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
     print "----------------------------------------------------------"
     print "Evaluate performance of 'R Amine HCO3 (mol/L)'"
@@ -1384,20 +1838,30 @@ if __name__ == "__main__":
     X,y = unison_shuffled(zero_meanX, y_richaminehco3)
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
-    #plot parity chart here
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist()[0]
+    ydata = y[:ntrainingSize]
+    label="R Amine HCO3 (training)(ANFIS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+    #plot parity chart here (testing)
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()[0]
     ydata = y[ntrainingSize:]
-    label="R Amine HCO3 (ANFIS)"
+    label="R Amine HCO3 (testing)(ANFIS)"
 
     drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
 
     print "----------------------------------------------------------"
     print "Evaluate performance of 'Sweet Gas MDEA Flow (t/d)'"
     print "----------------------------------------------------------"
-    print y_sweetgasmdeaflow
     model = AnfisClassifier()
     model.setType ('gaussmf')
 
@@ -1411,15 +1875,26 @@ if __name__ == "__main__":
     X,y = unison_shuffled(zero_meanX, scaleVal * y_sweetgasmdeaflow)
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
-    #plot parity chart here
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist()[0]
+    ydata = y[:ntrainingSize]
+    label="Sweet Gas MDEA Flow (training)(ANFIS)"
+
+    drawParityChart ( xdata, ydata, label, scale = scaleVal )
+    parityChartToCSV ( xdata, ydata, label, scale = scaleVal )
+
+    #plot parity chart here (testing)
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()[0]
     ydata = y[ntrainingSize:]
 
-    label="Sweet Gas MDEA Flow (ANFIS)"
+    label="Sweet Gas MDEA Flow (testing)(ANFIS)"
 
     drawParityChart ( xdata, ydata, label, scale = scaleVal )
+    parityChartToCSV ( xdata, ydata, label, scale = scaleVal )
 
 
 
@@ -1441,14 +1916,97 @@ if __name__ == "__main__":
     X,y = unison_shuffled(zero_meanX, y_sweetgaspzflow)
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
-    #plot parity chart here
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist()[0]
+    ydata = y[:ntrainingSize]
+    label="Sweet Gas PZ Flow (training)(ANFIS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+    #plot parity chart here (testing)
     nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()[0]
     ydata = y[ntrainingSize:]
-    label="Sweet Gas PZ Flow (ANFIS)"
+    label="Sweet Gas PZ Flow (testing)(ANFIS)"
 
     drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+
+    print "----------------------------------------------------------"
+    print "Evaluate performance of 'R Amine Loading'"
+    print "----------------------------------------------------------"
+    model = AnfisClassifier()
+    model.setType ('gaussmf')
+    r2 = crossValScore (model, zero_meanX, y_rAmineloading)
+    print r2
+
+
+
+    model = AnfisClassifier()
+    model.setType ('gaussmf')
+    X,y = unison_shuffled(zero_meanX, y_rAmineloading)
+    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
+
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist()[0]
+    ydata = y[:ntrainingSize]
+    label="R Amine Loading (training)(ANFIS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+    #plot parity chart here (testing)
+    nxdata = X[range (ntrainingSize, len(X)), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist()[0]
+    ydata = y[ntrainingSize:]
+    label="R Amine Loading (testing)(ANFIS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+
+    print "----------------------------------------------------------"
+    print "Evaluate performance of 'L Amine Loading'"
+    print "----------------------------------------------------------"
+    model = AnfisClassifier()
+    model.setType ('gaussmf')
+    r2 = crossValScore (model, zero_meanX, y_lAmineloading)
+    print r2
+
+
+
+    model = AnfisClassifier()
+    model.setType ('gaussmf')
+    X,y = unison_shuffled(zero_meanX, y_lAmineloading)
+    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
+
+    #plot parity chart here (training)
+    nxdata = X[range (ntrainingSize), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist()[0]
+    ydata = y[:ntrainingSize]
+    label="L Amine Loading (training)(ANFIS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
+
+    #plot parity chart here (testing)
+    nxdata = X[range (ntrainingSize, len(X)), :]
+    xdata = model.predict(nxdata)
+    xdata = xdata.T.tolist()[0]
+    ydata = y[ntrainingSize:]
+    label="L Amine Loading (testing)(ANFIS)"
+
+    drawParityChart ( xdata, ydata, label )
+    parityChartToCSV ( xdata, ydata, label )
 
 
     #REC and sensitivity analysis
@@ -1504,6 +2062,19 @@ if __name__ == "__main__":
     #print cur
     recListSweetGaspzFlow.append ( cur )
 
+    #print "REC of 'R Amine Loading'"
+    cur = modelValidationCV (model, zero_meanX, y_rAmineloading )
+    print "AOC of 'R Amine Loading': " +str (cur["avgArea"])
+    #print cur
+    recListSweetRAmineloading.append ( cur )
+
+
+    #print "REC of 'L Amine Loading'"
+    cur = modelValidationCV (model, zero_meanX, y_lAmineloading )
+    print "AOC of 'L Amine Loading': " +str (cur["avgArea"])
+    #print cur
+    recListSweetLAmineloading.append ( cur )
+    """
 
     print "----------------------------------------------------------"
     print "----------------------------------------------------------"
@@ -1564,6 +2135,22 @@ if __name__ == "__main__":
     r2 = crossValNULLScore ( cX, y_sweetgaspzflow)
     print r2
 
+
+    print "----------------------------------------------------------"
+    print "Evaluate performance of 'R Amine Loading'"
+    print "----------------------------------------------------------"
+
+    r2 = crossValNULLScore ( cX, y_rAmineloading)
+    print r2
+
+
+    print "----------------------------------------------------------"
+    print "Evaluate performance of 'L Amine Loading'"
+    print "----------------------------------------------------------"
+
+    r2 = crossValNULLScore ( cX, y_lAmineloading)
+    print r2
+
     #REC and sensitivity analysis
 
     #print "REC of 'Sweet Gas CO2 (ppm)'"
@@ -1605,6 +2192,21 @@ if __name__ == "__main__":
     recListSweetGaspzFlow.append ( cur )
 
 
+
+    #print "REC of 'R Amine Loading'"
+    cur = modelNULLValidation ( cX, y_rAmineloading )
+    print "AOC of 'R Amine Loading': " +str (cur["avgArea"])
+    #print cur
+    recListSweetRAmineloading.append ( cur )
+
+
+    #print "REC of 'L Amine Loading'"
+    cur = modelNULLValidation ( cX, y_lAmineloading )
+    print "AOC of 'L Amine Loading': " +str (cur["avgArea"])
+    #print cur
+    recListSweetLAmineloading.append ( cur )
+
+
     #plot the REC curve
 
     drawRECCURVE ( recListSweetGasCO2,  'Sweet Gas CO2'  )
@@ -1613,6 +2215,8 @@ if __name__ == "__main__":
     drawRECCURVE ( recListRichAmineHco3,  'R Amine HCO3'  )
     drawRECCURVE ( recListSweetGasMdeaFlow,  'Sweet Gas MDEA Flow' )
     drawRECCURVE ( recListSweetGaspzFlow, 'Sweet Gas PZ Flow' )
+    drawRECCURVE ( recListSweetRAmineloading, 'R Amine Loading' )
+    drawRECCURVE ( recListSweetLAmineloading, 'L Amine Loading' )
 
 
 
