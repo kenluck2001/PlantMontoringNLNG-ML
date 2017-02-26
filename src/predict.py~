@@ -980,6 +980,8 @@ if __name__ == "__main__":
     cX, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow, y_rAmineloading , y_lAmineloading  = unison_shuffled_copies(cX, y_sweetgasco2, y_sweetgasc1, y_richaminehydro, y_richaminehco3, y_sweetgasmdeaflow, y_sweetgaspzflow, y_rAmineloading , y_lAmineloading  )
 
 
+    
+    """
     #zero mean for ANFIS model
     meanList = cX.mean(axis=0)
     meanMatrixlist = []
@@ -2072,7 +2074,7 @@ if __name__ == "__main__":
     print "AOC of 'L Amine Loading': " +str (cur["avgArea"])
     #print cur
     recListSweetLAmineloading.append ( cur )
-
+    """
 
     print "----------------------------------------------------------"
     print "----------------------------------------------------------"
