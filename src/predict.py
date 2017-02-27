@@ -93,7 +93,9 @@ def getAARD ( y_test, y_pred ):
     """
         Both input are numpy array
     """
-    diff =  np.fabs ( y_test - y_pred) / y_test 
+    absdiff = np.fabs ( y_test - y_pred).reshape ((1, len(y_pred) ))
+    diff =  np.squeeze( absdiff ) / y_test.reshape (( 1, len(y_test) ))
+
     result = ( 100.0 / len(y_test) ) *  np.sum (diff)
     return result
 
@@ -758,7 +760,8 @@ def drawParityChart ( xdata, ydata, label, scale = 1.0 ):
 
 
     xdatanpArr = np.asarray(xdata)
-    ydatanpArr = np.asarray(xdata)
+    ydatanpArr = np.asarray(ydata)
+
     aardVal = getAARD ( xdatanpArr, ydatanpArr)
 
     df = pd.DataFrame()
@@ -1131,10 +1134,12 @@ if __name__ == "__main__":
 
     print "Evaluate performance of 'Sweet Gas MDEA Flow (t/d)'"
     model = Earth()
+
     r2 = evaluate (model, cX, y_sweetgasmdeaflow)
     print r2
 
-    model.fit( cX[range (ntrainingSize), :], y_sweetgasmdeaflow[:ntrainingSize] )
+    X,y = unison_shuffled(cX, y_sweetgasmdeaflow)
+    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize] )
     print(model.summary())
 
     #plot parity chart here (training)
@@ -1148,10 +1153,10 @@ if __name__ == "__main__":
     parityChartToCSV ( xdata, ydata, label )
 
     #plot parity chart here (testing)
-    nxdata = cX[range (ntrainingSize, len(X)), :]
+    nxdata = X[range (ntrainingSize, len(X)), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist() 
-    ydata = y_sweetgasmdeaflow[ntrainingSize:]
+    ydata = y[ntrainingSize:]
     label="Sweet Gas MDEA Flow (testing)(MARS)"
 
     drawParityChart ( xdata, ydata, label )
@@ -1502,8 +1507,8 @@ if __name__ == "__main__":
     r2 = evaluate (clf5, cX, y_sweetgasmdeaflow)
     print r2
 
-
-    clf5.fit( cX[range (ntrainingSize), :], y_sweetgasmdeaflow[:ntrainingSize])
+    X,y = unison_shuffled(cX, y_sweetgasmdeaflow)
+    clf5.fit( X[range (ntrainingSize), :], y[:ntrainingSize])
 
     #draw a tree
     filename = "DecisionTreeRegressor_Sweet_Gas_MDEA_Flow"

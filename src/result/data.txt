@@ -8,6 +8,1066 @@ MSE: Mean Squared Error
 %AARD: % Average Absolute Relative Deviation
 ----------------------------------------------------------
 ----------------------------------------------------------
+MARS Model
+----------------------------------------------------------
+----------------------------------------------------------
+Evaluate performance of 'Sweet Gas CO2 (ppm)'
+{'R^2': 0.8689, 'MSE': 0.1363, 'MAE': 0.2509, 'AARD': 15.7924}
+Earth Model
+-------------------------------------
+Basis Function  Pruned  Coefficient  
+-------------------------------------
+(Intercept)     No      12.4768      
+x6              No      0.410077     
+x4              No      -0.286102    
+x5              No      0.342719     
+x2              No      -0.0254953   
+x3              No      -0.0414387   
+x0              Yes     None         
+-------------------------------------
+MSE: 0.1416, GCV: 0.1430, RSQ: 0.8678, GRSQ: 0.8666
+Parity Chart: Sweet Gas CO2 (training)(MARS) | R^2: 0.848 | MAE: 0.254 | MSE: 0.142 | AARD: 17.982
+Parity Chart: Sweet Gas CO2 (testing)(MARS) | R^2: 0.866 | MAE: 0.253 | MSE: 0.123 | AARD: 19.053
+Evaluate performance of 'Sweet Gas C1 (ppm)'
+{'R^2': 0.9756, 'MSE': 0.4168, 'MAE': 0.4951, 'AARD': 0.0001}
+Earth Model
+-------------------------------------
+Basis Function  Pruned  Coefficient  
+-------------------------------------
+(Intercept)     No      926061       
+x5              No      1.96606      
+x4              No      1.01485      
+x1              No      0.00333806   
+x2              No      -0.142958    
+x3              No      0.0494521    
+-------------------------------------
+MSE: 0.4209, GCV: 0.4249, RSQ: 0.9756, GRSQ: 0.9754
+Parity Chart: Sweet Gas C1 (training)(MARS) | R^2: 0.975 | MAE: 0.497 | MSE: 0.421 | AARD: 0.0
+Parity Chart: Sweet Gas C1 (testing)(MARS) | R^2: 0.976 | MAE: 0.493 | MSE: 0.402 | AARD: 0.0
+Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'
+{'R^2': 0.9942, 'MSE': 0.0003, 'MAE': 0.0138, 'AARD': 0.476}
+Earth Model
+-------------------------------------
+Basis Function  Pruned  Coefficient  
+-------------------------------------
+(Intercept)     No      -2.16848     
+x1              No      0.00104929   
+x6              No      0.012265     
+x4              No      0.020343     
+x5              No      0.0056418    
+-------------------------------------
+MSE: 0.0003, GCV: 0.0003, RSQ: 0.9944, GRSQ: 0.9944
+Parity Chart: Rich Amine Hydrocarbons (training)(MARS) | R^2: 0.994 | MAE: 0.014 | MSE: 0.0 | AARD: 0.469
+Parity Chart: Rich Amine Hydrocarbons (testing)(MARS) | R^2: 0.994 | MAE: 0.014 | MSE: 0.0 | AARD: 0.488
+Evaluate performance of 'R Amine HCO3 (mol/L)'
+{'R^2': 0.9984, 'MSE': 0.0001, 'MAE': 0.007, 'AARD': 1.0361}
+Earth Model
+--------------------------------------
+Basis Function  Pruned  Coefficient   
+--------------------------------------
+(Intercept)     No      3.12055       
+x5              No      -0.0971074    
+x1              No      -0.000351017  
+x4              No      -0.0117857    
+x6              No      0.0108691     
+x3              No      -0.00047546   
+--------------------------------------
+MSE: 0.0001, GCV: 0.0001, RSQ: 0.9985, GRSQ: 0.9985
+Parity Chart: R Amine HCO3 (training)(MARS) | R^2: 0.998 | MAE: 0.007 | MSE: 0.0 | AARD: 1.031
+Parity Chart: R Amine HCO3 (testing)(MARS) | R^2: 0.998 | MAE: 0.007 | MSE: 0.0 | AARD: 1.054
+Evaluate performance of 'Sweet Gas MDEA Flow (t/d)'
+{'R^2': 0.9176, 'MSE': 0.0, 'MAE': 0.0, 'AARD': 4.4443}
+Earth Model
+--------------------------------------
+Basis Function  Pruned  Coefficient   
+--------------------------------------
+(Intercept)     No      -9.32568e-05  
+x5              No      7.71003e-06   
+x2              No      -1.80066e-06  
+x4              No      4.80923e-06   
+x6              No      5.53254e-07   
+x0              No      -7.62958e-08  
+--------------------------------------
+MSE: 0.0000, GCV: 0.0000, RSQ: 0.9185, GRSQ: 0.9177
+Parity Chart: Sweet Gas MDEA Flow (training)(MARS) | R^2: 0.911 | MAE: 0.0 | MSE: 0.0 | AARD: 4.511
+Parity Chart: Sweet Gas MDEA Flow (testing)(MARS) | R^2: 0.91 | MAE: 0.0 | MSE: 0.0 | AARD: 4.67
+Evaluate performance of 'Sweet Gas PZ Flow (t/d)'
+{'R^2': 0.9539, 'MSE': 0.0, 'MAE': 0.0006, 'AARD': 13.8245}
+Earth Model
+--------------------------------------
+Basis Function  Pruned  Coefficient   
+--------------------------------------
+(Intercept)     No      -0.0208989    
+x5              No      0.00249785    
+x2              No      -0.00018121   
+x4              No      0.000418175   
+x6              No      0.000289528   
+x1              No      -5.54304e-07  
+x3              No      4.63846e-05   
+--------------------------------------
+MSE: 0.0000, GCV: 0.0000, RSQ: 0.9554, GRSQ: 0.9549
+Parity Chart: Sweet Gas PZ Flow (training)(MARS) | R^2: 0.953 | MAE: 0.001 | MSE: 0.0 | AARD: 146.981
+Parity Chart: Sweet Gas PZ Flow (testing)(MARS) | R^2: 0.947 | MAE: 0.001 | MSE: 0.0 | AARD: 18.714
+Evaluate performance of 'R Amine Loading'
+{'R^2': 0.9949, 'MSE': 0.0, 'MAE': 0.0018, 'AARD': 0.4082}
+Earth Model
+--------------------------------------
+Basis Function  Pruned  Coefficient   
+--------------------------------------
+(Intercept)     No      1.33804       
+x1              No      -0.000116566  
+x5              No      -0.00829426   
+x4              No      -0.00878244   
+x6              No      0.000974227   
+--------------------------------------
+MSE: 0.0000, GCV: 0.0000, RSQ: 0.9949, GRSQ: 0.9948
+Parity Chart: R Amine Loading (training)(MARS) | R^2: 0.995 | MAE: 0.002 | MSE: 0.0 | AARD: 0.414
+Parity Chart: R Amine Loading (testing)(MARS) | R^2: 0.995 | MAE: 0.002 | MSE: 0.0 | AARD: 0.399
+Evaluate performance of 'L Amine Loading'
+{'R^2': 0.9949, 'MSE': 0.0, 'MAE': 0.0018, 'AARD': 0.4082}
+Earth Model
+-------------------------------------
+Basis Function  Pruned  Coefficient  
+-------------------------------------
+(Intercept)     No      1.33711      
+x1              No      -0.00011647  
+x5              No      -0.00836508  
+x4              No      -0.00875373  
+x6              No      0.000934938  
+-------------------------------------
+MSE: 0.0000, GCV: 0.0000, RSQ: 0.9950, GRSQ: 0.9950
+Parity Chart: L Amine Loading (training)(MARS) | R^2: 0.995 | MAE: 0.002 | MSE: 0.0 | AARD: 0.41
+Parity Chart: L Amine Loading (testing)(MARS) | R^2: 0.995 | MAE: 0.002 | MSE: 0.0 | AARD: 0.406
+AOC of 'Sweet Gas CO2 (ppm)': 2.02638529379
+AOC of 'Sweet Gas C1 (ppm)': 2.19867936161
+AOC of 'Rich Amine Hydrocarbons (t/d)': 0.0511979322824
+AOC of 'R Amine HCO3 (mol/L)': 0.0188731174617
+AOC of 'Sweet Gas MDEA Flow (t/d)': 1.97159156506e-05
+AOC of 'Sweet Gas PZ Flow (t/d)': 0.00814400581062
+AOC of 'R Amine Loading': 0.0587712308183
+AOC of 'L Amine Loading': 0.0587712308183
+----------------------------------------------------------
+----------------------------------------------------------
+----------------------------------------------------------
+----------------------------------------------------------
+Tree Model
+----------------------------------------------------------
+----------------------------------------------------------
+----------------------------------------------------------
+----------------------------------------------------------
+Evaluate performance of 'Sweet Gas CO2 (ppm)'
+----------------------------------------------------------
+{'R^2': 0.9998, 'MSE': 0.0002, 'MAE': 0.0069, 'AARD': 0.4586}
+Parity Chart: Sweet Gas CO2 (training)(Tree) | R^2: 1.0 | MAE: 0.0 | MSE: 0.0 | AARD: 0.0
+Parity Chart: Sweet Gas CO2 (testing)(Tree) | R^2: 1.0 | MAE: 0.01 | MSE: 0.0 | AARD: 0.669
+----------------------------------------------------------
+Evaluate performance of 'Sweet Gas C1 (ppm)'
+----------------------------------------------------------
+{'R^2': 0.9998, 'MSE': 0.0029, 'MAE': 0.0377, 'AARD': 0.0}
+Parity Chart: Sweet Gas C1 (training)(Tree) | R^2: 1.0 | MAE: 0.003 | MSE: 0.0 | AARD: 0.0
+Parity Chart: Sweet Gas C1 (testing)(Tree) | R^2: 1.0 | MAE: 0.043 | MSE: 0.004 | AARD: 0.0
+----------------------------------------------------------
+Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'
+----------------------------------------------------------
+{'R^2': 1.0, 'MSE': 0.0, 'MAE': 0.0002, 'AARD': 0.0065}
+Parity Chart: Rich Amine Hydrocarbons (training)(Tree) | R^2: 1.0 | MAE: 0.0 | MSE: 0.0 | AARD: 0.004
+Parity Chart: Rich Amine Hydrocarbons (testing)(Tree) | R^2: 1.0 | MAE: 0.0 | MSE: 0.0 | AARD: 0.008
+----------------------------------------------------------
+Evaluate performance of 'R Amine HCO3 (mol/L)'
+----------------------------------------------------------
+{'R^2': 1.0, 'MSE': 0.0, 'MAE': 0.0002, 'AARD': 0.0268}
+Parity Chart: R Amine HCO3 (training)(Tree) | R^2: 1.0 | MAE: 0.0 | MSE: 0.0 | AARD: 0.023
+Parity Chart: R Amine HCO3 (testing)(Tree) | R^2: 1.0 | MAE: 0.0 | MSE: 0.0 | AARD: 0.027
+----------------------------------------------------------
+Evaluate performance of 'Sweet Gas MDEA Flow (t/d)'
+----------------------------------------------------------
+{'R^2': -0.0013, 'MSE': 0.0, 'MAE': 0.0, 'AARD': 15.9925}
+Parity Chart: Sweet Gas MDEA Flow (training)(Tree) | R^2: -1.6922406012e+30 | MAE: 0.0 | MSE: 0.0 | AARD: 15.911
+Parity Chart: Sweet Gas MDEA Flow (testing)(Tree) | R^2: -4.16084002876e+29 | MAE: 0.0 | MSE: 0.0 | AARD: 15.819
+----------------------------------------------------------
+Evaluate performance of 'Sweet Gas PZ Flow (t/d)'
+----------------------------------------------------------
+{'R^2': 0.9957, 'MSE': 0.0, 'MAE': 0.0002, 'AARD': 4.419}
+Parity Chart: Sweet Gas PZ Flow (training)(Tree) | R^2: 0.996 | MAE: 0.0 | MSE: 0.0 | AARD: 4.444
+Parity Chart: Sweet Gas PZ Flow (testing)(Tree) | R^2: 0.995 | MAE: 0.0 | MSE: 0.0 | AARD: 4.476
+----------------------------------------------------------
+Evaluate performance of 'R Amine Loading'
+----------------------------------------------------------
+{'R^2': 1.0, 'MSE': 0.0, 'MAE': 0.0002, 'AARD': 0.0398}
+Parity Chart: R Amine Loading (training)(Tree) | R^2: 1.0 | MAE: 0.0 | MSE: 0.0 | AARD: 0.037
+Parity Chart: R Amine Loading (testing)(Tree) | R^2: 1.0 | MAE: 0.0 | MSE: 0.0 | AARD: 0.04
+----------------------------------------------------------
+Evaluate performance of 'L Amine Loading'
+----------------------------------------------------------
+{'R^2': 1.0, 'MSE': 0.0, 'MAE': 0.0002, 'AARD': 0.0398}
+Parity Chart: L Amine Loading (training)(Tree) | R^2: 1.0 | MAE: 0.0 | MSE: 0.0 | AARD: 0.038
+Parity Chart: L Amine Loading (testing)(Tree) | R^2: 1.0 | MAE: 0.0 | MSE: 0.0 | AARD: 0.04
+AOC of 'Sweet Gas CO2 (ppm)': 0.11385998452
+AOC of 'Sweet Gas C1 (ppm)': 0.121779804798
+AOC of 'Rich Amine Hydrocarbons (t/d)': 0.00127608676419
+AOC of 'R Amine HCO3 (mol/L)': 0.000446956212905
+AOC of 'Sweet Gas MDEA Flow (t/d)': 4.86929949608e-05
+AOC of 'Sweet Gas PZ Flow (t/d)': 0.000540967921884
+AOC of 'R Amine Loading': 0.101719472315
+AOC of 'L Amine Loading': 0.101719472315
+----------------------------------------------------------
+----------------------------------------------------------
+----------------------------------------------------------
+----------------------------------------------------------
+Anfis Model
+----------------------------------------------------------
+----------------------------------------------------------
+----------------------------------------------------------
+----------------------------------------------------------
+Evaluate performance of 'Sweet Gas CO2 (ppm)'
+----------------------------------------------------------
+current error:  466.516070981
+current error:  466.516070981
+current error:  466.516070981
+current error:  466.516070981
+current error:  466.516070981
+current error:  466.516070981
+current error:  466.516070981
+current error:  466.516070981
+current error:  466.516070981
+current error:  448.539390454
+current error:  448.539390454
+current error:  448.539390454
+current error:  448.539390454
+current error:  448.539390454
+current error:  448.539390454
+current error:  448.539390454
+current error:  448.539390454
+current error:  448.539390454
+current error:  436.699388467
+current error:  436.699388467
+current error:  436.699388467
+current error:  436.699388467
+current error:  436.699388467
+current error:  436.699388467
+current error:  436.699388467
+current error:  436.699388467
+current error:  436.699388467
+current error:  424.43041569
+current error:  424.43041569
+current error:  424.43041569
+current error:  424.43041569
+current error:  424.43041569
+current error:  424.43041569
+current error:  424.43041569
+current error:  424.43041569
+current error:  424.43041569
+current error:  443.881516556
+current error:  443.881516556
+current error:  443.881516556
+current error:  443.881516556
+current error:  443.881516556
+current error:  443.881516556
+current error:  443.881516556
+current error:  443.881516556
+current error:  443.881516556
+{'R^2': 0.8688, 'MSE': 0.1364, 'MAE': 0.2494, 'AARD': 15.623}
+current error:  386.470559682
+current error:  386.470559682
+current error:  386.470559682
+current error:  386.470559682
+current error:  386.470559682
+current error:  386.470559682
+current error:  386.470559682
+current error:  386.470559682
+current error:  386.470559682
+Parity Chart: Sweet Gas CO2 (training)(ANFIS) | R^2: 0.849 | MAE: 0.248 | MSE: 0.135 | AARD: 17.462
+Parity Chart: Sweet Gas CO2 (testing)(ANFIS) | R^2: 0.848 | MAE: 0.248 | MSE: 0.138 | AARD: 17.256
+----------------------------------------------------------
+Evaluate performance of 'Sweet Gas C1 (ppm)'
+----------------------------------------------------------
+current error:  1544.062878
+current error:  1544.062878
+current error:  1544.062878
+current error:  1544.062878
+current error:  1544.062878
+current error:  1544.062878
+current error:  1544.062878
+current error:  1544.062878
+current error:  1544.062878
+current error:  1598.62443077
+current error:  1598.62443077
+current error:  1598.62443077
+current error:  1598.62443077
+current error:  1598.62443077
+current error:  1598.62443077
+current error:  1598.62443077
+current error:  1598.62443077
+current error:  1598.62443077
+current error:  1585.40285395
+current error:  1585.40285395
+current error:  1585.40285395
+current error:  1585.40285395
+current error:  1585.40285395
+current error:  1585.40285395
+current error:  1585.40285395
+current error:  1585.40285395
+current error:  1585.40285395
+current error:  1598.33990464
+current error:  1598.33990464
+current error:  1598.33990464
+current error:  1598.33990464
+current error:  1598.33990464
+current error:  1598.33990464
+current error:  1598.33990464
+current error:  1598.33990464
+current error:  1598.33990464
+current error:  1606.30232229
+current error:  1606.30232229
+current error:  1606.30232229
+current error:  1606.30232229
+current error:  1606.30232229
+current error:  1606.30232229
+current error:  1606.30232229
+current error:  1606.30232229
+current error:  1606.30232229
+{'R^2': 0.9715, 'MSE': 0.4872, 'MAE': 0.489, 'AARD': 0.0001}
+current error:  1445.60831541
+current error:  1445.60831541
+current error:  1445.60831541
+current error:  1445.60831541
+current error:  1445.60831541
+current error:  1445.60831541
+current error:  1445.60831541
+current error:  1445.60831541
+current error:  1445.60831541
+Parity Chart: Sweet Gas C1 (training)(ANFIS) | R^2: 0.97 | MAE: 0.495 | MSE: 0.504 | AARD: 0.0
+Parity Chart: Sweet Gas C1 (testing)(ANFIS) | R^2: 0.969 | MAE: 0.502 | MSE: 0.518 | AARD: 0.0
+----------------------------------------------------------
+Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'
+----------------------------------------------------------
+current error:  1.0798092249
+current error:  1.0798092249
+current error:  1.0798092249
+current error:  1.0798092249
+current error:  1.0798092249
+current error:  1.0798092249
+current error:  1.0798092249
+current error:  1.0798092249
+current error:  1.0798092249
+current error:  1.07645461853
+current error:  1.07645461853
+current error:  1.07645461853
+current error:  1.07645461853
+current error:  1.07645461853
+current error:  1.07645461853
+current error:  1.07645461853
+current error:  1.07645461853
+current error:  1.07645461853
+current error:  1.05412996211
+current error:  1.05412996211
+current error:  1.05412996211
+current error:  1.05412996211
+current error:  1.05412996211
+current error:  1.05412996211
+current error:  1.05412996211
+current error:  1.05412996211
+current error:  1.05412996211
+current error:  1.04428445917
+current error:  1.04428445917
+current error:  1.04428445917
+current error:  1.04428445917
+current error:  1.04428445917
+current error:  1.04428445917
+current error:  1.04428445917
+current error:  1.04428445917
+current error:  1.04428445917
+current error:  1.06892897306
+current error:  1.06892897306
+current error:  1.06892897306
+current error:  1.06892897306
+current error:  1.06892897306
+current error:  1.06892897306
+current error:  1.06892897306
+current error:  1.06892897306
+current error:  1.06892897306
+{'R^2': 0.9943, 'MSE': 0.0003, 'MAE': 0.0136, 'AARD': 0.4707}
+current error:  0.939903172157
+current error:  0.939903172157
+current error:  0.939903172157
+current error:  0.939903172157
+current error:  0.939903172157
+current error:  0.939903172157
+current error:  0.939903172157
+current error:  0.939903172157
+current error:  0.939903172157
+Parity Chart: Rich Amine Hydrocarbons (training)(ANFIS) | R^2: 0.994 | MAE: 0.014 | MSE: 0.0 | AARD: 0.472
+Parity Chart: Rich Amine Hydrocarbons (testing)(ANFIS) | R^2: 0.995 | MAE: 0.013 | MSE: 0.0 | AARD: 0.467
+----------------------------------------------------------
+Evaluate performance of 'R Amine HCO3 (mol/L)'
+----------------------------------------------------------
+current error:  0.275577581525
+current error:  0.275577581525
+current error:  0.275577581525
+current error:  0.275577581525
+current error:  0.275577581525
+current error:  0.275577581525
+current error:  0.275577581525
+current error:  0.275577581525
+current error:  0.275577581525
+current error:  0.27849200494
+current error:  0.27849200494
+current error:  0.27849200494
+current error:  0.27849200494
+current error:  0.27849200494
+current error:  0.27849200494
+current error:  0.27849200494
+current error:  0.27849200494
+current error:  0.27849200494
+current error:  0.277112404354
+current error:  0.277112404354
+current error:  0.277112404354
+current error:  0.277112404354
+current error:  0.277112404354
+current error:  0.277112404354
+current error:  0.277112404354
+current error:  0.277112404354
+current error:  0.277112404354
+current error:  0.274202649913
+current error:  0.274202649913
+current error:  0.274202649913
+current error:  0.274202649913
+current error:  0.274202649913
+current error:  0.274202649913
+current error:  0.274202649913
+current error:  0.274202649913
+current error:  0.274202649913
+current error:  0.275837023386
+current error:  0.275837023386
+current error:  0.275837023386
+current error:  0.275837023386
+current error:  0.275837023386
+current error:  0.275837023386
+current error:  0.275837023386
+current error:  0.275837023386
+current error:  0.275837023386
+{'R^2': 0.9984, 'MSE': 0.0001, 'MAE': 0.007, 'AARD': 1.033}
+current error:  0.246124347594
+current error:  0.246124347594
+current error:  0.246124347594
+current error:  0.246124347594
+current error:  0.246124347594
+current error:  0.246124347594
+current error:  0.246124347594
+current error:  0.246124347594
+current error:  0.246124347594
+Parity Chart: R Amine HCO3 (training)(ANFIS) | R^2: 0.998 | MAE: 0.007 | MSE: 0.0 | AARD: 1.055
+Parity Chart: R Amine HCO3 (testing)(ANFIS) | R^2: 0.998 | MAE: 0.007 | MSE: 0.0 | AARD: 1.013
+----------------------------------------------------------
+Evaluate performance of 'Sweet Gas MDEA Flow (t/d)'
+----------------------------------------------------------
+current error:  8.0807481343e+16
+current error:  8.0807481343e+16
+current error:  8.0807481343e+16
+current error:  8.0807481343e+16
+current error:  8.0807481343e+16
+current error:  8.0807481343e+16
+current error:  8.0807481343e+16
+current error:  8.0807481343e+16
+current error:  8.0807481343e+16
+current error:  8.42368566316e+16
+current error:  8.42368566316e+16
+current error:  8.42368566316e+16
+current error:  8.42368566316e+16
+current error:  8.42368566316e+16
+current error:  8.42368566316e+16
+current error:  8.42368566316e+16
+current error:  8.42368566316e+16
+current error:  8.42368566316e+16
+current error:  8.29167031633e+16
+current error:  8.29167031633e+16
+current error:  8.29167031633e+16
+current error:  8.29167031633e+16
+current error:  8.29167031633e+16
+current error:  8.29167031633e+16
+current error:  8.29167031633e+16
+current error:  8.29167031633e+16
+current error:  8.29167031633e+16
+current error:  8.37547174354e+16
+current error:  8.37547174354e+16
+current error:  8.37547174354e+16
+current error:  8.37547174354e+16
+current error:  8.37547174354e+16
+current error:  8.37547174354e+16
+current error:  8.37547174354e+16
+current error:  8.37547174354e+16
+current error:  8.37547174354e+16
+current error:  8.37977324592e+16
+current error:  8.37977324592e+16
+current error:  8.37977324592e+16
+current error:  8.37977324592e+16
+current error:  8.37977324592e+16
+current error:  8.37977324592e+16
+current error:  8.37977324592e+16
+current error:  8.37977324592e+16
+current error:  8.37977324592e+16
+{'R^2': 0.9179, 'MSE': 0.0, 'MAE': 0.0, 'AARD': 4.4426}
+current error:  6.94891392636e+16
+current error:  6.94891392636e+16
+current error:  6.94891392636e+16
+current error:  6.94891392636e+16
+current error:  6.94891392636e+16
+current error:  6.94891392636e+16
+current error:  6.94891392636e+16
+current error:  6.94891392636e+16
+current error:  6.94891392636e+16
+Parity Chart: Sweet Gas MDEA Flow (training)(ANFIS) | R^2: 0.913 | MAE: 0.0 | MSE: 0.0 | AARD: 4.481
+Parity Chart: Sweet Gas MDEA Flow (testing)(ANFIS) | R^2: 0.902 | MAE: 0.0 | MSE: 0.0 | AARD: 4.596
+----------------------------------------------------------
+Evaluate performance of 'Sweet Gas PZ Flow (t/d)'
+----------------------------------------------------------
+current error:  0.00225523253904
+current error:  0.00225523253904
+current error:  0.00225523253904
+current error:  0.00225523253904
+current error:  0.00225523253904
+current error:  0.00225523253904
+current error:  0.00225523253904
+current error:  0.00225523253904
+current error:  0.00225523253904
+current error:  0.00235408200252
+current error:  0.00235408200252
+current error:  0.00235408200252
+current error:  0.00235408200252
+current error:  0.00235408200252
+current error:  0.00235408200252
+current error:  0.00235408200252
+current error:  0.00235408200252
+current error:  0.00235408200252
+current error:  0.00230638870958
+current error:  0.00230638870958
+current error:  0.00230638870958
+current error:  0.00230638870958
+current error:  0.00230638870958
+current error:  0.00230638870958
+current error:  0.00230638870958
+current error:  0.00230638870958
+current error:  0.00230638870958
+current error:  0.0023299972347
+current error:  0.0023299972347
+current error:  0.0023299972347
+current error:  0.0023299972347
+current error:  0.0023299972347
+current error:  0.0023299972347
+current error:  0.0023299972347
+current error:  0.0023299972347
+current error:  0.0023299972347
+current error:  0.00234283558154
+current error:  0.00234283558154
+current error:  0.00234283558154
+current error:  0.00234283558154
+current error:  0.00234283558154
+current error:  0.00234283558154
+current error:  0.00234283558154
+current error:  0.00234283558154
+current error:  0.00234283558154
+{'R^2': 0.9543, 'MSE': 0.0, 'MAE': 0.0006, 'AARD': 13.7878}
+current error:  0.00205091218712
+current error:  0.00205091218712
+current error:  0.00205091218712
+current error:  0.00205091218712
+current error:  0.00205091218712
+current error:  0.00205091218712
+current error:  0.00205091218712
+current error:  0.00205091218712
+current error:  0.00205091218712
+Parity Chart: Sweet Gas PZ Flow (training)(ANFIS) | R^2: 0.952 | MAE: 0.001 | MSE: 0.0 | AARD: 40.457
+Parity Chart: Sweet Gas PZ Flow (testing)(ANFIS) | R^2: 0.953 | MAE: 0.001 | MSE: 0.0 | AARD: 25.972
+----------------------------------------------------------
+Evaluate performance of 'R Amine Loading'
+----------------------------------------------------------
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+{'R^2': 0.995, 'MSE': 0.0, 'MAE': 0.0018, 'AARD': 0.4034}
+current error:  0.017170595145
+current error:  0.017170595145
+current error:  0.017170595145
+current error:  0.017170595145
+current error:  0.017170595145
+current error:  0.017170595145
+current error:  0.017170595145
+current error:  0.017170595145
+current error:  0.017170595145
+Parity Chart: R Amine Loading (training)(ANFIS) | R^2: 0.995 | MAE: 0.002 | MSE: 0.0 | AARD: 0.403
+Parity Chart: R Amine Loading (testing)(ANFIS) | R^2: 0.995 | MAE: 0.002 | MSE: 0.0 | AARD: 0.412
+----------------------------------------------------------
+Evaluate performance of 'L Amine Loading'
+----------------------------------------------------------
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+{'R^2': 0.995, 'MSE': 0.0, 'MAE': 0.0018, 'AARD': 0.4034}
+current error:  0.017678970593
+current error:  0.017678970593
+current error:  0.017678970593
+current error:  0.017678970593
+current error:  0.017678970593
+current error:  0.017678970593
+current error:  0.017678970593
+current error:  0.017678970593
+current error:  0.017678970593
+Parity Chart: L Amine Loading (training)(ANFIS) | R^2: 0.995 | MAE: 0.002 | MSE: 0.0 | AARD: 0.407
+Parity Chart: L Amine Loading (testing)(ANFIS) | R^2: 0.995 | MAE: 0.002 | MSE: 0.0 | AARD: 0.402
+current error:  466.516070981
+current error:  466.516070981
+current error:  466.516070981
+current error:  466.516070981
+current error:  466.516070981
+current error:  466.516070981
+current error:  466.516070981
+current error:  466.516070981
+current error:  466.516070981
+current error:  448.539390454
+current error:  448.539390454
+current error:  448.539390454
+current error:  448.539390454
+current error:  448.539390454
+current error:  448.539390454
+current error:  448.539390454
+current error:  448.539390454
+current error:  448.539390454
+current error:  436.699388467
+current error:  436.699388467
+current error:  436.699388467
+current error:  436.699388467
+current error:  436.699388467
+current error:  436.699388467
+current error:  436.699388467
+current error:  436.699388467
+current error:  436.699388467
+current error:  424.43041569
+current error:  424.43041569
+current error:  424.43041569
+current error:  424.43041569
+current error:  424.43041569
+current error:  424.43041569
+current error:  424.43041569
+current error:  424.43041569
+current error:  424.43041569
+current error:  443.881516556
+current error:  443.881516556
+current error:  443.881516556
+current error:  443.881516556
+current error:  443.881516556
+current error:  443.881516556
+current error:  443.881516556
+current error:  443.881516556
+current error:  443.881516556
+AOC of 'Sweet Gas CO2 (ppm)': 2.03575930842
+current error:  1544.062878
+current error:  1544.062878
+current error:  1544.062878
+current error:  1544.062878
+current error:  1544.062878
+current error:  1544.062878
+current error:  1544.062878
+current error:  1544.062878
+current error:  1544.062878
+current error:  1598.62443077
+current error:  1598.62443077
+current error:  1598.62443077
+current error:  1598.62443077
+current error:  1598.62443077
+current error:  1598.62443077
+current error:  1598.62443077
+current error:  1598.62443077
+current error:  1598.62443077
+current error:  1585.40285395
+current error:  1585.40285395
+current error:  1585.40285395
+current error:  1585.40285395
+current error:  1585.40285395
+current error:  1585.40285395
+current error:  1585.40285395
+current error:  1585.40285395
+current error:  1585.40285395
+current error:  1598.33990464
+current error:  1598.33990464
+current error:  1598.33990464
+current error:  1598.33990464
+current error:  1598.33990464
+current error:  1598.33990464
+current error:  1598.33990464
+current error:  1598.33990464
+current error:  1598.33990464
+current error:  1606.30232229
+current error:  1606.30232229
+current error:  1606.30232229
+current error:  1606.30232229
+current error:  1606.30232229
+current error:  1606.30232229
+current error:  1606.30232229
+current error:  1606.30232229
+current error:  1606.30232229
+AOC of 'Sweet Gas C1 (ppm)': 2.70025777806
+current error:  1.0798092249
+current error:  1.0798092249
+current error:  1.0798092249
+current error:  1.0798092249
+current error:  1.0798092249
+current error:  1.0798092249
+current error:  1.0798092249
+current error:  1.0798092249
+current error:  1.0798092249
+current error:  1.07645461853
+current error:  1.07645461853
+current error:  1.07645461853
+current error:  1.07645461853
+current error:  1.07645461853
+current error:  1.07645461853
+current error:  1.07645461853
+current error:  1.07645461853
+current error:  1.07645461853
+current error:  1.05412996211
+current error:  1.05412996211
+current error:  1.05412996211
+current error:  1.05412996211
+current error:  1.05412996211
+current error:  1.05412996211
+current error:  1.05412996211
+current error:  1.05412996211
+current error:  1.05412996211
+current error:  1.04428445917
+current error:  1.04428445917
+current error:  1.04428445917
+current error:  1.04428445917
+current error:  1.04428445917
+current error:  1.04428445917
+current error:  1.04428445917
+current error:  1.04428445917
+current error:  1.04428445917
+current error:  1.06892897306
+current error:  1.06892897306
+current error:  1.06892897306
+current error:  1.06892897306
+current error:  1.06892897306
+current error:  1.06892897306
+current error:  1.06892897306
+current error:  1.06892897306
+current error:  1.06892897306
+AOC of 'Rich Amine Hydrocarbons (t/d)': 0.0494452180093
+current error:  0.275577581525
+current error:  0.275577581525
+current error:  0.275577581525
+current error:  0.275577581525
+current error:  0.275577581525
+current error:  0.275577581525
+current error:  0.275577581525
+current error:  0.275577581525
+current error:  0.275577581525
+current error:  0.27849200494
+current error:  0.27849200494
+current error:  0.27849200494
+current error:  0.27849200494
+current error:  0.27849200494
+current error:  0.27849200494
+current error:  0.27849200494
+current error:  0.27849200494
+current error:  0.27849200494
+current error:  0.277112404354
+current error:  0.277112404354
+current error:  0.277112404354
+current error:  0.277112404354
+current error:  0.277112404354
+current error:  0.277112404354
+current error:  0.277112404354
+current error:  0.277112404354
+current error:  0.277112404354
+current error:  0.274202649913
+current error:  0.274202649913
+current error:  0.274202649913
+current error:  0.274202649913
+current error:  0.274202649913
+current error:  0.274202649913
+current error:  0.274202649913
+current error:  0.274202649913
+current error:  0.274202649913
+current error:  0.275837023386
+current error:  0.275837023386
+current error:  0.275837023386
+current error:  0.275837023386
+current error:  0.275837023386
+current error:  0.275837023386
+current error:  0.275837023386
+current error:  0.275837023386
+current error:  0.275837023386
+AOC of 'R Amine HCO3 (mol/L)': 0.0183008140136
+current error:  8.0807481343e+16
+current error:  8.0807481343e+16
+current error:  8.0807481343e+16
+current error:  8.0807481343e+16
+current error:  8.0807481343e+16
+current error:  8.0807481343e+16
+current error:  8.0807481343e+16
+current error:  8.0807481343e+16
+current error:  8.0807481343e+16
+current error:  8.42368566316e+16
+current error:  8.42368566316e+16
+current error:  8.42368566316e+16
+current error:  8.42368566316e+16
+current error:  8.42368566316e+16
+current error:  8.42368566316e+16
+current error:  8.42368566316e+16
+current error:  8.42368566316e+16
+current error:  8.42368566316e+16
+current error:  8.29167031633e+16
+current error:  8.29167031633e+16
+current error:  8.29167031633e+16
+current error:  8.29167031633e+16
+current error:  8.29167031633e+16
+current error:  8.29167031633e+16
+current error:  8.29167031633e+16
+current error:  8.29167031633e+16
+current error:  8.29167031633e+16
+current error:  8.37547174354e+16
+current error:  8.37547174354e+16
+current error:  8.37547174354e+16
+current error:  8.37547174354e+16
+current error:  8.37547174354e+16
+current error:  8.37547174354e+16
+current error:  8.37547174354e+16
+current error:  8.37547174354e+16
+current error:  8.37547174354e+16
+current error:  8.37977324592e+16
+current error:  8.37977324592e+16
+current error:  8.37977324592e+16
+current error:  8.37977324592e+16
+current error:  8.37977324592e+16
+current error:  8.37977324592e+16
+current error:  8.37977324592e+16
+current error:  8.37977324592e+16
+current error:  8.37977324592e+16
+AOC of 'Sweet Gas MDEA Flow (t/d)': 19320089.339
+current error:  0.00225523253904
+current error:  0.00225523253904
+current error:  0.00225523253904
+current error:  0.00225523253904
+current error:  0.00225523253904
+current error:  0.00225523253904
+current error:  0.00225523253904
+current error:  0.00225523253904
+current error:  0.00225523253904
+current error:  0.00235408200252
+current error:  0.00235408200252
+current error:  0.00235408200252
+current error:  0.00235408200252
+current error:  0.00235408200252
+current error:  0.00235408200252
+current error:  0.00235408200252
+current error:  0.00235408200252
+current error:  0.00235408200252
+current error:  0.00230638870958
+current error:  0.00230638870958
+current error:  0.00230638870958
+current error:  0.00230638870958
+current error:  0.00230638870958
+current error:  0.00230638870958
+current error:  0.00230638870958
+current error:  0.00230638870958
+current error:  0.00230638870958
+current error:  0.0023299972347
+current error:  0.0023299972347
+current error:  0.0023299972347
+current error:  0.0023299972347
+current error:  0.0023299972347
+current error:  0.0023299972347
+current error:  0.0023299972347
+current error:  0.0023299972347
+current error:  0.0023299972347
+current error:  0.00234283558154
+current error:  0.00234283558154
+current error:  0.00234283558154
+current error:  0.00234283558154
+current error:  0.00234283558154
+current error:  0.00234283558154
+current error:  0.00234283558154
+current error:  0.00234283558154
+current error:  0.00234283558154
+AOC of 'Sweet Gas PZ Flow (t/d)': 0.00325520150072
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+AOC of 'R Amine Loading': 0.00684320826468
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0201153450914
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0196628980428
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0194615625186
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0191429968763
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+current error:  0.0194979743307
+AOC of 'L Amine Loading': 0.00684320826468
+----------------------------------------------------------
+----------------------------------------------------------
 ----------------------------------------------------------
 ----------------------------------------------------------
 Base Model
@@ -17,40 +1077,40 @@ Base Model
 ----------------------------------------------------------
 Evaluate performance of 'Sweet Gas CO2 (ppm)'
 ----------------------------------------------------------
-{'R^2': -0.0006, 'MSE': 1.0385, 'MAE': 0.7847, 'AARD': 52.2934}
+{'R^2': -0.0022, 'MSE': 1.0393, 'MAE': 0.785, 'AARD': 52.3157}
 ----------------------------------------------------------
 Evaluate performance of 'Sweet Gas C1 (ppm)'
 ----------------------------------------------------------
-{'R^2': -0.0001, 'MSE': 17.0831, 'MAE': 3.3737, 'AARD': 0.0004}
+{'R^2': -0.0014, 'MSE': 17.0902, 'MAE': 3.3747, 'AARD': 0.0004}
 ----------------------------------------------------------
 Evaluate performance of 'Rich Amine Hydrocarbons (t/d)'
 ----------------------------------------------------------
-{'R^2': -0.0024, 'MSE': 0.0579, 'MAE': 0.2102, 'AARD': 7.3061}
+{'R^2': -0.0014, 'MSE': 0.0578, 'MAE': 0.2101, 'AARD': 7.3026}
 ----------------------------------------------------------
 Evaluate performance of 'R Amine HCO3 (mol/L)'
 ----------------------------------------------------------
-{'R^2': -0.0009, 'MSE': 0.0546, 'MAE': 0.1998, 'AARD': 28.7457}
+{'R^2': -0.0012, 'MSE': 0.0546, 'MAE': 0.1998, 'AARD': 28.7441}
 ----------------------------------------------------------
 Evaluate performance of 'Sweet Gas MDEA Flow (t/d)'
 ----------------------------------------------------------
-{'R^2': -0.0011, 'MSE': 0.0, 'MAE': 0.0, 'AARD': 15.9899}
+{'R^2': -0.0013, 'MSE': 0.0, 'MAE': 0.0, 'AARD': 15.9925}
 ----------------------------------------------------------
 Evaluate performance of 'Sweet Gas PZ Flow (t/d)'
 ----------------------------------------------------------
-{'R^2': -0.0001, 'MSE': 0.0, 'MAE': 0.0033, 'AARD': 77.6441}
+{'R^2': -0.0011, 'MSE': 0.0, 'MAE': 0.0033, 'AARD': 77.6545}
 ----------------------------------------------------------
 Evaluate performance of 'R Amine Loading'
 ----------------------------------------------------------
-{'R^2': -0.0009, 'MSE': 0.0012, 'MAE': 0.0284, 'AARD': 6.2718}
+{'R^2': -0.0007, 'MSE': 0.0012, 'MAE': 0.0284, 'AARD': 6.2705}
 ----------------------------------------------------------
 Evaluate performance of 'L Amine Loading'
 ----------------------------------------------------------
-{'R^2': -0.0009, 'MSE': 0.0012, 'MAE': 0.0284, 'AARD': 6.2718}
-AOC of 'Sweet Gas CO2 (ppm)': 3.52645250347
-AOC of 'Sweet Gas C1 (ppm)': 8.02565955471
-AOC of 'Rich Amine Hydrocarbons (t/d)': 0.205198481864
-AOC of 'R Amine HCO3 (mol/L)': 0.253426996117
-AOC of 'Sweet Gas MDEA Flow (t/d)': 4.84991293745e-05
-AOC of 'Sweet Gas PZ Flow (t/d)': 0.00810476944403
-AOC of 'R Amine Loading': 0.0584109999498
-AOC of 'L Amine Loading': 0.0584109999498
+{'R^2': -0.0007, 'MSE': 0.0012, 'MAE': 0.0284, 'AARD': 6.2705}
+AOC of 'Sweet Gas CO2 (ppm)': 3.5188078541
+AOC of 'Sweet Gas C1 (ppm)': 7.71672287267
+AOC of 'Rich Amine Hydrocarbons (t/d)': 0.205388213379
+AOC of 'R Amine HCO3 (mol/L)': 0.253288914527
+AOC of 'Sweet Gas MDEA Flow (t/d)': 4.86929949608e-05
+AOC of 'Sweet Gas PZ Flow (t/d)': 0.00814400581062
+AOC of 'R Amine Loading': 0.0584113467261
+AOC of 'L Amine Loading': 0.0584113467261
