@@ -1,6 +1,6 @@
 List of Attributes
 
-['L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'CMDEA (wt.%)', 'CPZ (wt.%)']
+['L Amine Pressure (bar (g))', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'MDEA', 'PZ']
 
 Evaluation metrics
 
@@ -18,47 +18,56 @@ Evaluation of SG CO2 (ppm)
 
 
 
-{'R^2': 0.9613, 'MSE': 5845.0004, 'MAE': 55.4027, 'AARD': 4225.2255}
+{'R^2': 0.9187, 'MSE': 0.0054, 'MAE': 0.0543, 'AARD': 55.7151}
 
 Evaluation of RAL ()
 
 
 
-{'R^2': 0.9863, 'MSE': 0.0, 'MAE': 0.003, 'AARD': 0.6603}
+{'R^2': 0.9987, 'MSE': 0.0, 'MAE': 0.0023, 'AARD': 0.2898}
 
 Evaluation of LAL ()
 
 
 
-{'R^2': 0.9629, 'MSE': 0.0, 'MAE': 0.0005, 'AARD': 15.4771}
+{'R^2': 0.9991, 'MSE': 0.0002, 'MAE': 0.0106, 'AARD': 0.2032}
 
 Evaluation of SG MDEA Flow (t/d)
 
 
 
-{'R^2': 0.9617, 'MSE': 0.0, 'MAE': 0.0, 'AARD': 9.5061}
+{'R^2': 0.8668, 'MSE': 0.0017, 'MAE': 0.0345, 'AARD': 0.3652}
 
 Evaluation of SG PZ Flow (t/d)
 
 
 
-{'R^2': 0.9638, 'MSE': 0.0, 'MAE': 0.0006, 'AARD': 5822.9939}
+{'R^2': 0.9896, 'MSE': 0.0017, 'MAE': 0.0351, 'AARD': 0.6647}
 
 Evaluation of SG CO2 Flow (t/d)
 
 
 
-{'R^2': 0.9612, 'MSE': 3.6351, 'MAE': 1.3815, 'AARD': 4232.2178}
+{'R^2': 0.9187, 'MSE': 0.0054, 'MAE': 0.0543, 'AARD': 1.635}
 
 Evaluation of RA C5 Flow (t/d)
 
 
 
-{'R^2': 0.9888, 'MSE': 0.0, 'MAE': 0.0007, 'AARD': 1.6645}
+{'R^2': 0.9981, 'MSE': 0.0, 'MAE': 0.0056, 'AARD': 0.1732}
 
-Evaluation of RA HCO3 Flow (t/d)
+Evaluation of R Amine C5 (ppm)
 
 
 
-{'R^2': 0.9855, 'MSE': 69.7931, 'MAE': 6.6237, 'AARD': 3.5597}
+{'R^2': 0.997, 'MSE': 0.0, 'MAE': 0.0038, 'AARD': 0.2696}
+
+Evaluation of R Amine C1 Flow (t/d)
+
+
+{'R^2': 0.999, 'MSE': 0.0, 'MAE': 0.0028, 'AARD': 0.3232}
+
+
+Evaluation of Sweet Gas C1 Flow (t/d)
+{'R^2': 0.995, 'MSE': 0.0003, 'MAE': 0.0138, 'AARD': 0.0002}
 

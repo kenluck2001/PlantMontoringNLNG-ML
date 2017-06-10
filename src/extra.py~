@@ -6,10 +6,16 @@ from sklearn.metrics import r2_score, mean_absolute_error , mean_squared_error
 
 from anf import AnfisClassifier
 
-df = pd.read_csv('data/data4.csv')
+df = pd.read_csv('data/data3.csv')
 
 
-predictorLabel = df.columns[:-11].tolist()
+predictorLabel = df.columns[:-10].tolist()
+
+#['Lean Amine Pressure (bar)', 'Lean Amine Circulation Rate (t/d)', 'Lean Amine Temperature (C)', 'Heat Duty (GJ/h)', 'Reboiler Pressure (bar (g))', 'MDEA Concentration (%)', 'PZ Concentration (%)']
+
+
+
+#['LP', 'LC', 'LT', 'HD', 'RP', 'MC', 'PZ']
 
 
 
@@ -50,11 +56,9 @@ def getAARD ( y_test, y_pred ):
         Both input are numpy array
     '''
     absdiff = np.fabs ( y_test - y_pred).reshape ((1, len(y_pred) ))
-    #diff =  np.squeeze( absdiff ) / y_test.reshape (( 1, len(y_test) ))
+    diff =  np.squeeze( absdiff ) / y_test.reshape (( 1, len(y_test) ))
 
-    diff =   absdiff / y_test.reshape (( 1, len(y_test) ))
-
-    result = ( 100.0 / len(y_test) ) *  np.sum (np.fabs (diff) )
+    result = ( 100.0 / len(y_test) ) *  np.sum (diff)
     return result
 
 
@@ -116,9 +120,9 @@ def crossValScore (cls, X, y, n_folds=5, scale = 1.0):
 
 
 def parityChartToCSV ( xdata, ydata, label, scale = 1.0 ):
-    '''
+    """
         write to CSV
-    '''
+    """
 
     labels = ["Predicted Value", "Expected Value"]
     dfv = pd.DataFrame(columns=labels)
@@ -136,9 +140,9 @@ def parityChartToCSV ( xdata, ydata, label, scale = 1.0 ):
     dfv.to_csv(filename, header=True, index=False)
 
 
-def unison_shuffled_copies(a, b, c, d, e, f, g, h, i, j, k):
+def unison_shuffled_copies(a, b, c, d, e, f, g, h, i):
     p = np.random.permutation(len(a))
-    return a[p], b[p], c[p], d[p], e[p], f[p], g[p], h[p], i[p], j[p], k[p]
+    return a[p], b[p], c[p], d[p], e[p], f[p], g[p], h[p], i[p]
 
 
 
@@ -153,45 +157,24 @@ if __name__ == "__main__":
 
     X = getPredictorData (df)
 
-    y_sweetgasco2 = getLabelData (df, 'Sweet Gas CO2 (ppm)')
-    y_rAmineloading = getLabelData (df, 'R Amine Loading ()')
-    y_lAmineloading = getLabelData (df, 'L Amine Loading ()')
-    y_sweetgasmdeaflow = getLabelData (df, 'Sweet Gas MDEA Flow (t/d)')
-    y_sweetgaspzflow = getLabelData (df, 'Sweet Gas PZ Flow (t/d)')
-    y_sweetgasco2flow = getLabelData (df, 'Sweet Gas CO2 Flow (t/d)')
-    y_rA_c5flow = getLabelData (df, 'Rich Amine C5 Flow (t/d)')
+    y_sweetgasco2 = getLabelData (df, 'SG CO2 (ppm)')
+    y_rAmineloading = getLabelData (df, 'RAL ()')
+    y_lAmineloading = getLabelData (df, 'LAL ()')
+    y_sweetgasmdeaflow = getLabelData (df, 'SG MDEA Flow (t/d)')
+    y_sweetgaspzflow = getLabelData (df, 'SG PZ Flow (t/d)')
+    y_sweetgasco2flow = getLabelData (df, 'SG CO2 Flow (t/d)')
+    y_rA_c5flow = getLabelData (df, 'RA C5 Flow (t/d)')
+    y_rA_hco3flow = getLabelData (df, 'RA HCO3 Flow (t/d)')
 
 
-    y_raminec5 = getLabelData (df, 'R Amine C5 (ppm)')
-    y_raminec1flow = getLabelData (df, 'R Amine C1 Flow (t/d)')
-    y_sweetgasc1flow = getLabelData (df, 'Sweet Gas C1 Flow (t/d)')
-
-
-    y_sweetgasco2_raw = y_sweetgasco2.ravel() 
-    y_rAmineloading_raw =  y_rAmineloading.ravel() 
-    y_lAmineloading_raw =  y_lAmineloading.ravel() 
-    y_sweetgasmdeaflow_raw =  y_sweetgasmdeaflow.ravel() 
-    y_sweetgaspzflow_raw =  y_sweetgaspzflow.ravel() 
-    y_sweetgasco2flow_raw =  y_sweetgasco2flow.ravel() 
-    y_rA_c5flow_raw =  y_rA_c5flow.ravel() 
-
-    y_raminec5_raw = y_raminec5.ravel()
-    y_raminec1flow_raw = y_raminec1flow.ravel()
-    y_sweetgasc1flow_raw = y_sweetgasc1flow.ravel()
-
-
-
-    y_sweetgasco2 = np.log ( y_sweetgasco2_raw ) 
-    y_rAmineloading =  np.log ( y_rAmineloading_raw ) 
-    y_lAmineloading =  np.log ( y_lAmineloading_raw ) 
-    y_sweetgasmdeaflow =  np.log ( y_sweetgasmdeaflow_raw ) 
-    y_sweetgaspzflow =  np.log ( y_sweetgaspzflow_raw ) 
-    y_sweetgasco2flow =  np.log ( y_sweetgasco2flow_raw ) 
-    y_rA_c5flow =  np.log ( y_rA_c5flow_raw ) 
-
-    y_raminec5 = np.log ( y_raminec5_raw )
-    y_raminec1flow = np.log ( y_raminec1flow_raw )
-    y_sweetgasc1flow = np.log ( y_sweetgasc1flow_raw )
+    y_sweetgasco2 = y_sweetgasco2.ravel() 
+    y_rAmineloading =  y_rAmineloading.ravel() 
+    y_lAmineloading =  y_lAmineloading.ravel() 
+    y_sweetgasmdeaflow =  y_sweetgasmdeaflow.ravel() 
+    y_sweetgaspzflow =  y_sweetgaspzflow.ravel() 
+    y_sweetgasco2flow =  y_sweetgasco2flow.ravel() 
+    y_rA_c5flow =  y_rA_c5flow.ravel() 
+    y_rA_hco3flow =  y_rA_hco3flow.ravel() 
 
 
     mdeaCol = X [:,[4]]
@@ -200,21 +183,17 @@ if __name__ == "__main__":
     mdea_pzratio = mdeaCol /  pzCol
 
 
-
     cX = np.hstack((  X, mdea_pzratio ))
 
-    #cX = np.log ( cX )
 
     #shuffling the data
-    cX, y_sweetgasco2, y_rAmineloading, y_lAmineloading, y_sweetgasmdeaflow, y_sweetgaspzflow, y_sweetgasco2flow, y_rA_c5flow, y_raminec5, y_raminec1flow, y_sweetgasc1flow = unison_shuffled_copies(cX, y_sweetgasco2, y_rAmineloading, y_lAmineloading, y_sweetgasmdeaflow, y_sweetgaspzflow, y_sweetgasco2flow, y_rA_c5flow, y_raminec5, y_raminec1flow, y_sweetgasc1flow  )
-
-    
+    cX, y_sweetgasco2, y_rAmineloading, y_lAmineloading, y_sweetgasmdeaflow, y_sweetgaspzflow, y_sweetgasco2flow, y_rA_c5flow, y_rA_hco3flow  = unison_shuffled_copies(cX, y_sweetgasco2, y_rAmineloading, y_lAmineloading, y_sweetgasmdeaflow, y_sweetgaspzflow, y_sweetgasco2flow, y_rA_c5flow, y_rA_hco3flow  )
 
     ntrainingSize = int (0.7 * len ( cX )) # 70 - 30 split
 
     #zero mean for ANFIS model
 
-    '''
+
     meanList = cX.mean(axis=0)
     meanMatrixlist = []
     for i in range(len(cX)):
@@ -224,34 +203,19 @@ if __name__ == "__main__":
     meanMatrix = np.vstack(meanMatrixlist)
 
     zero_meanX = cX - meanMatrix
+
+    stdList = cX.std(axis=0) 
+
+    zero_meanX = zero_meanX / stdList
+
+    print zero_meanX
+
     '''
-    minArr = np.amin( cX, axis=0 )
-    maxArr  = np.amax( cX, axis=0 )
-
-
-    minMatrixlist = []
-    maxMatrixlist = []
-    for i in range(len(cX)):
-        min_line = minArr.reshape(1,len(minArr))
-        minMatrixlist.append(min_line)
-
-        max_line = maxArr.reshape(1,len(maxArr))
-        maxMatrixlist.append(max_line)
-
-    minMatrix = np.vstack(minMatrixlist)
-    maxMatrix = np.vstack(maxMatrixlist)
-
-
-
-    zero_meanX = 0.1 + ( 0.8 * ( cX - minMatrix ) / (maxMatrix - minMatrix) )
-
-
-
     print "Evaluation of SG CO2 (ppm)\n"
-
 
     model = AnfisClassifier()
     model.setType ('gaussmf')
+
 
     r2 = crossValScore (model, zero_meanX, y_sweetgasco2)
     print r2
@@ -260,7 +224,6 @@ if __name__ == "__main__":
     model.setType ('gaussmf')
     X,y = unison_shuffled( zero_meanX, y_sweetgasco2 )
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize] )
-
 
     #plot parity chart here (training)
     nxdata = X[range (ntrainingSize), :]
@@ -282,7 +245,6 @@ if __name__ == "__main__":
     parityChartToCSV ( xdata, ydata, label )
 
 
-
     print "Evaluation of RAL ()\n"
 
     model = AnfisClassifier()
@@ -296,7 +258,6 @@ if __name__ == "__main__":
     model.setType ('gaussmf')
     X,y = unison_shuffled( zero_meanX, y_rAmineloading )
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize] )
-
 
     #plot parity chart here (training)
     nxdata = X[range (ntrainingSize), :]
@@ -332,7 +293,6 @@ if __name__ == "__main__":
     X,y = unison_shuffled( zero_meanX, y_lAmineloading )
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize] )
 
-
     #plot parity chart here (training)
     nxdata = X[range (ntrainingSize), :]
     xdata = model.predict(nxdata)
@@ -341,6 +301,7 @@ if __name__ == "__main__":
     label="LAL (training)(ANFIS)"
 
     parityChartToCSV ( xdata, ydata, label )
+
 
     #plot parity chart here (testing)
     nxdata = X[range (ntrainingSize, len(X)), :]
@@ -367,7 +328,6 @@ if __name__ == "__main__":
     X,y = unison_shuffled( zero_meanX, scaleVal * y_sweetgasmdeaflow )
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize] )
 
-
     #plot parity chart here (training)
     nxdata = X[range (ntrainingSize), :]
     xdata = model.predict(nxdata)
@@ -393,6 +353,7 @@ if __name__ == "__main__":
     model = AnfisClassifier()
     model.setType ('gaussmf')
 
+
     r2 = crossValScore (model, zero_meanX, y_sweetgaspzflow)
     print r2
 
@@ -400,7 +361,6 @@ if __name__ == "__main__":
     model.setType ('gaussmf')
     X,y = unison_shuffled( zero_meanX, y_sweetgaspzflow )
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize] )
-
 
     #plot parity chart here (training)
     nxdata = X[range (ntrainingSize), :]
@@ -438,8 +398,6 @@ if __name__ == "__main__":
 
     #plot parity chart here (training)
     nxdata = X[range (ntrainingSize), :]
-
-
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()[0]
     ydata = y[:ntrainingSize]
@@ -472,7 +430,6 @@ if __name__ == "__main__":
     X,y = unison_shuffled( zero_meanX, y_rA_c5flow )
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize] )
 
-
     #plot parity chart here (training)
     nxdata = X[range (ntrainingSize), :]
     xdata = model.predict(nxdata)
@@ -493,28 +450,26 @@ if __name__ == "__main__":
     parityChartToCSV ( xdata, ydata, label )
 
 
-
-    print "Evaluation of R Amine C5 (ppm)\n"
+    print "Evaluation of RA HCO3 Flow (t/d)\n"
 
     model = AnfisClassifier()
     model.setType ('gaussmf')
 
 
-    r2 = crossValScore (model, zero_meanX, y_raminec5)
+    r2 = crossValScore (model, zero_meanX, y_rA_hco3flow)
     print r2
 
     model = AnfisClassifier()
     model.setType ('gaussmf')
-    X,y = unison_shuffled( zero_meanX, y_raminec5 )
+    X,y = unison_shuffled( zero_meanX, y_rA_hco3flow )
     model.fit( X[range (ntrainingSize), :], y[:ntrainingSize] )
-
 
     #plot parity chart here (training)
     nxdata = X[range (ntrainingSize), :]
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()[0]
     ydata = y[:ntrainingSize]
-    label="R Amine C5 (ppm) (training)(ANFIS)"
+    label="RA HCO3 Flow (training)(ANFIS)"
 
     parityChartToCSV ( xdata, ydata, label )
 
@@ -524,79 +479,8 @@ if __name__ == "__main__":
     xdata = model.predict(nxdata)
     xdata = xdata.T.tolist()[0]
     ydata = y[ntrainingSize:]
-    label="R Amine C5 (ppm) (testing)(ANFIS)"
+    label="RA HCO3 Flow (testing)(ANFIS)"
 
     parityChartToCSV ( xdata, ydata, label )
-
-
-    print "Evaluation of R Amine C1 Flow (t/d)\n"
-
-    model = AnfisClassifier()
-    model.setType ('gaussmf')
-
-
-    r2 = crossValScore (model, zero_meanX, y_raminec1flow )
-    print r2
-
-    model = AnfisClassifier()
-    model.setType ('gaussmf')
-    X,y = unison_shuffled( zero_meanX, y_raminec1flow  )
-    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize] )
-
-
-    #plot parity chart here (training)
-    nxdata = X[range (ntrainingSize), :]
-    xdata = model.predict(nxdata)
-    xdata = xdata.T.tolist()[0]
-    ydata = y[:ntrainingSize]
-    label="R Amine C1 Flow (td) (training)(ANFIS)"
-
-    parityChartToCSV ( xdata, ydata, label )
-
-
-    #plot parity chart here (testing)
-    nxdata = X[range (ntrainingSize, len(X)), :]
-    xdata = model.predict(nxdata)
-    xdata = xdata.T.tolist()[0]
-    ydata = y[ntrainingSize:]
-    label="R Amine C1 Flow (td) (testing)(ANFIS)"
-
-    parityChartToCSV ( xdata, ydata, label )
- 
-
-    print "Evaluation of Sweet Gas C1 Flow (t/d)\n"
-
-    model = AnfisClassifier()
-    model.setType ('gaussmf')
-    scaleVal = 1000000000000.0
-
-    r2 = crossValScore (model, zero_meanX, scaleVal * y_sweetgasc1flow_raw, scale = scaleVal)
-    print r2
-
-    model = AnfisClassifier()
-    model.setType ('gaussmf')
-    X,y = unison_shuffled( zero_meanX, scaleVal * y_sweetgasc1flow_raw  )
-    model.fit( X[range (ntrainingSize), :], y[:ntrainingSize] )
-
-
-    #plot parity chart here (training)
-    nxdata = X[range (ntrainingSize), :]
-    xdata = model.predict(nxdata)
-    xdata = xdata.T.tolist()[0]
-    ydata = y[:ntrainingSize]
-    label="Sweet Gas C1 Flow (td) (training)(ANFIS)"
-
-    parityChartToCSV ( xdata, ydata, label, scale = scaleVal )
-
-
-    #plot parity chart here (testing)
-    nxdata = X[range (ntrainingSize, len(X)), :]
-    xdata = model.predict(nxdata)
-    xdata = xdata.T.tolist()[0]
-    ydata = y[ntrainingSize:]
-    label="Sweet Gas C1 Flow (td) (testing)(ANFIS)"
-
-    parityChartToCSV ( xdata, ydata, label, scale = scaleVal )
-
-
+    '''
 

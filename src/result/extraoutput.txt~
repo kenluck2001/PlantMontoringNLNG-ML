@@ -1,0 +1,128 @@
+List of Attributes
+
+['L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'CMDEA (wt.%)', 'CPZ (wt.%)']
+
+Evaluation metrics
+
+-------------------------------
+
+R^2: Coefficient of Determination
+
+MAE: Mean Absolute Error
+
+MSE: Mean Squared Error
+
+%AARD: % Average Absolute Relative Deviation
+
+Evaluation of SG CO2 (ppm)
+
+
+
+{'R^2': 0.9613, 'MSE': 5845.0004, 'MAE': 55.4027, 'AARD': 4225.2255}
+
+Evaluation of RAL ()
+
+
+
+{'R^2': 0.9863, 'MSE': 0.0, 'MAE': 0.003, 'AARD': 0.6603}
+
+Evaluation of LAL ()
+
+
+
+{'R^2': 0.9629, 'MSE': 0.0, 'MAE': 0.0005, 'AARD': 15.4771}
+
+Evaluation of SG MDEA Flow (t/d)
+
+
+
+{'R^2': 0.9617, 'MSE': 0.0, 'MAE': 0.0, 'AARD': 9.5061}
+
+Evaluation of SG PZ Flow (t/d)
+
+
+
+{'R^2': 0.9638, 'MSE': 0.0, 'MAE': 0.0006, 'AARD': 5822.9939}
+
+Evaluation of SG CO2 Flow (t/d)
+
+
+
+{'R^2': 0.9612, 'MSE': 3.6351, 'MAE': 1.3815, 'AARD': 4232.2178}
+
+Evaluation of RA C5 Flow (t/d)
+
+
+
+{'R^2': 0.9888, 'MSE': 0.0, 'MAE': 0.0007, 'AARD': 1.6645}
+
+Evaluation of RA HCO3 Flow (t/d)
+
+
+
+{'R^2': 0.9855, 'MSE': 69.7931, 'MAE': 6.6237, 'AARD': 3.5597}
+
+List of Attributes
+
+['L Amine Pressure (bar)', 'L Amine Flow (t/d)', 'L Amine Temp (\xc2\xb0C)', 'Heat Duty (GJ/h)', 'CMDEA (wt.%)', 'CPZ (wt.%)']
+
+Evaluation metrics
+
+-------------------------------
+
+R^2: Coefficient of Determination
+
+MAE: Mean Absolute Error
+
+MSE: Mean Squared Error
+
+%AARD: % Average Absolute Relative Deviation
+
+Evaluation of SG CO2 (ppm)
+
+
+
+{'R^2': 0.9611, 'MSE': 5847.9493, 'MAE': 55.4832, 'AARD': 4229.3135}
+
+Evaluation of RAL ()
+
+
+
+{'R^2': 0.9864, 'MSE': 0.0, 'MAE': 0.003, 'AARD': 0.6603}
+
+Evaluation of LAL ()
+
+
+
+{'R^2': 0.9628, 'MSE': 0.0, 'MAE': 0.0005, 'AARD': 15.4622}
+
+Evaluation of SG MDEA Flow (t/d)
+
+
+
+{'R^2': 0.9617, 'MSE': 0.0, 'MAE': 0.0, 'AARD': 9.4968}
+
+Evaluation of SG PZ Flow (t/d)
+
+
+
+{'R^2': 0.9637, 'MSE': 0.0, 'MAE': 0.0006, 'AARD': 5813.2838}
+
+Evaluation of SG CO2 Flow (t/d)
+
+
+
+{'R^2': 0.9611, 'MSE': 3.6369, 'MAE': 1.3835, 'AARD': 4236.3287}
+
+Evaluation of RA C5 Flow (t/d)
+
+
+
+{'R^2': 0.9888, 'MSE': 0.0, 'MAE': 0.0007, 'AARD': 1.6647}
+
+Evaluation of RA HCO3 Flow (t/d)
+
+
+
+{'R^2': 0.9855, 'MSE': 69.9424, 'MAE': 6.6333, 'AARD': 3.5652}
+
