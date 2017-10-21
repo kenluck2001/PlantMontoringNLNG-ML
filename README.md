@@ -68,9 +68,9 @@ $ ./run.sh
 
 5-fold cross validation was used to prevent overfitting, thereby making our experiment very realistic.
 
-#Licence
+# Licence
 All rights reserved as no part of this code can be used in any form (research or academic) until the paper has been published.
-
+The paper is available in ( https://doi.org/10.1016/j.jece.2017.10.038 ).
 #References
 
 Friedman, J. (1991). Multivariate adaptive regression splines. The annals of statistics, 19(1), 1–67. http://www.jstor.org/stable/10.2307/2241837
